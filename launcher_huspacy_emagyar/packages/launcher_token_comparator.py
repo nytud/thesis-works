@@ -32,60 +32,6 @@ def token_comparator(h_tokens, e_tokens):
             j = j + 1
             k = k + 1
         else:
-            #another option for diffsolv logic, for debug and tracking purposes
-            """j, k, m = diffsolver(2, 1, j, k, h_tokens, e_tokens, str_to_print, diff_to_print_e, diff_to_print_h, None, None, None, None, None)
-            if(m):
-                continue
-            j, k, m = diffsolver(1, 2, j, k, h_tokens, e_tokens, str_to_print, diff_to_print_e, diff_to_print_h, None, None, None, None, None)
-            if(m):
-                continue
-            j, k, m = diffsolver(3, 1, j, k, h_tokens, e_tokens, str_to_print, diff_to_print_e, diff_to_print_h, None, None, None, None, None)
-            if(m):
-                continue
-            j, k, m = diffsolver(1, 3, j, k, h_tokens, e_tokens, str_to_print, diff_to_print_e, diff_to_print_h, None, None, None, None, None)
-            if(m):
-                continue
-            j, k, m = diffsolver(4, 1, j, k, h_tokens, e_tokens, str_to_print, diff_to_print_e, diff_to_print_h, None, None, None, None, None)
-            if(m):
-                continue
-            j, k, m = diffsolver(1, 4, j, k, h_tokens, e_tokens, str_to_print, diff_to_print_e, diff_to_print_h, None, None, None, None, None)
-            if(m):
-                continue
-            j, k, m = diffsolver(5, 1, j, k, h_tokens, e_tokens, str_to_print, diff_to_print_e, diff_to_print_h, None, None, None, None, None)
-            if(m):
-                continue
-            j, k, m = diffsolver(1, 5, j, k, h_tokens, e_tokens, str_to_print, diff_to_print_e, diff_to_print_h, None, None, None, None, None)
-            if(m):
-                continue
-            j, k, m = diffsolver(3, 2, j, k, h_tokens, e_tokens, str_to_print, diff_to_print_e, diff_to_print_h, None, None, None, None, None)
-            if(m):
-                continue
-            j, k, m = diffsolver(2, 3, j, k, h_tokens, e_tokens, str_to_print, diff_to_print_e, diff_to_print_h, None, None, None, None, None)
-            if(m):
-                continue
-            j, k, m = diffsolver(4, 3, j, k, h_tokens, e_tokens, str_to_print, diff_to_print_e, diff_to_print_h, None, None, None, None, None)
-            if(m):
-                continue
-            j, k, m = diffsolver(3, 4, j, k, h_tokens, e_tokens, str_to_print, diff_to_print_e, diff_to_print_h, None, None, None, None, None)
-            if(m):
-                continue
-            j, k, m = diffsolver(4, 2, j, k, h_tokens, e_tokens, str_to_print, diff_to_print_e, diff_to_print_h, None, None, None, None, None)
-            if(m):
-                continue
-            j, k, m = diffsolver(2, 4, j, k, h_tokens, e_tokens, str_to_print, diff_to_print_e, diff_to_print_h, None, None, None, None, None)
-            if(m):
-                continue
-            j, k, m = diffsolver(1, 1, j, k, h_tokens, e_tokens, str_to_print, diff_to_print_e, diff_to_print_h, None, None, None, None, None)
-            if(m):
-                continue
-            j, k, m = diffsolver(2, 2, j, k, h_tokens, e_tokens, str_to_print, diff_to_print_e, diff_to_print_h, None, None, None, None, None)
-            if(m):
-                continue
-            j, k, m = diffsolver(3, 3, j, k, h_tokens, e_tokens, str_to_print, diff_to_print_e, diff_to_print_h, None, None, None, None, None)
-            if(m):
-                continue"""
-
-
             m = False
             for z in range(1,6):
                 if(m):
