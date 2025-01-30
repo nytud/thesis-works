@@ -39,7 +39,7 @@ def ner_comparator(h_ners, h_only_ners, e_ners, e_only_ners, h_tokens, e_tokens)
             j = j + 1
             k = k + 1
         else:
-            j, k, m = diffsolver(2, 1, j, k, h_tokens, e_tokens, str_to_print, diff_to_print_e, diff_to_print_h, h_ners, None, None, e_ners, None)
+            """j, k, m = diffsolver(2, 1, j, k, h_tokens, e_tokens, str_to_print, diff_to_print_e, diff_to_print_h, h_ners, None, None, e_ners, None)
             if(m):
                 continue
             j, k, m = diffsolver(1, 2, j, k, h_tokens, e_tokens, str_to_print, diff_to_print_e, diff_to_print_h, h_ners, None, None, e_ners, None)
@@ -88,6 +88,17 @@ def ner_comparator(h_ners, h_only_ners, e_ners, e_only_ners, h_tokens, e_tokens)
             if(m):
                 continue
             j, k, m = diffsolver(3, 3, j, k, h_tokens, e_tokens, str_to_print, diff_to_print_e, diff_to_print_h, h_ners, None, None, e_ners, None)
+            if(m):
+                continue"""
+
+            m = False
+            for z in range(1,6):
+                if(m):
+                    break
+                for v in range(1,6):
+                    j, k, m = diffsolver(z, v, j, k, h_tokens, e_tokens, str_to_print, diff_to_print_e, diff_to_print_h, h_ners, None, None, e_ners, None)
+                    if(m):
+                        break
             if(m):
                 continue
 
