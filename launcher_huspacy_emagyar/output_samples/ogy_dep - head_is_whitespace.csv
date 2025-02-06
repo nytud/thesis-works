@@ -1,0 +1,9 @@
+huspacy dep (converted) == emagyar dep,huspacy head == emagyar head,huspacy dep ud,huspacy dep converted,huspacy head,emagyar dep,emagyar head,huspacy token,emagyar token
+True,False,|(nsubj)|,|SUBJ|,|HEAD IS WHITESPACE!|,|SUBJ|,|szólt|,|helyzet|,|helyzet|
+False,False,|(punct)|,|PUNCT|,|HEAD IS WHITESPACE!|,|SUBJ|,|szólt|,|az|,|az|
+False,False,|(csubj)|,|SUBJ|,|HEAD IS WHITESPACE!|,|ROOT|,|szólt|,|szólt|,|szólt|
+True,False,|(punct)|,|PUNCT|,|HEAD IS WHITESPACE!|,|PUNCT|,|.|,|.|,|.|
+False,False,|(nsubj)|,|SUBJ|,|HEAD IS WHITESPACE!|,|COORD|,|az|,|helyzet|,|helyzet|
+False,False,|(punct)|,|PUNCT|,|HEAD IS WHITESPACE!|,|ROOT|,|az|,|az|,|az|
+False,False,|(csubj)|,|SUBJ|,|HEAD IS WHITESPACE!|,|ATT|,|hogy|,|volt|,|volt|
+True,False,|(punct)|,|PUNCT|,|HEAD IS WHITESPACE!|,|PUNCT|,|.|,|.|,|.|

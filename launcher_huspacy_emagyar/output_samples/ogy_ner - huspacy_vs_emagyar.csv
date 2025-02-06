@@ -1,0 +1,11 @@
+huspacy ner , emagyar lemma,,,
+False,|B-ORG|,|O|,,(Országgyűlésről Országgyűlésről)
+False,|B-ORG|,|O|,,(LMP LMP)
+False,|B-ORG|,|O|,,(UNGÁR UNGÁR)
+False,|I-ORG|,|O|,,(PÉTER PÉTER)
+False,|B-ORG|,|O|,,(LMP LMP)
+False,|B-MISC|,|O|,,(Földért Földért)
+False,|B-ORG|,|O|,,(Tanács Tanács)
+False,|B-PER|,|O|,,(Rétvári Rétvári)
+False,|I-PER|,|O|,,(Bence Bence)
+False,|B-ORG|,|O|,,(Audinak Audinak)

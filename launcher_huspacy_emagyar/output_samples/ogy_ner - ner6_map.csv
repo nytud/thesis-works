@@ -1,0 +1,603 @@
+huspacy value == emagyar value,huspacy key,huspacy value,emagyar value
+False,Országgyűlés,ORG ORG MISC PER PER MISC PER PER PER PER ORG MISC MISC PER PER PER PER PER ORG ORG ORG ORG ORG MISC ORG ORG ORG ORG ORG PER ORG ORG ORG PER ORG PER PER PER PER PER PER PER ORG PER PER PER ORG ORG PER PER ORG PER ORG ORG MISC PER PER PER ORG PER ORG PER PER ORG ORG PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER MISC MISC MISC ORG,ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG
+True,Szűcs Lajos,PER PER,PER PER PER
+True,Hiszékeny Dezső,PER PER PER PER,PER PER PER PER
+True,Fidesz,ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG,ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG
+True,Ungár Péter,PER PER PER PER PER,PER PER PER PER PER
+True,LMP,ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG,ORG ORG ORG ORG ORG
+False,Magyarország,LOC LOC ORG ORG ORG ORG LOC ORG LOC ORG LOC LOC ORG ORG ORG ORG LOC LOC LOC ORG ORG LOC LOC ORG LOC ORG LOC LOC LOC ORG ORG LOC ORG ORG LOC LOC LOC ORG ORG LOC ORG ORG LOC ORG LOC LOC LOC ORG LOC LOC ORG LOC ORG ORG,LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC
+True,Magyarországon,LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC,LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC
+True,Thomas Piketty,PER,PER
+True,Európai Uniótól,ORG,ORG
+True,Európai Unió,ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG,ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG
+True,Európai Uniót,ORG ORG,ORG ORG
+False,Egyesült Államokkal,ORG,LOC
+True,Audinak,ORG ORG ORG ORG,ORG ORG
+True,Rétvári Bence,PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER,PER PER PER PER
+True,Audi,ORG,ORG
+False,Magyarországnak,ORG ORG ORG ORG ORG ORG ORG,LOC LOC LOC LOC LOC LOC LOC
+False,Háznak,ORG PER,ORG
+True,Bundestagnak,ORG,ORG
+True,Fónagy János,PER PER PER PER PER,PER PER PER PER PER PER
+True,Miniszterelnöki Kabinetiroda,ORG ORG ORG ORG ORG ORG ORG ORG,ORG ORG ORG ORG ORG ORG ORG ORG
+False,Ház,PER PER PER PER PER ORG ORG PER ORG PER ORG ORG ORG ORG ORG LOC PER PER PER PER PER LOC PER PER PER PER ORG PER PER PER PER PER PER PER,ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG
+True,Kunhalmi Ágnes,PER PER PER PER PER PER PER,PER PER PER PER PER PER PER
+True,EU,ORG ORG ORG,ORG ORG ORG
+False,Párbeszéd,MISC MISC MISC MISC ORG MISC ORG ORG MISC MISC MISC ORG MISC MISC MISC MISC ORG ORG MISC,ORG ORG
+True,Budapest,LOC LOC LOC LOC LOC,LOC LOC LOC LOC LOC LOC LOC LOC LOC
+True,Karácsony Gergely,PER PER PER PER,PER PER PER PER
+True,Novák Katalin,PER,PER
+True,Európai Parlament,ORG ORG,ORG ORG
+True,Ausztriában,LOC LOC LOC LOC,LOC LOC LOC LOC
+True,Vitályos Eszter,PER PER PER PER,PER PER PER PER
+True,Kulturális és Innovációs Minisztérium,ORG,ORG
+False,Unióban,LOC ORG,ORG ORG
+True,GDP,MISC,MISC
+True,Dócs Dávid,PER,PER
+False,Mi Hazánk,ORG MISC ORG ORG ORG ORG MISC ORG MISC MISC ORG ORG MISC ORG ORG ORG LOC ORG,ORG PER ORG PER ORG ORG PER ORG PER ORG ORG ORG PER ORG PER PER ORG ORG PER ORG ORG ORG PER ORG ORG
+False,Belügyminiszter Úr,PER,ORG
+True,Mi Hazánk Mozgalom,ORG ORG ORG ORG ORG ORG ORG ORG,ORG ORG ORG ORG ORG ORG ORG ORG ORG
+True,Magyar Gárda,ORG,ORG
+True,MSZP,ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG,ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG
+True,Komjáthi Imre,PER PER PER PER PER PER,PER PER PER PER PER PER
+True,Orbán Viktor,PER PER PER PER PER PER PER PER,PER PER PER PER PER PER PER PER
+True,Orbán Győző,PER PER,PER PER
+True,Dömötör Csaba,PER PER PER PER PER,PER PER PER PER PER
+False,Momentum,ORG ORG ORG ORG PER ORG ORG MISC ORG MISC ORG ORG ORG ORG ORG ORG MISC MISC ORG ORG ORG,ORG ORG ORG ORG ORG ORG ORG
+True,Hajnal Miklósnak,PER,PER
+False,Miniszterelnökség,ORG ORG ORG,ORG
+False,János Kórház,ORG ORG LOC ORG,ORG ORG
+True,DK,ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG,ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG
+True,Fürjes Balázs,PER PER PER,PER PER
+True,Szabó Szabolcs,PER PER,PER PER
+True,Fővárosi Közgyűlésbe,ORG,ORG
+True,Arató Gergely,PER PER PER PER PER PER PER PER PER PER,PER PER PER PER PER PER PER PER PER PER
+True,Fővárosi Közgyűlés,ORG ORG,ORG ORG
+True,Budapesten,LOC LOC LOC LOC LOC LOC,LOC LOC LOC LOC LOC LOC
+False,Budapestre,LOC LOC,LOC
+True,Pokorni Zoltán,PER,PER
+True,Karácsony Gergelyhez,PER,PER
+True,Lukács László György,PER PER PER,PER PER PER PER PER PER
+False,Európa,LOC ORG LOC LOC LOC,LOC LOC LOC LOC LOC
+True,Tállai András,PER PER PER PER PER,PER PER PER PER PER
+True,Horvátország,LOC,LOC
+False,Szlovénia,ORG,LOC
+True,Közép-Európa,LOC,LOC
+True,Lengyelországban,LOC LOC,LOC LOC
+True,Németországban,LOC LOC LOC,LOC LOC LOC
+True,Amerikában,LOC,LOC
+True,Magyar Szocialista Párt,ORG,ORG
+True,Országgyűlésnek,ORG ORG,ORG ORG
+True,Magyarországra,LOC LOC LOC,LOC LOC LOC
+False,Magyarországgal,ORG,LOC
+False,KDNP,ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG,ORG
+True,Hollik Istvánnak,PER,PER
+True,Európában,LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC,LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC LOC
+True,Brüsszelben,LOC LOC,LOC LOC
+True,Frans Timmermans,PER PER,PER PER
+True,Európai Bizottság,ORG ORG ORG ORG ORG ORG,ORG ORG ORG ORG ORG ORG
+False,Honvédelmi Alap,ORG,ORG ORG
+True,Európai Unióra,ORG,ORG
+False,Európai Unióban,ORG ORG ORG ORG LOC,ORG ORG ORG ORG ORG ORG
+False,Litvánia,ORG,LOC
+False,Csehország,ORG,LOC
+False,Európának,ORG ORG,LOC LOC
+False,Magyarországot,ORG LOC LOC ORG LOC LOC LOC,LOC LOC LOC LOC LOC LOC LOC LOC
+True,Amerikai Egyesült Államokban,LOC,LOC
+True,OECD,ORG ORG ORG,ORG ORG ORG
+False,Google,ORG ORG,ORG
+False,Amerikával,ORG,LOC
+False,Kínával,ORG,LOC
+False,Amerika,ORG ORG ORG,LOC LOC LOC
+True,Tuzson Bence,PER PER,PER PER
+True,Keresztes László Lóránt,PER PER PER PER,PER PER PER PER
+True,Varju László,PER PER PER PER PER PER PER PER PER PER,PER PER PER PER PER PER PER PER PER PER
+True,Hegedüs Andrea,PER PER PER PER PER,PER PER PER PER PER
+True,Bencze János,PER PER,PER PER
+True,Kanász-Nagy Máté,PER PER PER PER PER,PER PER PER
+True,Berki Sándor,PER,PER
+True,Toroczkai László,PER PER,PER PER
+True,Bedő Dávid,PER,PER
+True,Z. Kárpát Dániel,PER PER PER PER PER,PER PER PER PER
+True,Varga Zoltán,PER PER,PER PER
+True,Szászfalvi László,PER,PER
+False,Dunai Mónika,PER PER,PER
+True,Végh Noémi,PER,PER
+True,Barkóczi Balázs,PER PER,PER PER
+True,Gréczy Zsolt,PER,PER
+False,Gy. Németh Erzsébet,PER,ORG
+True,Kálmán Olga,PER PER PER PER PER,PER PER PER PER PER
+True,Kordás László,PER,PER
+True,Sebián-Petrovszki László,PER PER PER,PER PER PER
+True,Állami Számvevőszék,ORG ORG,ORG ORG
+True,Steiner Attila,PER,PER
+True,Gyurcsányt,ORG,ORG
+True,Hajdu László,PER,PER
+True,Schanda Tamás,PER,PER
+True,Schanda Tamást,PER,PER
+True,Lezsák Sándor,PER,PER
+True,Koncz Zsófia,PER PER PER PER PER PER PER PER PER PER,PER PER PER PER PER PER PER PER PER PER
+False,Demokratikus Koalíció,ORG ORG,ORG
+False,Tarnai Richárd,PER,ORG
+True,Pest Megyei Kormányhivataltól,ORG,ORG
+False,Államtitkár Úr,PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER,ORG PER ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG PER ORG ORG
+True,Torgyán József,PER,PER
+True,Gyurcsány Ferenctől,PER,PER
+True,Nyugat-Európában,LOC,LOC
+True,Korózs Lajos,PER,PER
+True,Gelencsér Ferenc,PER PER,PER PER
+True,Budavári Önkormányzatot,ORG,ORG
+True,Széchenyi Bankban,ORG ORG ORG,ORG ORG ORG
+True,Nagy Márton,PER,PER
+True,Házelnök Úr,PER PER,PER PER
+True,Varga Mihály,PER,PER
+False,Red Bull Air Race,MISC,ORG
+True,Budavári Önkormányzat,ORG ORG,ORG ORG
+True,Széchenyi Bank,ORG ORG ORG ORG,ORG ORG ORG ORG
+True,Nemzetgazdasági Minisztérium,ORG,ORG
+True,Széchenyi Bankot,ORG,ORG
+True,OBA,ORG ORG ORG ORG ORG,ORG ORG ORG ORG ORG
+False,Nagy Gábor Tamás,PER,PER PER PER
+True,Magyar Nemzeti Bank,ORG,ORG
+True,Széchenyi Kereskedelmi Bank Zrt.,ORG,ORG
+True,Országos Betétbiztosítási Alap,ORG ORG,ORG ORG
+True,Széchenyi Banknál,ORG,ORG
+True,Szabó Sándor,PER PER PER PER,PER PER PER PER
+True,Szegeden,LOC,LOC
+True,Járvány Elleni Védekezési Alapba,ORG,ORG
+False,Szeged,ORG LOC ORG LOC LOC,PER ORG
+False,Pick Aréna,LOC,ORG
+True,Novák Előd,PER PER PER PER PER PER PER,PER PER PER PER PER PER PER
+False,Miniszter Úr,PER PER PER,ORG ORG ORG PER
+False,Ángyán József,PER,PER PER
+True,Farkas Sándor,PER PER PER PER PER PER,PER PER PER PER PER PER
+True,Eurostat,ORG,ORG
+True,Végrehajtói Kamara,ORG,ORG
+True,Jámbor András,PER PER,PER PER PER
+True,Varga Judit,PER PER PER PER,PER PER PER PER PER
+True,Csárdi Antal,PER PER PER,PER PER PER
+True,Franciaországban,LOC,LOC
+True,Dániában,LOC,LOC
+True,Csehországban,LOC LOC,LOC LOC
+False,Írország,ORG,LOC
+True,Egyesült Államokban,LOC,LOC
+True,Kína,LOC,LOC
+True,Egyesült Államok,LOC,LOC
+True,Tállai,PER,PER
+True,Richter,ORG,ORG
+True,Bartos Mónika,PER,PER
+True,Németh Szilárd,PER PER PER,PER PER PER
+False,Miniszter Asszony,PER,ORG ORG ORG ORG
+False,Ukrajna,LOC LOC LOC ORG ORG,LOC LOC LOC LOC LOC
+True,Ukrajnával,LOC,LOC
+False,Belgium,ORG,LOC
+False,Németország,ORG ORG,LOC LOC
+True,Európai Bizottságtól,ORG,ORG
+True,Simicskó István,PER PER PER,PER PER PER
+True,Kereszténydemokrata Néppárt,ORG ORG,ORG ORG
+True,Vinnai Győző,PER,PER
+True,Honvédelmi Alappal,ORG,ORG
+True,Vadai Ágnes,PER,PER
+True,Orbán Balázs,PER PER PER PER PER PER PER PER PER,PER PER PER PER PER PER PER PER PER PER PER
+True,Miniszterelnök Úr,PER,PER
+True,Jakab Péter,PER PER,PER PER
+True,Brenner Koloman,PER PER PER,PER PER PER PER PER
+True,Navracsics Tibor,PER PER,PER PER
+True,Európai Unióval,ORG ORG,ORG ORG
+True,Európai Ügyészségbe,ORG,ORG
+True,Neelie Kroesszal,PER,PER
+True,Vivien Redinggel,PER,PER
+True,Európai Ügyészséghez,ORG ORG,ORG ORG
+True,Európai Ügyészséggel,ORG,ORG
+True,Brenner,PER,PER
+True,Dúró Dóra,PER PER PER PER PER PER,PER PER PER PER PER PER
+True,Európai Néppárthoz,ORG,ORG
+True,Nagy Imre,PER,PER
+True,Magyar Televízió,ORG,ORG
+True,Fekete-Győr András,PER PER,PER PER
+True,Hajnal Miklós,PER PER PER PER,PER PER PER PER
+True,Miniszterelnöki Kabinetirodát,ORG,ORG
+True,Kormányzati Tájékoztatási Központ,ORG,ORG
+True,Magyar Hang,ORG ORG,ORG ORG
+True,Gyurcsány Ferenc,PER PER,PER PER
+True,Suzuki,MISC,MISC
+True,Szabadi István,PER,PER
+True,Szabó Rebeka,PER PER PER PER PER PER PER,PER PER PER PER PER PER PER
+True,Európai Növényvédőszer Akcióhálózat,ORG,ORG
+True,Olaszországban,LOC,LOC
+False,Hollandia,ORG,LOC
+False,Spanyolország,ORG,LOC
+False,Franciaország,ORG,LOC
+True,Szlovákiában,LOC,LOC
+True,Szlovéniában,LOC LOC,LOC LOC
+False,Szerbiának,ORG,LOC
+True,Európai Unión,ORG,ORG
+True,Halász János,PER PER PER PER,PER PER PER PER
+True,Répássy Róbert,PER PER,PER PER
+True,Simonka György,PER,PER
+False,Dr. Brenner Koloman,PER PER PER,PER
+True,Farkas Flórián,PER,PER
+True,Halász,PER,PER
+False,Magyar Közlöny,MISC,ORG
+False,Hivatalos Értesítőben,MISC,ORG
+True,Vejkey Imre,PER PER PER PER,PER PER PER PER
+False,Oroszország,ORG LOC ORG LOC,LOC LOC LOC LOC
+True,Jakab István,PER,PER
+True,Rezsivédelmi Alap,ORG,ORG
+True,Márki-Zay Pétert,PER,PER
+True,Mé-száros Lőrinc,PER,PER
+True,Garancsi István,PER,PER
+True,Szíjj László,PER,PER
+False,Honvédelmi Alapba,ORG,ORG ORG
+True,Tiborcz István,PER,PER
+True,Rezsivédelmi Alapot,ORG,ORG
+False,Honvédelmi Alapot,ORG,ORG ORG ORG
+False,Komáromi Zoltán,PER,PER PER
+True,OKFŐ,ORG,ORG
+False,Paks II.-t,ORG MISC,ORG
+False,Normixra,MISC,ORG
+True,Goodwill Pharma Kft.,ORG,ORG
+True,Nemzeti Egészségbiztosítási Alapkezelő,ORG,ORG
+True,Szalay-Bobrovniczky Kristóf,PER,PER
+True,Vargha Tamás,PER PER,PER PER
+False,Ukrajnába,LOC LOC,LOC
+True,NATO,ORG ORG,ORG ORG
+True,Magyar Honvédség,ORG,ORG
+True,Bakos Bernadett,PER PER,PER PER
+True,Palkovics László,PER PER PER,PER PER PER
+True,Technológiai és Ipari Minisztérium,ORG,ORG
+True,Soltész Miklós,PER,PER
+True,Pest megye,LOC LOC,LOC LOC
+False,Pedagógusok Szakszervezetének,ORG ORG,ORG
+True,Gyurcsány Ferenccel,PER,PER
+True,Nemzeti Pedagógus Karral,ORG ORG,ORG ORG
+False,Maruzsa,PER,ORG
+True,Pedagógus Karral,ORG,ORG
+True,Ovádi Péter,PER,PER
+True,Pannon Egyetemen,ORG ORG,ORG ORG
+True,Pannon Egyetem,ORG ORG ORG ORG ORG,ORG ORG ORG ORG ORG
+True,Pannon Egyetemért Alapítvány,ORG,ORG
+False,Képviselő Úr,PER PER,ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG
+False,Göd,LOC LOC LOC,LOC
+True,Csomád,LOC,LOC
+True,Csömör,LOC,LOC
+True,Erdőkertes,LOC,LOC
+True,Veresegyház,LOC,LOC
+True,Szent István,PER,PER
+False,Krisztus Király Iskola,ORG,PER
+True,Duna,LOC LOC LOC,LOC LOC LOC
+False,Huzella Kert,LOC,ORG
+True,Arany János,PER,PER
+True,Eötvös Loránd Tudományegyetemhez,ORG,ORG
+True,Fővárosi Füvészkerthez,ORG,ORG
+False,Huzella Kertet,MISC,PER
+False,Újpesten,LOC LOC LOC LOC,LOC LOC ORG
+True,Angyalföldön,LOC,LOC
+False,Országház,LOC,ORG
+True,Miskolcot,LOC LOC,LOC LOC
+False,Zöld Nyíl,MISC,PER
+False,Miskolc,LOC,LOC LOC LOC
+True,Csöbör Katalinnak,PER,PER
+True,Kiss Jánosnak,PER,PER
+True,Kovács Zsoltnak,PER,PER
+True,Varga Juditnak,PER,PER
+True,Répássy Róbertnek,PER,PER
+True,Szinay Attilának,PER,PER
+huspacy maradek:,,,
+ELNÖK,|ORG|,,
+Országgyűlésről,|ORG|,,
+UNGÁR PÉTER,|ORG PER|,,
+Földért,|MISC|,,
+Tanács,|ORG|,,
+FÓNAGY JÁNOS,|PER PER PER PER|,,
+Úr,|PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER|,,
+Napirend,|PER PER PER|,,
+Brüsszelből,|LOC|,,
+Kunhalmi,|PER|,,
+Tordai Bencének,|PER|,,
+Finike,|LOC LOC|,,
+Tordai Bence,|PER PER|,,
+Derültség,|LOC LOC|,,
+Papamonatot,|MISC|,,
+VITÁLYOS ESZTER,|PER PER PER|,,
+Az Európai Unióban,|MISC|,,
+Magyarország Alaptörvénye,|MISC|,,
+DÓCS DÁVID,|MISC|,,
+Hazánk,|ORG PER ORG PER|,,
+Betadine-t,|PER|,,
+Komplett,|LOC|,,
+A Mi Hazánk Mozgalom,|ORG|,,
+Mi Hazánk soraiban,|MISC MISC MISC|,,
+RÉTVÁRI BENCE,|PER PER PER PER PER PER PER PER PER|,,
+Jobbiknak,|MISC ORG MISC|,,
+KOMJÁTHI IMRE,|PER PER PER PER PER|,,
+Atyaúristen,|PER|,,
+Tungsram,|ORG|,,
+Mészáros,|PER PER|,,
+Garancsi,|PER|,,
+Szíjj,|PER|,,
+Tiborcz,|PER|,,
+Taps,|PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER PER ORG PER PER|,,
+DÖMÖTÖR CSABA,|PER PER PER PER|,,
+Kormányinfón,|ORG ORG ORG ORG|,,
+Dr. Latorcai János,|PER|,,
+Fürjes Balázst,|PER|,,
+Országgyűlésben,|MISC ORG ORG|,,
+Buda,|LOC LOC|,,
+Hegyvidék,|LOC|,,
+Fürjes,|PER|,,
+DK-val,|ORG|,,
+Egészséges Budapest,|MISC MISC MISC|,,
+Hagyó Miklós-i,|PER|,,
+Bel-Budáról,|LOC|,,
+Szent János Kórházat,|ORG|,,
+Észak-budai Ellátási Centrumot,|ORG|,,
+BKK,|ORG|,,
+Fürjes Balázshoz,|PER|,,
+Jobbik,|ORG ORG ORG ORG ORG ORG ORG ORG ORG PER ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG|,,
+Bezzeg,|PER|,,
+Kezdjük,|PER|,,
+Rezsivédelmi és a Honvédelmi Alapba,|ORG|,,
+Orbán,|PER PER PER PER|,,
+Európa-rekorder,|MISC|,,
+TÁLLAI ANDRÁS,|PER PER PER ORG ORG|,,
+A történet vége,|MISC|,,
+EU-nál,|ORG|,,
+IMF-nél,|ORG|,,
+Gréczy,|PER|,,
+Harangozó,|PER|,,
+HOLLIK ISTVÁN,|PER|,,
+Rezsivédelmi,|MISC MISC|,,
+Fidesz-KDNP,|ORG ORG|,,
+Fidesz-KDNP-kormány,|ORG ORG ORG ORG|,,
+A benyújtott 2023. évi költségvetés prioritásai,|MISC|,,
+Sic,|MISC|,,
+Rezsivédelmi és a Honvédelmi Alapot,|ORG|,,
+Rezsivédelmi Alapra,|ORG|,,
+Bánki Erik,|PER PER|,,
+BÁNKI ERIK,|PER|,,
+Európát,|LOC LOC LOC|,,
+Észtországban,|LOC|,,
+Közép-Kelet-Európában,|LOC|,,
+Csehországgal,|LOC|,,
+Facebook,|ORG MISC|,,
+Istenigazából,|PER|,,
+HISZÉKENY DEZSŐ,|PER|,,
+DK.,|ORG|,,
+Soron,|LOC LOC|,,
+Interparlamentáris Unió,|ORG|,,
+Magyar Nemzeti Csoportjának,|ORG|,,
+Országgyűlést,|MISC MISC|,,
+Dr. Komáromi Zoltán,|PER|,,
+Dr. Oláh Lajos,|PER|,,
+DR. SZŰCS LAJOS,|PER|,,
+T/152.,|MISC|,,
+Kövér László,|PER|,,
+dr. Szűcs Lajos,|PER|,,
+Választókerületemben,|LOC|,,
+XV. kerületben,|LOC|,,
+Szentmihályi út,|LOC|,,
+Irinyi János laktanya,|LOC|,,
+Belügyminisztériumot,|LOC|,,
+Barkóczi,|PER PER|,,
+DR. KONCZ,|PER PER PER|,,
+ZSÓFIA,|ORG ORG ORG|,,
+Tisztítsuk meg az országot!,|MISC|,,
+Szilas-patak,|LOC|,,
+BARKÓCZI BALÁZS,|ORG|,,
+DR. LUKÁCS LÁSZLÓ GYÖRGY,|PER ORG|,,
+Lukács,|PER PER|,,
+Jobbiktól,|ORG|,,
+Jobbikban,|ORG|,,
+Nemzetközi szaklapban,|MISC|,,
+Rétvári,|PER|,,
+Gelencsér,|PER PER PER|,,
+GELENCSÉR FERENC,|MISC PER|,,
+dr. Nagy Gábor Tamás,|PER PER|,,
+Budapest I.,|LOC|,,
+Várban,|LOC|,,
+Széchenyi Bank Zrt.,|ORG|,,
+dr. Nagy Gábor Tamást,|PER|,,
+Miniszter,|PER PER PER PER|,,
+dr. Nagy Gábor Tamástól,|PER|,,
+Fónagy,|PER|,,
+SZABÓ SÁNDOR,|PER PER|,,
+Gyakorlatilag,|PER|,,
+Szabó,|PER PER|,,
+NAV,|ORG|,,
+Szegednek,|LOC|,,
+Nemzeti Vidékstratégia 2012-2020,|MISC MISC|,,
+dr. Ángyán József,|PER|,,
+A magyar vidék alkotmánya,|MISC|,,
+Hozzáteszem,|MISC|,,
+FARKAS SÁNDOR,|PER PER PER PER|,,
+Elöljáróban,|LOC|,,
+CSOK-ot,|LOC|,,
+EU-ban,|LOC LOC|,,
+Magyarország Kormányának,|ORG|,,
+Államtitkár,|PER PER PER PER PER PER PER PER PER|,,
+Jámbor András Imre,|PER PER|,,
+JÁMBOR ANDRÁS IMRE,|PER PER|,,
+Tisztelt Miniszter Asszony!,|MISC MISC|,,
+Covid,|ORG|,,
+Végrehajtói Kar,|ORG ORG ORG|,,
+Répássy,|PER PER|,,
+Alaptörvénybe,|MISC|,,
+Vane,|PER|,,
+Tervezie ,|MISC|,,
+Diákváros,|ORG|,,
+DR. VARGA JUDIT,|ORG|,,
+Szabályozott Tevékenységek Felügyeleti Hatóságával,|ORG|,,
+Megkérdezem Jámbor András,|PER|,,
+Dr. Varga Judit,|PER|,,
+Völner-ügyre,|MISC|,,
+CSÁRDI ANTAL,|PER PER|,,
+Gazdasági bizottság,|ORG|,,
+Csárdi,|PER|,,
+Bevallom,|PER|,,
+Megkérdezem Csárdi,|PER|,,
+MOL-nál,|ORG|,,
+Brüsszel,|ORG LOC LOC LOC LOC LOC|,,
+NÉMETH SZILÁRD ISTVÁN,|PER PER|,,
+Magyarország Kormánya,|ORG|,,
+Európára,|ORG ORG|,,
+DR. VARGA,|ORG|,,
+JUDIT,|PER|,,
+Megkérdezem Németh Szilárd,|PER|,,
+Kormány,|ORG|,,
+SIMICSKÓ ISTVÁN,|ORG|,,
+Dr. Szűcs Lajost,|PER|,,
+Az Alaptörvényünkben,|MISC|,,
+Hiszékeny Dezsőt,|PER|,,
+Frakcióvezető Úr,|PER|,,
+Munkánknak,|MISC|,,
+DR. SIMICSKÓ ISTVÁN,|ORG|,,
+Megnyugtató,|PER|,,
+Fidesz-KDNP-kormányra,|MISC|,,
+Rezsivédelmi Alappal,|ORG|,,
+Simicskó,|PER|,,
+Miniszterelnök,|PER PER PER PER|,,
+KÁLMÁN OLGA,|ORG|,,
+Közbeszólások,|LOC|,,
+JAKAB PÉTER,|PER|,,
+Moraj,|PER PER PER|,,
+DR. BRENNER KOLOMAN,|PER PER PER|,,
+Álláspont,|MISC|,,
+Médiatanácsba,|MISC|,,
+Brüsszelt,|ORG|,,
+DR. NAVRACSICS TIBOR,|ORG ORG|,,
+Képviselőtársam,|PER|,,
+Európai Unióból Magyarországot,|ORG|,,
+Bizottság,|ORG ORG|,,
+Laura Codruța,|PER|,,
+ORF-en,|ORG ORG|,,
+Dr. Orbán Balázs,|PER PER|,,
+Gyurcsány,|PER PER|,,
+FEKETE-GYŐR ANDRÁS,|ORG|,,
+HAJNAL MIKLÓS,|MISC MISC|,,
+Kormányinfó,|ORG ORG|,,
+Miniszterelnökséget,|ORG ORG|,,
+Kormányinfóra,|MISC MISC ORG ORG MISC|,,
+Kormányinfókra,|ORG|,,
+Kormányinfókat,|ORG ORG|,,
+Budapestinfót,|ORG|,,
+Direkt36,|ORG|,,
+Aktuális kérdésekről,|MISC|,,
+MSZP-ben,|ORG|,,
+Befolyásoljae ,|PER|,,
+Komjáthi,|PER PER|,,
+Hankook,|ORG|,,
+DÚRÓ DÓRA,|PER PER PER PER|,,
+Hoppá,|PER|,,
+Közbeszólás,|MISC|,,
+Előd,|PER|,,
+Angliát,|ORG|,,
+DR. ORBÁN BALÁZS,|PER PER|,,
+SZABÓ REBEKA,|MISC MISC MISC|,,
+37-et,|MISC|,,
+NÉBIH,|ORG|,,
+Agrárminisztériumnak,|ORG|,,
+Agrárminisztérium,|ORG|,,
+Honnan fúj a szél?,|MISC|,,
+LMP-nek,|ORG ORG|,,
+Ausztriának,|LOC|,,
+ELTE,|ORG|,,
+"Nagyívű, nagyívű!",|MISC|,,
+HALÁSZ JÁNOS,|PER PER PER|,,
+Fidesz-KDNP-kormánynak,|ORG|,,
+Országgyűlésbe,|ORG ORG|,,
+Hangsúlyozom,|PER|,,
+DR. RÉPÁSSY RÓBERT,|PER PER|,,
+Dr. Lukács László György,|PER PER PER|,,
+Gyurcsányék,|PER|,,
+Volnerrel,|PER|,,
+Veszélyben van a rezsicsökkentés?,|MISC|,,
+DR. VEJKEY IMRE,|ORG ORG ORG ORG|,,
+Brüsszelnek,|ORG|,,
+DR. KONCZ ZSÓFIA,|PER PER PER PER PER|,,
+Miniszter Úr?,|MISC|,,
+SEBIÁN-PETROVSZKI LÁSZLÓ,|PER PER PER|,,
+Rezsivédelmi és a Honvédelmi Alap,|ORG|,,
+Kinek a családját,|MISC|,,
+Rezsivédelmi és Honvédelmi Alapot,|ORG|,,
+Kaszinók?,|MISC|,,
+Dr. Fónagy János,|PER|,,
+MOL-nak,|ORG|,,
+DR. KOMÁROMI ZOLTÁN,|ORG|,,
+Kisalföldön,|LOC|,,
+Kárpát-medencében,|LOC|,,
+Ukrajnán,|LOC|,,
+Egy magyar édesanya,|MISC|,,
+Normix,|ORG ORG|,,
+Parancsoljon,|PER|,,
+NEAK,|ORG ORG ORG ORG|,,
+NEAK-os,|MISC|,,
+VARGHA TAMÁS,|PER|,,
+Miniszterhelyettes Úr,|PER|,,
+BAKOS BERNADETT,|ORG|,,
+Fenntartható fejlődés bizottságában vita,|MISC|,,
+Fenntartható fejlődés bizottsága,|MISC|,,
+KRESZ,|MISC MISC MISC MISC|,,
+DUNAI MÓNIKA,|ORG|,,
+KRESZ-ben,|MISC|,,
+SOLTÉSZ MIKLÓS,|MISC|,,
+DK-nál,|ORG|,,
+HEGEDÜS ANDREA,|ORG ORG|,,
+OVÁDI PÉTER,|PER|,,
+Az ott folyó nemzetközi ismertségű,|MISC|,,
+Választókerületi ügyek,|MISC|,,
+TUZSON BENCE,|PER|,,
+Dunakeszi,|LOC LOC LOC|,,
+Fót,|LOC|,,
+M2-est,|ORG|,,
+M3-assal,|ORG|,,
+Gödön,|LOC LOC|,,
+Huzella,|PER PER|,,
+Füvészkerthez,|ORG|,,
+Füvészkert,|ORG|,,
+Dunakanyar,|LOC|,,
+Mi történik Újpesten?,|MISC|,,
+VARJU LÁSZLÓ,|PER|,,
+XIII. kerületben,|LOC|,,
+Nyárindító plusz jutalom,|MISC MISC|,,
+Itt a városvezetés által megálmodott,|MISC|,,
+Balaton-partról,|LOC|,,
+Napirend utáni,|PER|,,
+Kánaánt,|LOC|,,
+Miskolcnak,|ORG|,,
+MVK Zrt.,|ORG|,,
+Csöbör,|PER|,,
+Hubay,|PER|,,
+BENCZE JÁNOS,|PER|,,
+Kossuth tér,|LOC|,,
+Virtuális Parlamenti séta ,|MISC|,,
+Idegenforgalom: idegenforgalom(kukac,|MISC|,,
+emagyar maradek:,,,
+Elnök Úr,|ORG ORG ORG ORG ORG PER ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG ORG PER ORG ORG ORG ORG ORG ORG ORG ORG PER PER|,,
+Latorcai János,|PER|,,
+CT,|ORG|,,
+Szent János,|PER|,,
+Közép,|LOC|,,
+Kelet,|LOC|,,
+Kárpát Dániel,|PER|,,
+Interparlamentáris Unió Magyar Nemzeti Csoportjának,|ORG|,,
+Oláh Lajos,|PER|,,
+Kövér László Jegyzők,|PER|,,
+Irinyi János,|PER|,,
+Államtitkár Asszony,|PER ORG ORG PER ORG ORG ORG ORG ORG|,,
+Széchenyi Bank Zrt,|ORG|,,
+Nagy Gábor,|PER PER|,,
+Nemzeti Vidékstratégia,|ORG|,,
+Vidékstratégia,|LOC|,,
+András Imre,|PER PER|,,
+Szűcs Lajost,|PER|,,
+Európai Unióból,|ORG|,,
+Politikai Igazgató Úr,|ORG|,,
+Képviselő Asszony,|ORG ORG ORG ORG ORG ORG ORG ORG|,,
+Kormánya,|LOC|,,
+Magyar kormány,|ORG|,,
+Házban,|ORG|,,
+MVK Zrt.,|ORG|,,
+Kossuth,|LOC|,,
+Országházlátogatás,|LOC|,,
+Weboldalunkon,|LOC|,,
