@@ -1,0 +1,52 @@
+False,Országgyűlés,"{'PER', 'MISC', 'ORG'}",{'ORG'}
+False,Magyarország,"{'LOC', 'ORG'}",{'LOC'}
+False,Egyesült Államokkal,{'ORG'},{'LOC'}
+False,Magyarországnak,{'ORG'},{'LOC'}
+False,Háznak,"{'PER', 'ORG'}",{'ORG'}
+False,Ház,"{'PER', 'LOC', 'ORG'}",{'ORG'}
+False,Párbeszéd,"{'MISC', 'ORG'}",{'ORG'}
+False,Unióban,"{'LOC', 'ORG'}",{'ORG'}
+False,Mi Hazánk,"{'LOC', 'MISC', 'ORG'}","{'PER', 'ORG'}"
+False,Belügyminiszter Úr,{'PER'},{'ORG'}
+False,Momentum,"{'PER', 'MISC', 'ORG'}",{'ORG'}
+False,János Kórház,"{'LOC', 'ORG'}",{'ORG'}
+False,Európa,"{'LOC', 'ORG'}",{'LOC'}
+False,Szlovénia,{'ORG'},{'LOC'}
+False,Magyarországgal,{'ORG'},{'LOC'}
+False,Európai Unióban,"{'LOC', 'ORG'}",{'ORG'}
+False,Litvánia,{'ORG'},{'LOC'}
+False,Csehország,{'ORG'},{'LOC'}
+False,Európának,{'ORG'},{'LOC'}
+False,Magyarországot,"{'LOC', 'ORG'}",{'LOC'}
+False,Amerikával,{'ORG'},{'LOC'}
+False,Kínával,{'ORG'},{'LOC'}
+False,Amerika,{'ORG'},{'LOC'}
+False,Gy. Németh Erzsébet,{'PER'},{'ORG'}
+False,Tarnai Richárd,{'PER'},{'ORG'}
+False,Államtitkár Úr,{'PER'},"{'PER', 'ORG'}"
+False,Red Bull Air Race,{'MISC'},{'ORG'}
+False,Szeged,"{'LOC', 'ORG'}","{'PER', 'ORG'}"
+False,Pick Aréna,{'LOC'},{'ORG'}
+False,Miniszter Úr,{'PER'},"{'PER', 'ORG'}"
+False,Írország,{'ORG'},{'LOC'}
+False,Miniszter Asszony,{'PER'},{'ORG'}
+False,Ukrajna,"{'LOC', 'ORG'}",{'LOC'}
+False,Belgium,{'ORG'},{'LOC'}
+False,Németország,{'ORG'},{'LOC'}
+False,Hollandia,{'ORG'},{'LOC'}
+False,Spanyolország,{'ORG'},{'LOC'}
+False,Franciaország,{'ORG'},{'LOC'}
+False,Szerbiának,{'ORG'},{'LOC'}
+False,Magyar Közlöny,{'MISC'},{'ORG'}
+False,Hivatalos Értesítőben,{'MISC'},{'ORG'}
+False,Oroszország,"{'LOC', 'ORG'}",{'LOC'}
+False,Paks II.-t,"{'MISC', 'ORG'}",{'ORG'}
+False,Normixra,{'MISC'},{'ORG'}
+False,Maruzsa,{'PER'},{'ORG'}
+False,Képviselő Úr,{'PER'},{'ORG'}
+False,Krisztus Király Iskola,{'ORG'},{'PER'}
+False,Huzella Kert,{'LOC'},{'ORG'}
+False,Huzella Kertet,{'MISC'},{'PER'}
+False,Újpesten,{'LOC'},"{'LOC', 'ORG'}"
+False,Országház,{'LOC'},{'ORG'}
+False,Zöld Nyíl,{'MISC'},{'PER'}

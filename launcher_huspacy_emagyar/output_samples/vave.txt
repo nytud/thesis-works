@@ -1,0 +1,125 @@
+1 kényszerítve rossz
+2 teremtve rossz
+3 illetve jó
+4 illetve jó
+5 nézve rossz
+6 illetve jó
+7 illetve jjó
+8 illetve jó
+9 vezényelve vezényelv
+10 kitéve rossz
+11 megszegve rossz
+12 megszegve rossz
+13 illetve jó
+14 illetve jó
+15 szembemenve rossz
+16 bejelentve rossz
+17 érvelve rossz
+18 véve rossz
+19 beleértve rossz
+20 beszélve rossz
+21 illetve jó
+22 illetve jó
+23 illetve jó
+24 illetve jó
+25 illetve jó
+26 illetve jó
+27 menve rossz
+					28 tekintve rossz rossz
+29 illetve jó
+30 térve rossz
+31 illetve jó
+32 átlépve rossz
+33 illetve jó
+34 felmérve rossz
+35 illetve jó
+36 illetve jó
+37 kezdve rossz
+38 illetve jó
+39 felejtve rossz
+40 illetve jó
+41 illetve jó
+42 bővítve rossz
+43 felkészülve rossz
+44 öltve rossz
+45 előfizetve rossz
+46 beengedve rossz
+47 követelve rossz
+48 minősítve rssz
+49 illetve jó
+50 engedélyezve rossz
+51 engedélyezve rossz
+52 engedélyezve rossz
+					53 nézve rossz rossz
+54 ismerve rossz
+55 kifejlesztve rossz
+56 illetve jó
+57 illetve jó
+					58 nézve rossz rossz
+59 megerősítve rossz
+60 összekötve rossz
+61 iletve jó
+62 illetve jó
+					63 közvetve rossz rossz
+64 illetve jó
+65 illetve jó
+66 ismerve rossz
+67 kezelve rossz
+68 illetve jó
+69 illetve jó
+70 illetve jó
+71 ideértve rossz
+72 kiegészülve rossz
+73 nézve rossz
+74 eltekintve rossz
+75 illetve jó
+76 keresve rossz
+77 együttműködik rossz
+78 vetítve rossz
+08 leosztva rossz
+NOVÁK -> NOVA!!! (emagyar) 8
+81 biztosítva rossz
+82 hozzájárulva rossz
+83 felszámolva
+84 sugallva rossz
+85 bújva rossz
+86 kijátszva
+					87 fordítva rossz rossz
+88 kimondva rossz
+89 szólva rossz
+90 lefordítva rossz
+91 elosztva rossz
+92 bevonva rossz
+					93 múlva rossz rossz
+94 összekapcsolódva rossz
+95b szólva rossz
+96 összefoglalva rossz
+97 nyújtva rossz
+98 hivatkozva rossz
+99 biztosítva rossz
+100 juttatva rossz
+101 hivatkozva rossz
+102 súrolva rossz
+103 adóztatva rossz
+104 beállítva rossz
+105 látva rossz
+106 támaszkodva rossz
+107 megtartva rossz
+108 továbbítva rpssz
+					109 nyitva rossz rpssz
+110 naradva rossz
+111 elbírálva rpssz
+112 felhasználva rossz
+113 elmondva rossz
+114 tiltva rossz
+115 tiltva rossz
+					116 fogva rossz rossz
+117 reflektálva
+118 megtartva
+119 szabályozva
+					120 nyitva rossz rossz
+121 számolva roaas
+122 számolva rossz
+123 elfáradva rossz
+124 látva rossz
+125 látva rossz

@@ -31,57 +31,17 @@ def dep_comparator(h_dep, h_head, e_dep, e_head, h_tokens, e_tokens):
             j = j + 1
             k = k + 1
         else:
-            j, k, m = diffsolver(2, 1, j, k, h_tokens, e_tokens, str_to_print, diff_to_print_e, diff_to_print_h, h_dep, h_head, None, e_dep, e_head)
+            m = False
+            for z in range(1,6):
+                if(m):
+                    break
+                for v in range(1,6):
+                    j, k, m = diffsolver(z, v, j, k, h_tokens, e_tokens, str_to_print, diff_to_print_e, diff_to_print_h, h_dep, h_head, None, e_dep, e_head)
+                    if(m):
+                        break
             if(m):
                 continue
-            j, k, m = diffsolver(1, 2, j, k, h_tokens, e_tokens, str_to_print, diff_to_print_e, diff_to_print_h, h_dep, h_head, None, e_dep, e_head)
-            if(m):
-                continue
-            j, k, m = diffsolver(3, 1, j, k, h_tokens, e_tokens, str_to_print, diff_to_print_e, diff_to_print_h, h_dep, h_head, None, e_dep, e_head)
-            if(m):
-                continue
-            j, k, m = diffsolver(1, 3, j, k, h_tokens, e_tokens, str_to_print, diff_to_print_e, diff_to_print_h, h_dep, h_head, None, e_dep, e_head)
-            if(m):
-                continue
-            j, k, m = diffsolver(4, 1, j, k, h_tokens, e_tokens, str_to_print, diff_to_print_e, diff_to_print_h, h_dep, h_head, None, e_dep, e_head)
-            if(m):
-                continue
-            j, k, m = diffsolver(1, 4, j, k, h_tokens, e_tokens, str_to_print, diff_to_print_e, diff_to_print_h, h_dep, h_head, None, e_dep, e_head)
-            if(m):
-                continue
-            j, k, m = diffsolver(5, 1, j, k, h_tokens, e_tokens, str_to_print, diff_to_print_e, diff_to_print_h, h_dep, h_head, None, e_dep, e_head)
-            if(m):
-                continue
-            j, k, m = diffsolver(1, 5, j, k, h_tokens, e_tokens, str_to_print, diff_to_print_e, diff_to_print_h, h_dep, h_head, None, e_dep, e_head)
-            if(m):
-                continue
-            j, k, m = diffsolver(3, 2, j, k, h_tokens, e_tokens, str_to_print, diff_to_print_e, diff_to_print_h, h_dep, h_head, None, e_dep, e_head)
-            if(m):
-                continue
-            j, k, m = diffsolver(2, 3, j, k, h_tokens, e_tokens, str_to_print, diff_to_print_e, diff_to_print_h, h_dep, h_head, None, e_dep, e_head)
-            if(m):
-                continue
-            j, k, m = diffsolver(4, 3, j, k, h_tokens, e_tokens, str_to_print, diff_to_print_e, diff_to_print_h, h_dep, h_head, None, e_dep, e_head)
-            if(m):
-                continue
-            j, k, m = diffsolver(3, 4, j, k, h_tokens, e_tokens, str_to_print, diff_to_print_e, diff_to_print_h, h_dep, h_head, None, e_dep, e_head)
-            if(m):
-                continue
-            j, k, m = diffsolver(4, 2, j, k, h_tokens, e_tokens, str_to_print, diff_to_print_e, diff_to_print_h, h_dep, h_head, None, e_dep, e_head)
-            if(m):
-                continue
-            j, k, m = diffsolver(2, 4, j, k, h_tokens, e_tokens, str_to_print, diff_to_print_e, diff_to_print_h, h_dep, h_head, None, e_dep, e_head)
-            if(m):
-                continue
-            j, k, m = diffsolver(1, 1, j, k, h_tokens, e_tokens, str_to_print, diff_to_print_e, diff_to_print_h, h_dep, h_head, None, e_dep, e_head)
-            if(m):
-                continue
-            j, k, m = diffsolver(2, 2, j, k, h_tokens, e_tokens, str_to_print, diff_to_print_e, diff_to_print_h, h_dep, h_head, None, e_dep, e_head)
-            if(m):
-                continue
-            j, k, m = diffsolver(3, 3, j, k, h_tokens, e_tokens, str_to_print, diff_to_print_e, diff_to_print_h, h_dep, h_head, None, e_dep, e_head)
-            if(m):
-                continue
+            
 
             print(str_to_print(j, k, h_tokens, e_tokens, h_dep, h_head, None, e_dep, e_head))
             print("_______________________________________________________")
