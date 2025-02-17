@@ -16,6 +16,7 @@ args = sys.argv[1:]
 if len(args) == 0:
     sys.exit("Nincs parameter!")
 
+#configuration flags
 oute = False
 outh = False
 is_emagyar = False
@@ -27,7 +28,7 @@ ner_comp = False
 pos_comp = False
 dep_comp = False
 
-
+#setting coniguration flags
 if("-emagyar" in list(args)):
     is_emagyar = True
 
@@ -59,7 +60,7 @@ if("-dep" in list(args)):
     dep_comp = True
 
 
-
+#creating stateholder lists
 files = list([])
 h_tokens = list([])
 e_tokens = list([])
@@ -82,6 +83,7 @@ h_head = list([])
 e_dep = list([])
 e_head = list([])
 
+#handling wrong input parameter
 for a in args:
     if(a[-4:] == ".txt"):
         files = files + glob.glob(a)
@@ -99,7 +101,7 @@ for a in args:
     else:
         sys.exit("Hiba: ismeretlen argumentum: " + a[0:])
 
-
+#opening and extracting the given file to be processed
 for fname in files:
     file = open(fname, "r", encoding="utf-8") # note: without encoding, the text is garbage
     fsplit = fname.split('/')[-1]
@@ -107,9 +109,6 @@ for fname in files:
     file.close()
 
     f = open("currentinput.txt", "w")
-    #note: now we extract the text from the file and work with it in the following operations, so it is more modular (and probably efficient??)
-    #but we can file.read() all the way, let's see if it works better this way or that way
-    #UPDATE: we must create a file as well for docker
 
     f.write(txt)
     f.close()
@@ -128,6 +127,7 @@ for fname in files:
 
 print("Analysis over")
 
+#launching comparator functions
 if(is_emagyar == True and is_huspacy == True):
     if(tok_comp):
         token_comparator(h_tokens, e_tokens)
