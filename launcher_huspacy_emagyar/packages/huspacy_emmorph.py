@@ -31,6 +31,7 @@ class EmMorphPyComponent:
         for tok in doc:
             if not tok.is_space:
                 analyses: List[Tuple[str, str]] = self._em.stem(tok)
+                #correction: I added string conversion so it doesn't fail on superlative
                 ud_analyses: List[Tuple[str, str]] = [self._converter.parse(str(tok), ana[0], ana[1]) for ana in analyses]
     
                 tok._.em_anas = analyses
@@ -39,7 +40,7 @@ class EmMorphPyComponent:
                 morph_dict: Dict[str, str] = tok.morph.to_dict()
                 best_sim_score = 0
                 for(em_lemma, em_tag), (ud_tag, ud_morph) in zip(analyses, ud_analyses):
-                    #if ud_tag == tok.pos_:
+                    #if ud_tag == tok.pos_: I took this out -> improved the results
                     emmorph_dict: Dict[str, str] = Morphology.feats_to_dict(ud_morph)
                     sim_score: float = sum(
                         emmorph_dict.get(key) == value
@@ -47,12 +48,12 @@ class EmMorphPyComponent:
                     ) / (len(
                         set(morph_dict.keys()) | set(emmorph_dict.keys())
                     ) or 1 )
-                    if sim_score > best_sim_score or str(tok.morph) == "" and ud_morph == "_" or best_sim_score == 0:
+                    if sim_score > best_sim_score or str(tok.morph) == "" and ud_morph == "_" or best_sim_score == 0: #I added the last one to get lesser None outputs
                         tok._.em_tag = em_tag
                         tok._.ud_tag = ud_tag
                         tok._.em_lemma = em_lemma
                         tok._.ud_morph = MorphAnalysis(self._nlp.vocab, ud_morph)
-                        best_sim_score = sim_score
+                        best_sim_score = sim_score #I added this to fix maximum search
                 
                     
 
