@@ -13,12 +13,12 @@ converter = {
     "advmod:tto":"TTO",
     "amod:att":"ATT",
     "amod:attlvc":"ATT",
-    "appos":"MODE", #?
+    "appos":"MODE",
     "aux":"AUX",
-    "case":"MODE", #? az összes lehetne: LOCY, QUE, TFROM, TLOCY, TO, TTO, FROM; ha ide nem a FROM-ot írom, az teljesen kimarad, de nem lenne korrekt
+    "case":"MODE", # az összes lehetne: LOCY, QUE, TFROM, TLOCY, TO, TTO, FROM; ha ide nem a FROM-ot írom, az teljesen kimarad, de nem lenne korrekt
     "cc":"COORD",
-    "ccomp":"MODE", #? az összes lehetne: LOCY, QUE, TFROM, TLOCY, TO, TTO, FROM
-    "ccomp:obj":"OBJ", #? itt is lehetne sok más, mindenféle ki tudja fejezni
+    "ccomp":"MODE", # az összes lehetne: LOCY, QUE, TFROM, TLOCY, TO, TTO, FROM
+    "ccomp:obj":"OBJ", # itt is lehetne sok más, mindenféle ki tudja fejezni
     "ccomp:obl":"OBL", 
     "ccomp:pred":"PRED",
     "compound":"NUM", #valószínűség alapján
@@ -28,9 +28,9 @@ converter = {
     "csubj":"SUBJ",
     "dep":"DEP",
     "det":"DET",
-    "discourse":"DEP", #?, lehetne jobb is
+    "discourse":"DEP", # lehetne jobb is
     "dislocated":"DEP",
-    "fixed":"NUM", #?, de csak mert 1 instance van; egyébként inkább dep lehetne
+    "fixed":"NUM", # de csak mert 1 instance van; egyébként inkább dep lehetne
     "flat:name":"NE",
     "goeswith":"AUX", #?
     "iobj":"DAT",
@@ -47,11 +47,11 @@ converter = {
     "obj:lvc":"OBJ",
     "obl":"OBL",
     "obl:lvc":"OBL",
-    "orphan":"DEP", #???, nem igazán értem az orphan koncepcióját
+    "orphan":"DEP",
     "parataxis":"DEP",
     "punct":"PUNCT",
     "ROOT":"ROOT",
-    "vocative":"ATT", #?, kicsit véleményes lehet
+    "vocative":"ATT", #véleményes
     "xcomp":"INF"
 }
 
@@ -191,19 +191,19 @@ def convert(ud):
 
 
 
-#!!!!!!!!APPEND – non-integral parts of sentences - kimarad
+#APPEND – non-integral parts of sentences - kimarad
 
-####ATT – relation between noun and adjective, postposition and noun, noun/nominal modifier and noun  
+#ATT – relation between noun and adjective, postposition and noun, noun/nominal modifier and noun  
 #AUX – relation between verb and auxiliary 
 
-#!!!!!!!!AUXS – node representing the whole sentence - kimarad
+#AUXS – node representing the whole sentence - kimarad
 
 #CONJ – conjunction 
 #COORD – coordination 
 #DAT – dative (suffix -nAk) 
 #DET – relation between noun and determiner 
 
-#!!!!!!!!FROM – adverb or postpositional  phrase answering for the question „from where?” - kimarad
+#FROM – adverb or postpositional  phrase answering for the question „from where?” - kimarad
 
 #INF – infinitive 
 #LOCY –  adverb or postpositional phrase answering for the question „where?” 
@@ -224,4 +224,4 @@ def convert(ud):
 #############A cikk szerint nincs, de az eredmények között mégis van:##############################x
 #NUM - numeric
 #NE - named entity
-#DEP - ?
+#DEP - (dependency)
