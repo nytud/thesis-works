@@ -65,7 +65,7 @@ def dep_comparator(h_dep, h_head, e_dep, e_head, h_tokens, e_tokens):
     
     if(k != len(e_dep)):
         print("emagyar maradek lemma: ")
-        print(e_pos[k:])
+        print(e_dep[k:])
         print(e_head[k:])
 
 
