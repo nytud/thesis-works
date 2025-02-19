@@ -1,12 +1,14 @@
 from packages.diffsolver import diffsolver
 
+#what to print with synchronous tokens
 def str_to_print(j, k, h_tokens, e_tokens, h_ners, collec_h2, collec_h3, e_ners, collec_e2):
     return str(h_ners[j] == e_ners[k]) + '\t' +  '|' + h_ners[j] + '|' + '\t' + '|' + e_ners[k] + '|' + "\t\t" + "(" + h_tokens[j] + " " + e_tokens[k] + ")"
 
+#print emagyar remains in case of tokenization glitch when huspacy is ahead
 def diff_to_print_e(k, e_tokens, e_ners, collec_e2):
     return '\t\t|' + e_ners[k] + '|'+ "\t\t" + "(" + e_tokens[k] + ")"
 
-
+#print huspacy remains in case of tokenization glitch when emagyar is ahead
 def diff_to_print_h(j, h_tokens, h_ners, collec_h2, collec_h3):
     return '|' + h_ners[j] + '|'+ "\t\t\t" + "(" + h_tokens[j] + ")"
 
@@ -15,29 +17,25 @@ def ner_comparator(h_ners, h_only_ners, e_ners, e_only_ners, h_tokens, e_tokens)
     
     if(len(h_tokens) != len(e_tokens)):
         print("FIGYELEM! Tokenizálásbeli különbség miatt elcsúszás várható!")
+        #despite the working diffsolver, the user is warned to look out for anomalies
 
-    l = min(len(h_ners), len(e_ners))
+    l = min(len(h_ners), len(e_ners)) #prevent index error
 
     j = 0
     k = 0
 
-    print("huspacy ner \t emagyar lemma")
-
-    hsplit = list(map(lambda x: x.split(), h_only_ners))
-    esplit = list(map(lambda x: x.split(), e_only_ners))
-
-    h_names = [h[0] for h in hsplit]
-    e_names = [e[0] for e in esplit]
+    #headline
+    print("huspacy ner \t emagyar ner")
     
-
+    #iob-printout
     while(j != len(h_ners) and k != len(e_ners)):
-        
-        #if(hsplit[j][0] == esplit[k][0]):
+        #normal case: synchronous tokenization
         if(h_tokens[j] == e_tokens[k]):
             print(str_to_print(j, k, h_tokens, e_tokens, h_ners, None, None, e_ners, None))
             print("_____________________________________________________")
             j = j + 1
             k = k + 1
+        #abnormal case: tokenization glitch - diffsolving required
         else:
             m = False
             for z in range(1,6):
@@ -57,7 +55,7 @@ def ner_comparator(h_ners, h_only_ners, e_ners, e_only_ners, h_tokens, e_tokens)
 
             break
 
-        
+    #print the remains    
     if(j != len(h_ners)):
         print("huspacy maradek tulajdonnev: ")
         for i in h_ners[j:]:
@@ -67,42 +65,45 @@ def ner_comparator(h_ners, h_only_ners, e_ners, e_only_ners, h_tokens, e_tokens)
         for i in e_ners[j:]:
             print(str(i))
     
-
+    #ner-centered printout from here
     print("////////////////////////////////////////////")
     
     h_dict = {}
     e_dict = {}
 
     for h in h_only_ners:
-        h1 = h.split('\t')[0]
-        h2 = h.split('\t')[1]
+        h1 = h.split('\t')[0] #the named entity
+        h2 = h.split('\t')[1] #its type
         if(h1 not in h_dict):
-            h_dict[h1] = {h2}
+            h_dict[h1] = {h2} #add new named entity
         else:
-            h_dict[h1].add(h2)
+            h_dict[h1].add(h2) #add the new type to the typelist of the existing named entity
 
     for e in e_only_ners:
-        e1 = e.split('\t')[0]
-        e2 = e.split('\t')[1]
+        e1 = e.split('\t')[0] #the named entity
+        e2 = e.split('\t')[1] #its type
         if(e1 not in e_dict):
-            e_dict[e1] = {e2}
+            e_dict[e1] = {e2} #add new named entity
         else:
-            e_dict[e1].add(e2)
+            e_dict[e1].add(e2) #add the new type to the typelist of the existing named entity
     
 
 
-    only_h = list([])
-    only_e = list([])
+    only_h = list([]) #the named entity was only found by huspacy
+    only_e = list([]) #the named entity was only found by emagyar
+    #matching the emagyar entities to huspacy entities
     for (kh, vh) in h_dict.items():
-        if(kh in e_dict):
-            print(str(vh == e_dict[kh]) + '\t' + kh + '\t' + str(vh) + '\t' + str(e_dict[kh]))
+        if(kh in e_dict): #found corresponding entity
+            print(str(vh == e_dict[kh]) + '\t' + kh + '\t' + str(vh) + '\t' + str(e_dict[kh])) #comparing
         else:
-            only_h.append(kh + '\t' + str(vh))
+            only_h.append(kh + '\t' + str(vh)) #not found corresponding entity
     
+    #matching the huspacy entities to emagyar entities
     for (ke, ve) in e_dict.items():
         if(ke not in h_dict):
-            only_e.append(ke + '\t' + str(ve))
+            only_e.append(ke + '\t' + str(ve)) #only not found check is enough because the intersection had to be handled from the huspacy side already
 
+    #print the remains
     print("huspacy maradek:")
     for h in only_h:
         print(h)

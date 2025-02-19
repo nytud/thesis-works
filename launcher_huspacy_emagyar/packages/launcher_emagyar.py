@@ -3,29 +3,33 @@ def emagyar(txt, fname, oute, e_tokens, e_lems, e_morph, e_ners, e_only_ners, e_
     import tarfile
     import io
 
+    #run emagyar through docker
     client = docker.from_env()
     container = client.containers.run('mtaril/emtsv', detach=True)
 
     tar_stream = io.BytesIO()
 
     with tarfile.open(fileobj=tar_stream, mode='w') as tar:
-        tar.add("currentinput.txt")
+        tar.add("currentinput.txt") #we transfer the input as a file -> this makes a tarfile out of it
 
     tar_stream.seek(0)
-    succ = container.put_archive(path='/app', data=tar_stream)
+    succ = container.put_archive(path='/app', data=tar_stream) #transfering the input file to docker
 
-    if(succ):
+    if(succ): #transfer was successful
+        #run emagyar in the docker
         command = "python3 ./main.py tok,spell,morph,pos,conv-morph,dep,chunk,ner -i ./currentinput.txt -o ana_emagyar_" + fname
         result = container.exec_run(command)
 
         if(result.exit_code == 0):
             f = open('eredmeny5.tar', 'wb')
-            strm, status = container.get_archive("/app/ana_emagyar_" + fname)
+            strm, status = container.get_archive("/app/ana_emagyar_" + fname) #get the result from docker
         
+            #transfer its contents to a local tar file
             for chunk in strm:
                 f.write(chunk)
             f.close()
 
+            #get the real contents from the tar file and put it to the designated directory
             with tarfile.open('eredmeny5.tar', 'r') as tar:
                 tar.extractall('./eredmenyek/emagyar')
 
@@ -33,18 +37,19 @@ def emagyar(txt, fname, oute, e_tokens, e_lems, e_morph, e_ners, e_only_ners, e_
             print("sikertelen elemzes, nem jott letre outputfile!")
             print(result)
 
+    #cleaning up the container
     container.stop()
     print("container stopped")
     container.remove()
     print("container removed")
 
-
+    #if oute is configured, print out the results
     if(oute):
         f = open('./eredmenyek/emagyar/ana_emagyar_' + fname, 'r')
         print(f.read())
         f.close()
 
-
+    #prepare stateholder lists for comparation
     e_tokens, e_lems, e_morph, e_ners, e_only_ners, e_pos, e_dep, e_head = makelists(fname, e_tokens, e_lems, e_morph, e_ners, e_only_ners, e_pos, e_dep, e_head)
 
     return e_tokens, e_lems, e_morph, e_ners, e_only_ners, e_pos, e_dep, e_head
@@ -55,10 +60,12 @@ def emagyar(txt, fname, oute, e_tokens, e_lems, e_morph, e_ners, e_only_ners, e_
 
 
 def makelists(fname, e_tokens, e_lems, e_morph, e_ners, e_only_ners, e_pos, e_dep, e_head):
+    #emagyar gave us the results in its own format -> we have to process and transform it to work with it like we would with huspacy
     f2 = open('./eredmenyek/emagyar/ana_emagyar_' + fname)
     lines_raw = f2.read()
     lines = lines_raw.split('\n')
 
+    #remove empty lines
     to_rem = list([])
 
     for i in range(0, len(lines)):
@@ -70,46 +77,46 @@ def makelists(fname, e_tokens, e_lems, e_morph, e_ners, e_only_ners, e_pos, e_de
 
     import re
 
-    toname = ""
-    ids = list([])
-    
-    e_head_num = list([])
+    toname = "" #variable for getting named entities
+    ids = list([]) #every token has an id in the sentence it is in for dependency
+    e_head_num = list([]) #this links the dep head by id
+
     for i in range(1, len(lines)):
-        splitline = re.split(r'\t|\n', lines[i])
-        #print(toname)
+        splitline = re.split(r'\t|\n', lines[i]) #split by either tab or newline -> features list
+        
         if(len(splitline) >0):#warning: somehow there are many-many different whitespaces in the outcome of the analysis
             #this len makes sure that there's no indexing error with empty lists
-            #note: maybe (well, probably) the analysis makes some trailig whitespaces / tokenizes them anyway, we can't know for sure :(
+            #note: the analysis probably makes some trailig whitespaces / tokenizes them anyway
             e_tokens.append(splitline[0])
 
             if(len(splitline) >= 6):
                 e_lems.append(splitline[5])
                 e_morph.append(str(splitline[6]))
-                if(str(splitline[7]) == "CONJ"):
+                if(str(splitline[7]) == "CONJ"):  #quick conversion: emagyar works with a different label
                     e_pos.append("CCONJ")
                 else:
                     e_pos.append(str(splitline[7]))
                 e_dep.append(str(splitline[10]))
                 e_head_num.append(str(splitline[11]))
                 ids.append((splitline[9], splitline[0]))
-                #e_ners.append(splitline[13])
                 
-                if(splitline[13] != 'O'):#ner
-                    if(splitline[13][0] == "1"):
+                
+                if(splitline[13] != 'O'): #ner conversion: emagyar works with a different iob label set
+                    if(splitline[13][0] == "1"): #eliminating standalone label
                         e_only_ners.append(splitline[0] + '\t' + splitline[13][2:])
                         e_ners.append("B-" + splitline[13][2:])
-                    elif(splitline[13][0] == "E"):
-                        toname = toname + splitline[0]
-                        e_only_ners.append(toname + '\t' + splitline[13][2:])
-                        toname = ""
-                        e_ners.append("I-" + splitline[13][2:])
+                    elif(splitline[13][0] == "E"): #eliminating end of NE label
+                        toname = toname + splitline[0] #build up the NE -> put the last part
+                        e_only_ners.append(toname + '\t' + splitline[13][2:]) #NE is ready -> put it in the list
+                        toname = "" #clear builder variable, new NE will start
+                        e_ners.append("I-" + splitline[13][2:]) #append IOB ner as usual, but with I label
                     else:
-                        toname = toname + splitline[0] + " "
-                        e_ners.append(splitline[13])
+                        toname = toname + splitline[0] + " " #building the NE because it must be B or I
+                        e_ners.append(splitline[13]) #normal append
                 else:
-                    e_ners.append(splitline[13])
+                    e_ners.append(splitline[13]) #normal append, it must be O
                 
-
+    #make dep head list
     make_head_list(ids, e_head_num, e_dep, e_head, e_tokens)
     
 
@@ -139,7 +146,7 @@ def make_head_list(ids, e_head_num, e_dep, e_head, e_tokens):
     for j in range(0, len(e_head_num)):#iterating through the raw headlist
         h = int(e_head_num[j])#get the raw head
 
-        if(move and h == 0 and i < len(ids_per_sentences)-1):#we are at the second zero, aka the . NOOOO that's not certain
+        if(move and h == 0 and i < len(ids_per_sentences)-1):#we are at the second zero, aka the . (note: emagyar can make mistakes (on specifiy cases) in this, so that's not 100% certain)
             i += 1
             move = False
         
@@ -160,8 +167,7 @@ def make_head_list(ids, e_head_num, e_dep, e_head, e_tokens):
 
 
 
-def dep_converter(e_dep):
-    pass
+
             
  
 
