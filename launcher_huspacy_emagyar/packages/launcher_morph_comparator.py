@@ -44,6 +44,9 @@ def morph_comparator(h_udmorph, h_emm, e_morph, h_tokens, e_tokens):
                     j, k, m = diffsolver(z, v, j, k, h_tokens, e_tokens, str_to_print, diff_to_print_e, diff_to_print_h, h_udmorph, h_emm, None, e_morph, None)
                     if(m):
                         break
+                    j, k, m = diffsolver(v, z, j, k, h_tokens, e_tokens, str_to_print, diff_to_print_e, diff_to_print_h, h_udmorph, h_emm, None, e_morph, None)
+                    if(m):
+                        break
             if(m):
                 continue
 
