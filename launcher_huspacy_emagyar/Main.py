@@ -1,0 +1,13 @@
+from Launcher import Launcher
+
+def main():
+    launcher = Launcher(sys.argv[1:])
+
+    launcher.launch_huspacy()
+    launcher.launch_emagyar()
+    launcher.compare_tokens()
+    launcher.compare_morph()
+    launcher.compare_lemma()
+    launcher.compare_pos()
+    launcher.compare_dep()
+    launcher.compare_ner()
