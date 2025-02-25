@@ -83,6 +83,8 @@ h_head = list([])
 e_dep = list([])
 e_head = list([])
 
+
+
 #handling wrong input parameter
 for a in args:
     if(a[-4:] == ".txt"):
