@@ -43,6 +43,9 @@ def lemma_comparator(h_lems, h_lems_em, e_lems, h_tokens, e_tokens):
                     j, k, m = diffsolver(z, v, j, k, h_tokens, e_tokens, str_to_print, diff_to_print_e, diff_to_print_h, h_lems, h_lems_em, None, e_lems, None)
                     if(m):
                         break
+                    j, k, m = diffsolver(v, z, j, k, h_tokens, e_tokens, str_to_print, diff_to_print_e, diff_to_print_h, h_lems, h_lems_em, None, e_lems, None)
+                    if(m):
+                        break
             if(m):
                 continue
             
