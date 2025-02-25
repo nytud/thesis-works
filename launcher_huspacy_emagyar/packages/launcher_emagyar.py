@@ -99,7 +99,7 @@ def makelists(fname, e_tokens, e_lems, e_morph, e_ners, e_only_ners, e_pos, e_de
                 e_dep.append(str(splitline[10]))
                 e_head_num.append(str(splitline[11]))
                 ids.append((splitline[9], splitline[0]))
-                print("token:", splitline[0], "dep:", splitline[10], "head_num:", splitline[11], "id:", splitline[9])
+                
                 
                 
                 if(splitline[13] != 'O'): #ner conversion: emagyar works with a different iob label set
@@ -136,38 +136,12 @@ def make_head_list(ids, e_head_num, e_dep, e_head, e_tokens):
     i = -1 #always append to the end
     #i = 0
 
-    for (id, tok) in ids:
-        if(id == '1'):#new sentence begins
+    for (head_id, tok) in ids:
+        if(head_id == '1'):#new sentence begins
             l = list([])
             ids_per_sentences.append(l)
             i += 1
-        ids_per_sentences[i].append((int(id), tok))#we append a token and an id so we can map that back easily (each token with its own id)
-        print("ids_per_sentences:", ids_per_sentences)
-
-    """i = 0#which sentence (sublist) are we in
-    move = False#should we switch sentence (sublist)
-    for j in range(0, len(e_head_num)):#iterating through the raw headlist
-        h = int(e_head_num[j])#get the raw head
-
-        if(move and h == 0 and i < len(ids_per_sentences)-1):#we are at the second zero, aka the . (note: emagyar can make mistakes (on specifiy cases) in this, so that's not 100% certain)
-            i += 1
-            move = False
-            print("moved")
-        
-        if(e_dep[j] == 'ROOT'):
-            move = True#if root found, we have to move when the next 0 hits
-            print("ROOT found")
-            #note: somehow only the sentence terminating puntcuation mark gets 0, so other punctuation chars get decent phrase ids
-        if(h == 0):
-            e_head.append(e_tokens[j])
-            print("headnum is 0", e_tokens[j])
-            #e_head.append("")
-        else:
-            for (id, tok) in ids_per_sentences[i]:
-                if(h == id):
-                    e_head.append(tok)
-                    print("tok:", tok, "id:", id, "h:", h)
-                    break"""
+        ids_per_sentences[i].append((int(head_id), tok))#we append a token and an id so we can map that back easily (each token with its own id)
     
 
     raw_head_tok = list(zip(e_head_num, e_tokens))
@@ -176,10 +150,20 @@ def make_head_list(ids, e_head_num, e_dep, e_head, e_tokens):
 
     for sent in ids_per_sentences:
         curr_len = len(sent)
-        print(prev_len, curr_len, prev_len + curr_len)
-        print(raw_head_tok[prev_len:(prev_len + curr_len)])
         split_rht.append(raw_head_tok[prev_len:(prev_len + curr_len)])
         prev_len += curr_len
+
+    for (raw_head_list, id_list) in zip(split_rht, ids_per_sentences):
+        for (raw_head, tok1) in raw_head_list:
+            if(raw_head == str(0)):
+                e_head.append("ROOT")
+                continue
+            for (head_id, tok2) in id_list:
+                if(str(raw_head) == str(head_id)):
+                    e_head.append(tok2)
+                
+
+        
 
     
 
