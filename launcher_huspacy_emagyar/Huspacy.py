@@ -35,7 +35,7 @@ class Huspacy:
                     f.write(str(token.text) + '\t' + str(token.lemma_) + '\t' + str(token._.em_lemma) + '\t' + str(token._.ud_tag) + '\t' + str(token._.em_tag) + '\t' + str(token._.ud_morph) + '\t' + str(token.pos_) + '\t' + str(token.tag_) + '\t' + str(token.dep_) + '\t' + str(token.head) + '\t' + str(token.ent_iob_) + '\t' + str(token.ent_type_) + '\n')
 
                     #fill uo the stateholder lists
-                    self.tok.append(token.text)
+                    self.tok.append((token.text, token.text))
                     self.lem.append((token.text, token.lemma_))
                     self.lem_em.append((token.text, token._.em_lemma))
                     self.morph_ud.append((token.text, str(token._.ud_morph)))

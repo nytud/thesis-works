@@ -114,9 +114,10 @@ class Launcher:
     def compare_tokens(self):
         if(self.tok_comp):
             token_comparator = Token_comparator(self.huspacy, self.emagyar)
-            print(token_comparator.str_to_print(0,0))
-            print(token_comparator.diff_to_print_e(0))
-            print(token_comparator.diff_to_print_h(0))
+            #print(token_comparator.str_to_print(0,0))
+            #print(token_comparator.diff_to_print_e(0))
+            #print(token_comparator.diff_to_print_h(0))
+            token_comparator.compare()
 
     def compare_morph(self):
         pass

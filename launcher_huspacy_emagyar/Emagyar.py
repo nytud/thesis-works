@@ -90,7 +90,7 @@ class Emagyar:
                 if(len(splitline) >0):#warning: somehow there are many-many different whitespaces in the outcome of the analysis
                     #this len makes sure that there's no indexing error with empty lists
                     #note: the analysis probably makes some trailig whitespaces / tokenizes them anyway
-                    self.tok.append(splitline[0])
+                    self.tok.append((splitline[0], splitline[0]))
 
                     if(len(splitline) >= 6):
                         self.lem.append((splitline[0], splitline[5]))
