@@ -1,4 +1,4 @@
-from packages.diffsolver import diffsolver
+from Diffsolver import Diffsolver
 
 from abcmeta import ABC
 from abcmeta import abstractmethod
@@ -41,19 +41,21 @@ class Comparator(ABC):
                 k = k + 1
                 #abnormal case: tokenization glitch - diffsolving required
             else:
-                """m = False #modified
+                m = False #modified
                 for z in range(1,6):
                     if(m):
                         break
                     for v in range(1,6):
-                        #j, k, m = diffsolver(z, v, j, k, h_tokens, e_tokens, str_to_print, diff_to_print_e, diff_to_print_h, None, None, None, None, None)
+                        diffsolver = Diffsolver(self.huspacy, self.emagyar, z, v, j, k, self.str_to_print(j,k), self.diff_to_print_e(k), self.diff_to_print_h(j))
+                        j, k, m = diffsolver.print()
                         if(m):
                             break
-                        #j, k, m = diffsolver(v, z, j, k, h_tokens, e_tokens, str_to_print, diff_to_print_e, diff_to_print_h, None, None, None, None, None)
+                        diffsolver = Diffsolver(self.huspacy, self.emagyar, v, z, j, k, self.str_to_print(j,k), self.diff_to_print_e(k), self.diff_to_print_h(j))
+                        j, k, m = diffsolver.print()
                         if(m):
                             break
                 if(m):
-                    continue"""
+                    continue
 
 
                 

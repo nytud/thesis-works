@@ -102,7 +102,7 @@ class Launcher:
             with open("currentinput.txt", "w") as f:
                 f.write(txt)
 
-            print("Elemzendo szoveg: \n", txt, '\n\n')
+            #print("Elemzendo szoveg: \n", txt, '\n\n')
 
             self.emagyar.run(fsplit, txt)
 
