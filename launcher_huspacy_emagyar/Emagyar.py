@@ -1,6 +1,7 @@
 import docker
 import tarfile
 import io
+import re
 
 class Emagyar:
     def __init__(self):
@@ -10,6 +11,8 @@ class Emagyar:
         self.pos = list([])
         self.dep = list([])
         self.head = list([])
+        self._head_num = list([])
+        self._ids = list([])
         self.ner = list([])
         self.only_ner = list([])
 
@@ -58,10 +61,70 @@ class Emagyar:
 
 
     def print(self, fname):
-        with open('./eredmenyek/huspacy/ana_emagyar_' + fname, 'r') as f:
+        with open('./eredmenyek/emagyar/ana_emagyar_' + fname, 'r') as f:
             print(f.read())
 
     def __makelists(self, fname):
+        #emagyar gave us the results in its own format -> we have to process and transform it to work with it like we would with huspacy
+        with open('./eredmenyek/emagyar/ana_emagyar_' + fname) as f2:
+            lines_raw = f2.read()
+            lines = lines_raw.split('\n')
+
+            #remove empty lines
+            to_rem = list([])
+
+            for i in range(0, len(lines)):
+                if(len(lines[i]) == 0):
+                    to_rem.append(i)
+
+            for i in range(0, len(to_rem)):
+                lines.pop(to_rem[i]-i)
+
+            toname = "" #variable for getting named entities
+            ids = list([]) #every token has an id in the sentence it is in for dependency
+            e_head_num = list([]) #this links the dep head by id
+
+            for i in range(1, len(lines)):
+                splitline = re.split(r'\t|\n', lines[i]) #split by either tab or newline -> features list
+        
+                if(len(splitline) >0):#warning: somehow there are many-many different whitespaces in the outcome of the analysis
+                    #this len makes sure that there's no indexing error with empty lists
+                    #note: the analysis probably makes some trailig whitespaces / tokenizes them anyway
+                    self.tok.append(splitline[0])
+
+                    if(len(splitline) >= 6):
+                        self.lem.append((splitline[0], splitline[5]))
+                        self.morph.append((splitline[0], str(splitline[6])))
+                        if(str(splitline[7]) == "CONJ"):  #quick conversion: emagyar works with a different label
+                            self.pos.append((splitline[0], "CCONJ"))
+                        else:
+                            self.pos.append((splitline[0], str(splitline[7])))
+                        self.dep.append((splitline[0], str(splitline[10])))
+                        self._head_num.append((splitline[0], str(splitline[11])))
+                        self._ids.append((splitline[9], splitline[0]))
+                                
+                        if(splitline[13] != 'O'): #ner conversion: emagyar works with a different iob label set
+                            if(splitline[13][0] == "1"): #eliminating standalone label
+                                self.only_ner.append(splitline[0] + '\t' + splitline[13][2:])
+                                self.ner.append((splitline[0], "B-" + splitline[13][2:]))
+                            elif(splitline[13][0] == "E"): #eliminating end of NE label
+                                toname = toname + splitline[0] #build up the NE -> put the last part
+                                self.only_ner.append(toname + '\t' + splitline[13][2:]) #NE is ready -> put it in the list
+                                toname = "" #clear builder variable, new NE will start
+                                self.ner.append((splitline[0], "I-" + splitline[13][2:])) #append IOB ner as usual, but with I label
+                            else:
+                                toname = toname + splitline[0] + " " #building the NE because it must be B or I
+                                self.ner.append((splitline[0], splitline[13])) #normal append
+                    else:
+                        self.ner.append((splitline[0], splitline[13])) #normal append, it must be O
+                
+            #make dep head list
+            self.__make_head_list()
+
+    def __make_head_list(self):
         pass
+    
+
+
     
         

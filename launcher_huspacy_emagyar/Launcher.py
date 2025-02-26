@@ -106,7 +106,8 @@ class Launcher:
             self.emagyar.run(fsplit, txt)
 
             if(self.oute):
-                self.huspacy.print(fsplit)
+                self.emagyar.print(fsplit)
+
 
     def compare_tokens(self):
         pass
