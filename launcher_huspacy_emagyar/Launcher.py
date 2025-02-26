@@ -108,6 +108,7 @@ class Launcher:
             if(self.oute):
                 self.emagyar.print(fsplit)
 
+            
 
     def compare_tokens(self):
         pass

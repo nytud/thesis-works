@@ -121,10 +121,41 @@ class Emagyar:
             #make dep head list
             self.__make_head_list()
 
+
+
+
     def __make_head_list(self):
-        pass
-    
+        #sorts the ids into separate lists per sentences
+        ids_per_sentences = list([])
+        i = -1 #always append to the end
 
-
-    
+        for (head_id, tok) in self._ids:
+            if(head_id == '1'):#new sentence begins
+                l = list([])
+                ids_per_sentences.append(l)
+                i += 1
+            ids_per_sentences[i].append((int(head_id), tok))#we append a token and an id so we can map that back easily (each token with its own id)
         
+
+        raw_head_tok = self._head_num
+        split_rht = list([])
+        prev_len = 0
+
+        for sent in ids_per_sentences:
+            curr_len = len(sent)
+            split_rht.append(raw_head_tok[prev_len:(prev_len + curr_len)])
+            prev_len += curr_len
+
+        for (raw_head_list, id_list) in zip(split_rht, ids_per_sentences):
+            for (tok1, raw_head) in raw_head_list:
+                if(raw_head == str(0)):
+                    self.head.append((tok1,"ROOT"))
+                    continue
+                for (head_id, tok2) in id_list:
+                    if(str(raw_head) == str(head_id)):
+                        self.head.append((tok1, tok2))
+        
+
+
+        
+            
