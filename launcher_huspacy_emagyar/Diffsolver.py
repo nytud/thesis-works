@@ -23,12 +23,32 @@ class Diffsolver:
                 self.j = self.j + 1
                 if(self.kk > self.jj): #emagyar shift was greater -> huspacy is ahead -> emagyar remains are to be printed
                     for i in range (0, self.kk-self.jj):
-                        print("emagyar\t" + self.diff_to_print_e)
+                        dtp = self.diff_to_print_e.replace("_tok_", self.emagyar.tok[self.k][1])
+                        dtp = dtp.replace("_morph_", self.emagyar.morph[self.k][1])
+                        dtp = dtp.replace("_lem_", self.emagyar.lem[self.k][1])
+                        dtp = dtp.replace("_pos_", self.emagyar.pos[self.k][1])
+                        dtp = dtp.replace("_dep_", self.emagyar.dep[self.k][1])
+                        dtp = dtp.replace("_head_", self.emagyar.head[self.k][1])
+                        dtp = dtp.replace("_ner_", self.emagyar.ner[self.k][1])
+                        dtp = dtp.replace("_onlyner_", self.emagyar.only_ner[self.k][1])
+                        print("emagyar\t" + dtp)
                         print("_______________________________________________________")
                         self.k = self.k+1
                 else:
                     for i in range (0, self.jj-self.kk): #huspacy shift was greater -> emagyar is ahead -> huspacy remains are to be printed
-                        print("huspacy\t" + self.diff_to_print_h)
+                        dtp = self.diff_to_print_h.replace("_tok_", self.huspacy.tok[self.j][1])
+                        dtp = dtp.replace("_lem_", self.huspacy.lem[self.j][1])
+                        dtp = dtp.replace("_lemem_", str(self.huspacy.lem_em[self.j][1]))
+                        dtp = dtp.replace("_morphud_", str(self.huspacy.morph_ud[self.j][1]))
+                        dtp = dtp.replace("_morphem_", str(self.huspacy.morph_em[self.j][1]))
+                        dtp = dtp.replace("_pos_", self.huspacy.pos[self.j][1])
+                        dtp = dtp.replace("_tag_", self.huspacy.tag[self.j][1])
+                        dtp = dtp.replace("_posud_", self.huspacy.pos_ud[self.j][1])
+                        dtp = dtp.replace("_dep_", self.huspacy.dep[self.j][1])
+                        dtp = dtp.replace("_head_", str(self.huspacy.head[self.j][1]))
+                        dtp = dtp.replace("_ner_", self.huspacy.ner[self.j][1])
+                        dtp = dtp.replace("_onlyner_", self.huspacy.only_ner[self.j][1])
+                        print("huspacy\t" + dtp)
                         print("_______________________________________________________")
                         self.j = self.j+1
 
