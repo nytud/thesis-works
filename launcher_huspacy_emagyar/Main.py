@@ -1,7 +1,12 @@
+import sys
+
+
 from Launcher import Launcher
+
 
 def main():
     launcher = Launcher(sys.argv[1:])
+    print("launcher initialized")
 
     launcher.launch_huspacy()
     launcher.launch_emagyar()
@@ -11,3 +16,6 @@ def main():
     launcher.compare_pos()
     launcher.compare_dep()
     launcher.compare_ner()
+
+if __name__ == "__main__":
+    main()

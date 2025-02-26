@@ -1,5 +1,6 @@
-import sys
 import glob
+
+from Huspacy import Huspacy
 
 class Launcher:
     def __init__(self, args):
@@ -66,29 +67,46 @@ class Launcher:
             else:
                 sys.exit("Hiba: ismeretlen argumentum: " + a[0:])
 
+        self.huspacy = Huspacy()
 
-    def launch_huspacy():
+
+    def launch_huspacy(self):
+        for fname in self.files:
+            txt = ""
+            fsplit = ""
+            with open(fname, "r", encoding="utf-8") as file: # note: without encoding, the text is garbage
+                fsplit = fname.split('/')[-1]
+                txt = file.read()
+
+            with open("currentinput.txt", "w") as f:
+                f.write(txt)
+
+            print("Elemzendo szoveg: \n", txt, '\n\n')
+
+            self.huspacy.run(fsplit, txt)
+
+            if(self.outh):
+                self.huspacy.print(fsplit)
+
+    def launch_emagyar(self):
         pass
 
-    def launch_emagyar():
+    def compare_tokens(self):
         pass
 
-    def compare_tokens():
+    def compare_morph(self):
         pass
 
-    def compare_morph():
+    def compare_lemma(self):
         pass
 
-    def compare_lemma():
+    def compare_pos(self):
         pass
 
-    def compare_pos():
+    def compare_dep(self):
         pass
 
-    def compare_dep():
-        pass
-
-    def compare_ner():
+    def compare_ner(self):
         pass
 
 
