@@ -2,6 +2,7 @@ import glob
 
 from Huspacy import Huspacy
 from Emagyar import Emagyar
+from Token_comparator import Token_comparator
 
 class Launcher:
     def __init__(self, args):
@@ -111,7 +112,11 @@ class Launcher:
             
 
     def compare_tokens(self):
-        pass
+        if(self.tok_comp):
+            token_comparator = Token_comparator(self.huspacy, self.emagyar)
+            print(token_comparator.str_to_print(0,0))
+            print(token_comparator.diff_to_print_e(0))
+            print(token_comparator.diff_to_print_h(0))
 
     def compare_morph(self):
         pass
