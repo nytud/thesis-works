@@ -3,6 +3,8 @@ import glob
 from Huspacy import Huspacy
 from Emagyar import Emagyar
 from Token_comparator import Token_comparator
+from Morph_comparator import Morph_comparator
+from Lemma_comparator import Lemma_comparator
 
 class Launcher:
     def __init__(self, args):
@@ -120,10 +122,14 @@ class Launcher:
             token_comparator.compare()
 
     def compare_morph(self):
-        pass
+        if(self.morph_comp):
+            morph_comparator = Morph_comparator(self.huspacy, self.emagyar)
+            morph_comparator.compare()
 
     def compare_lemma(self):
-        pass
+        if(self.lem_comp):
+            lemma_comparator = Lemma_comparator(self.huspacy, self.emagyar)
+            lemma_comparator.compare()
 
     def compare_pos(self):
         pass
