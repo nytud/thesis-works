@@ -115,8 +115,8 @@ class Emagyar:
                             else:
                                 toname = toname + splitline[0] + " " #building the NE because it must be B or I
                                 self.ner.append((splitline[0], splitline[13])) #normal append
-                    else:
-                        self.ner.append((splitline[0], splitline[13])) #normal append, it must be O
+                        else:
+                            self.ner.append((splitline[0], splitline[13])) #normal append, it must be O
                 
             #make dep head list
             self.__make_head_list()

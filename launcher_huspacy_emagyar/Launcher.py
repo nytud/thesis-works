@@ -7,6 +7,7 @@ from Morph_comparator import Morph_comparator
 from Lemma_comparator import Lemma_comparator
 from Pos_comparator import Pos_comparator
 from Dep_comparator import Dep_comparator
+from Ner_comparator import Ner_comparator
 
 class Launcher:
     def __init__(self, args):
@@ -144,7 +145,9 @@ class Launcher:
             dep_comparator.compare()
 
     def compare_ner(self):
-        pass
+        if(self.ner_comp):
+            ner_comparator = Ner_comparator(self.huspacy, self.emagyar)
+            ner_comparator.compare()
 
 
         
