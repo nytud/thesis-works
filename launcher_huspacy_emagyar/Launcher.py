@@ -9,6 +9,7 @@ from Pos_comparator import Pos_comparator
 from Dep_comparator import Dep_comparator
 from Ner_comparator import Ner_comparator
 
+
 class Launcher:
     def __init__(self, args):
         self.args = args

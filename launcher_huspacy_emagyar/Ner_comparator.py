@@ -1,5 +1,7 @@
 from Comparator import Comparator
 
+from Only_Ner import Only_Ner
+
 class Ner_comparator(Comparator):
     def __init__(self, huspacy, emagyar):
         self.huspacy = huspacy
@@ -17,3 +19,5 @@ class Ner_comparator(Comparator):
 
     def compare(self):
         super().compare(self.huspacy, self.emagyar, "huspacy ner \t emagyar ner")
+        only_ner = Only_Ner(self.huspacy, self.emagyar)
+        only_ner.print()
