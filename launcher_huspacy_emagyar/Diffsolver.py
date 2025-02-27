@@ -1,5 +1,6 @@
 from Huspacy import Huspacy
 from Emagyar import Emagyar
+from packages.dep_converter import convert
 
 class Diffsolver:
     def __init__(self, huspacy, emagyar, jj, kk, j, k, str_to_print, diff_to_print_e, diff_to_print_h):
@@ -45,6 +46,7 @@ class Diffsolver:
                         dtp = dtp.replace("_tag_", self.huspacy.tag[self.j][1])
                         dtp = dtp.replace("_posud_", self.huspacy.pos_ud[self.j][1])
                         dtp = dtp.replace("_dep_", self.huspacy.dep[self.j][1])
+                        dtp = dtp.replace("_depconv_", convert(self.huspacy.dep[self.j][1]))
                         dtp = dtp.replace("_head_", str(self.huspacy.head[self.j][1]))
                         dtp = dtp.replace("_ner_", self.huspacy.ner[self.j][1])
                         dtp = dtp.replace("_onlyner_", self.huspacy.only_ner[self.j][1])

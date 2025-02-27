@@ -6,6 +6,7 @@ from Token_comparator import Token_comparator
 from Morph_comparator import Morph_comparator
 from Lemma_comparator import Lemma_comparator
 from Pos_comparator import Pos_comparator
+from Dep_comparator import Dep_comparator
 
 class Launcher:
     def __init__(self, args):
@@ -138,7 +139,9 @@ class Launcher:
             pos_comparator.compare()
 
     def compare_dep(self):
-        pass
+        if(self.dep_comp):
+            dep_comparator = Dep_comparator(self.huspacy, self.emagyar)
+            dep_comparator.compare()
 
     def compare_ner(self):
         pass
