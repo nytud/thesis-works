@@ -5,6 +5,7 @@ from Emagyar import Emagyar
 from Token_comparator import Token_comparator
 from Morph_comparator import Morph_comparator
 from Lemma_comparator import Lemma_comparator
+from Pos_comparator import Pos_comparator
 
 class Launcher:
     def __init__(self, args):
@@ -132,7 +133,9 @@ class Launcher:
             lemma_comparator.compare()
 
     def compare_pos(self):
-        pass
+        if(self.pos_comp):
+            pos_comparator = Pos_comparator(self.huspacy, self.emagyar)
+            pos_comparator.compare()
 
     def compare_dep(self):
         pass
