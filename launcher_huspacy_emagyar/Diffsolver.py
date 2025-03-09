@@ -31,7 +31,6 @@ class Diffsolver:
                         dtp = dtp.replace("_dep_", self.emagyar.dep[self.k][1])
                         dtp = dtp.replace("_head_", self.emagyar.head[self.k][1])
                         dtp = dtp.replace("_ner_", self.emagyar.ner[self.k][1])
-                        dtp = dtp.replace("_onlyner_", self.emagyar.only_ner[self.k][1])
                         print("emagyar\t" + dtp)
                         print("_______________________________________________________")
                         self.k = self.k+1
@@ -49,7 +48,6 @@ class Diffsolver:
                         dtp = dtp.replace("_depconv_", convert(self.huspacy.dep[self.j][1]))
                         dtp = dtp.replace("_head_", str(self.huspacy.head[self.j][1]))
                         dtp = dtp.replace("_ner_", self.huspacy.ner[self.j][1])
-                        dtp = dtp.replace("_onlyner_", self.huspacy.only_ner[self.j][1])
                         print("huspacy\t" + dtp)
                         print("_______________________________________________________")
                         self.j = self.j+1
