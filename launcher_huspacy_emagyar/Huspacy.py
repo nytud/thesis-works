@@ -35,23 +35,23 @@ class Huspacy:
                     f.write(str(token.text) + '\t' + str(token.lemma_) + '\t' + str(token._.em_lemma) + '\t' + str(token._.ud_tag) + '\t' + str(token._.em_tag) + '\t' + str(token._.ud_morph) + '\t' + str(token.pos_) + '\t' + str(token.tag_) + '\t' + str(token.dep_) + '\t' + str(token.head) + '\t' + str(token.ent_iob_) + '\t' + str(token.ent_type_) + '\n')
 
                     #fill uo the stateholder lists
-                    self.tok.append((token.text, token.text))
-                    self.lem.append((token.text, token.lemma_))
-                    self.lem_em.append((token.text, token._.em_lemma))
-                    self.morph_ud.append((token.text, str(token._.ud_morph)))
-                    self.morph_em.append((token.text, str(token._.em_tag)))
-                    self.pos.append((token.text, token.pos_))
-                    self.tag.append((token.text, token.tag_))
-                    self.pos_ud.append((token.text, str(token._.ud_tag)))
-                    self.dep.append((token.text, token.dep_))
+                    self.tok.append((token.text))
+                    self.lem.append((token.lemma_))
+                    self.lem_em.append((token._.em_lemma))
+                    self.morph_ud.append((str(token._.ud_morph)))
+                    self.morph_em.append((str(token._.em_tag)))
+                    self.pos.append((token.pos_))
+                    self.tag.append((token.tag_))
+                    self.pos_ud.append((str(token._.ud_tag)))
+                    self.dep.append((token.dep_))
                     if("\n" in str(token.head)):
                         self.head.append(("WHITESPACE", "HEAD IS WHITESPACE!")) #correct \n heads
                     else:
-                        self.head.append((token.text, token.head))
+                        self.head.append((token.head))
                     if(token.ent_iob_ != "O"):
-                        self.ner.append((token.text, token.ent_iob_ + "-" + token.ent_type_)) #prepare iob result for later processing in ner comparator
+                        self.ner.append((token.ent_iob_ + "-" + token.ent_type_)) #prepare iob result for later processing in ner comparator
                     else:
-                        self.ner.append((token.text, token.ent_iob_))
+                        self.ner.append((token.ent_iob_))
             
     
                 #collecting data for ner-centered printout

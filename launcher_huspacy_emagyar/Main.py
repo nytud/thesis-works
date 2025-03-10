@@ -1,6 +1,5 @@
 import sys
 
-
 from Launcher import Launcher
 
 
@@ -19,3 +18,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+ 

@@ -7,7 +7,7 @@ class Lemma_comparator(Comparator):
 
 
     def str_to_print(self, j, k):
-        return str(self.huspacy.lem[j][1] == self.emagyar.lem[k][1] == self.huspacy.lem_em[j][1]) + '\t' + '|' + self.huspacy.lem[j][1] + '|' + '\t' + '|' + str(self.huspacy.lem_em[j][1]) + '|' + '\t' + '|' + self.emagyar.lem[k][1] + '|' + "\t\t" + "(" + self.huspacy.lem_em[j][0] + " " + self.huspacy.lem[j][0] + " " + self.emagyar.lem[k][0] + ")"
+        return str(self.huspacy.lem[j] == self.emagyar.lem[k] == self.huspacy.lem_em[j]) + '\t' + '|' + self.huspacy.lem[j] + '|' + '\t' + '|' + str(self.huspacy.lem_em[j]) + '|' + '\t' + '|' + self.emagyar.lem[k] + '|' + "\t\t" + "(" + self.huspacy.tok[j] + " " + self.huspacy.tok[j] + " " + self.emagyar.tok[k] + ")"
 
     def diff_to_print_e(self, k):
         return '\t|' + '_lem_' + '|'+ "\t\t" + "(" + "_tok_" + ")"

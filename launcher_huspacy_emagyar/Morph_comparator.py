@@ -7,7 +7,7 @@ class Morph_comparator(Comparator):
 
 
     def str_to_print(self, j, k):
-        return str(self.huspacy.morph_em[j][1] == self.emagyar.morph[k][1]) + '\t' + '|' + self.huspacy.morph_ud[j][1]  + '|' + '\t' + '|' + self.huspacy.morph_em[j][1] + '|' + '\t' + '|' + self.emagyar.morph[k][1] + '|' + "\t\t" + "(" + self.huspacy.morph_ud[j][0] + " " + self.huspacy.morph_em[j][0] + " " + self.emagyar.morph[k][0] + ")"
+        return str(self.huspacy.morph_em[j] == self.emagyar.morph[k]) + '\t' + '|' + self.huspacy.morph_ud[j]  + '|' + '\t' + '|' + self.huspacy.morph_em[j] + '|' + '\t' + '|' + self.emagyar.morph[k] + '|' + "\t\t" + "(" + self.huspacy.tok[j] + " " + self.huspacy.tok[j] + " " + self.emagyar.tok[k] + ")"
 
     def diff_to_print_e(self, k):
         return '\t|' + '_morph_' + '|'+ "\t\t" + "(" + "_tok_" + ")"

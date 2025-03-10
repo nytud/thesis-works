@@ -90,33 +90,33 @@ class Emagyar:
                 if(len(splitline) >0):#warning: somehow there are many-many different whitespaces in the outcome of the analysis
                     #this len makes sure that there's no indexing error with empty lists
                     #note: the analysis probably makes some trailig whitespaces / tokenizes them anyway
-                    self.tok.append((splitline[0], splitline[0]))
+                    self.tok.append((splitline[0]))
 
                     if(len(splitline) >= 6):
-                        self.lem.append((splitline[0], splitline[5]))
-                        self.morph.append((splitline[0], str(splitline[6])))
+                        self.lem.append((splitline[5]))
+                        self.morph.append((str(splitline[6])))
                         if(str(splitline[7]) == "CONJ"):  #quick conversion: emagyar works with a different label
-                            self.pos.append((splitline[0], "CCONJ"))
+                            self.pos.append(("CCONJ"))
                         else:
-                            self.pos.append((splitline[0], str(splitline[7])))
-                        self.dep.append((splitline[0], str(splitline[10])))
-                        self._head_num.append((splitline[0], str(splitline[11])))
+                            self.pos.append((str(splitline[7])))
+                        self.dep.append((str(splitline[10])))
+                        self._head_num.append((str(splitline[11])))
                         self._ids.append((splitline[9], splitline[0]))
                                 
                         if(splitline[13] != 'O'): #ner conversion: emagyar works with a different iob label set
                             if(splitline[13][0] == "1"): #eliminating standalone label
                                 self.only_ner.append(splitline[0] + '\t' + splitline[13][2:])
-                                self.ner.append((splitline[0], "B-" + splitline[13][2:]))
+                                self.ner.append(("B-" + splitline[13][2:]))
                             elif(splitline[13][0] == "E"): #eliminating end of NE label
                                 toname = toname + splitline[0] #build up the NE -> put the last part
                                 self.only_ner.append(toname + '\t' + splitline[13][2:]) #NE is ready -> put it in the list
                                 toname = "" #clear builder variable, new NE will start
-                                self.ner.append((splitline[0], "I-" + splitline[13][2:])) #append IOB ner as usual, but with I label
+                                self.ner.append(("I-" + splitline[13][2:])) #append IOB ner as usual, but with I label
                             else:
                                 toname = toname + splitline[0] + " " #building the NE because it must be B or I
-                                self.ner.append((splitline[0], splitline[13])) #normal append
+                                self.ner.append((splitline[13])) #normal append
                         else:
-                            self.ner.append((splitline[0], splitline[13])) #normal append, it must be O
+                            self.ner.append((splitline[13])) #normal append, it must be O
                 
             #make dep head list
             self.__make_head_list()
@@ -147,13 +147,13 @@ class Emagyar:
             prev_len += curr_len
 
         for (raw_head_list, id_list) in zip(split_rht, ids_per_sentences):
-            for (tok1, raw_head) in raw_head_list:
+            for (raw_head) in raw_head_list:
                 if(raw_head == str(0)):
-                    self.head.append((tok1,"ROOT"))
+                    self.head.append(("ROOT"))
                     continue
                 for (head_id, tok2) in id_list:
                     if(str(raw_head) == str(head_id)):
-                        self.head.append((tok1, tok2))
+                        self.head.append((tok2))
         
 
 
