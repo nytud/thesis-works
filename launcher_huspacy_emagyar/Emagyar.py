@@ -146,12 +146,7 @@ class Emagyar:
             split_rht.append(raw_head_tok[prev_len:(prev_len + curr_len)])
             prev_len += curr_len
 
-        print("splitrht")
-        for s in split_rht:
-            print(s)
-        print("ids_per_sentences")
-        for i in ids_per_sentences:
-            print(i)
+    
 
 
 
