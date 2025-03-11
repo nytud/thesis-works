@@ -146,14 +146,29 @@ class Emagyar:
             split_rht.append(raw_head_tok[prev_len:(prev_len + curr_len)])
             prev_len += curr_len
 
+        print("splitrht")
+        for s in split_rht:
+            print(s)
+        print("ids_per_sentences")
+        for i in ids_per_sentences:
+            print(i)
+
+
+
         for (raw_head_list, id_list) in zip(split_rht, ids_per_sentences):
+            i = -1
             for (raw_head) in raw_head_list:
+                i += 1
                 if(raw_head == str(0)):
-                    self.head.append(("ROOT"))
+                    self.head.append((id_list[i][1])) # as root, itself
                     continue
                 for (head_id, tok2) in id_list:
                     if(str(raw_head) == str(head_id)):
                         self.head.append((tok2))
+                        continue
+                
+
+            
         
 
 
