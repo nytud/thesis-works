@@ -79,50 +79,39 @@ class Launcher:
         self.emagyar = Emagyar()
 
 
-    def launch_huspacy(self):
+    
+    def launch(self):
         for fname in self.files:
             txt = ""
-            fsplit = ""
-            with open(fname, "r", encoding="utf-8") as file: # note: without encoding, the text is garbage
-                fsplit = fname.split('/')[-1]
-                txt = file.read()
+            fname_to_be = ""
 
-            with open("currentinput.txt", "w") as f:
-                f.write(txt)
+            with open(fname, "r", encoding="utf-8") as file:
+                fname_to_be = fname.split('/')[-1]
+                txt = file.read()
 
             print("Elemzendo szoveg: \n", txt, '\n\n')
 
-            self.huspacy.run(fsplit, txt)
+            if(self.is_emagyar):
+                print("e-magyar indul")
+                self.emagyar.run(fname_to_be, txt)
 
-            if(self.outh):
-                self.huspacy.print(fsplit)
+                if(self.oute):
+                    self.emagyar.print(fname_to_be)
+            
+            if(self.is_huspacy):
+                print("huspacy indul")
+                self.huspacy.run(fname_to_be, txt)
 
-    def launch_emagyar(self):
-        for fname in self.files:
-            txt = ""
-            fsplit = ""
-            with open(fname, "r", encoding="utf-8") as file: # note: without encoding, the text is garbage
-                fsplit = fname.split('/')[-1]
-                txt = file.read()
+                if(self.outh):
+                    self.huspacy.print(fname_to_be, txt)
 
-            with open("currentinput.txt", "w") as f:
-                f.write(txt)
 
-            #print("Elemzendo szoveg: \n", txt, '\n\n')
-
-            self.emagyar.run(fsplit, txt)
-
-            if(self.oute):
-                self.emagyar.print(fsplit)
 
             
 
     def compare_tokens(self):
         if(self.tok_comp):
             token_comparator = Token_comparator(self.huspacy, self.emagyar)
-            #print(token_comparator.str_to_print(0,0))
-            #print(token_comparator.diff_to_print_e(0))
-            #print(token_comparator.diff_to_print_h(0))
             token_comparator.compare()
 
     def compare_morph(self):

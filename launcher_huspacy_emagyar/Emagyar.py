@@ -23,8 +23,11 @@ class Emagyar:
 
         tar_stream = io.BytesIO()
 
+        with open("currentinput.txt", "w") as f:
+            f.write(txt)
+
         with tarfile.open(fileobj=tar_stream, mode='w') as tar:
-            tar.add("currentinput.txt") #we transfer the input as a file -> this makes a tarfile out of it
+            tar.add("currentinput.txt") #we must transfer the input as a file -> this makes a tarfile out of it
 
         tar_stream.seek(0)
         succ = container.put_archive(path='/app', data=tar_stream) #transfering the input file to docker

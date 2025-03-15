@@ -7,8 +7,8 @@ def main():
     launcher = Launcher(sys.argv[1:])
     print("launcher initialized")
 
-    launcher.launch_huspacy()
-    launcher.launch_emagyar()
+    launcher.launch()
+    
     launcher.compare_tokens()
     launcher.compare_morph()
     launcher.compare_lemma()
