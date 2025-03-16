@@ -90,28 +90,28 @@ class Launcher:
                 fname_to_be = fname.split('/')[-1]
                 txt = file.read()
 
-            print("Elemzendo szoveg: \n", txt, '\n\n')
+            print(f"Elemzendo szoveg: \n {txt}\n\n")
 
             try:
                 os.mkdir("eredmenyek")
             except FileExistsError:
                 pass
             except Exception as e:
-                print("Hiba a mappa létrehozásakor: ", e)
+                print(f"Hiba a mappa létrehozásakor: {e}")
 
             try:
                 os.makedirs("eredmenyek/huspacy")
             except FileExistsError:
                 pass
             except Exception as e:
-                print("Hiba a mappa létrehozásakor: ", e)
+                print(f"Hiba a mappa létrehozásakor: {e}")
 
             try:
                 os.makedirs("eredmenyek/emagyar")
             except FileExistsError:
                 pass
             except Exception as e:
-                print("Hiba a mappa létrehozásakor: ", e)
+                print(f"Hiba a mappa létrehozásakor: {e}")
 
             if(self.is_emagyar):
                 print("e-magyar indul")
@@ -125,7 +125,7 @@ class Launcher:
                 self.huspacy.run(fname_to_be, txt)
 
                 if(self.outh):
-                    self.huspacy.print(fname_to_be, txt)
+                    self.huspacy.print(fname_to_be)
 
 
 

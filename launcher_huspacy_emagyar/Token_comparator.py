@@ -7,13 +7,13 @@ class Token_comparator(Comparator):
 
 
     def str_to_print(self, j, k):
-        return str(self.huspacy.tok[j] == self.emagyar.tok[k]) + '\t' + '|' + self.huspacy.tok[j] + '|' + '\t' + '|' + self.emagyar.tok[k] + '|'
+        return f"{self.huspacy.tok[j] == self.emagyar.tok[k]}\t|{self.huspacy.tok[j]}|\t|{self.emagyar.tok[k]}|"
 
     def diff_to_print_e(self, k):
-        return '\t|' + '_tok_' + '|'
+        return f"\t|_tok_|"
 
     def diff_to_print_h(self, j):
-        return '|' + '_tok_' + '|'
+        return f"|_tok_|"
 
     def compare(self):
         super().compare(self.huspacy, self.emagyar, "huspacy tokenek \t emagyar tokenek")
