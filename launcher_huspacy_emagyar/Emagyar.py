@@ -19,18 +19,18 @@ class Emagyar:
     def run(self, fname, txt):
         #run emagyar through docker
         client = docker.from_env()
-        container = client.containers.run('mtaril/emtsv', detach=True)
+        container = client.containers.run("mtaril/emtsv", detach=True)
 
         tar_stream = io.BytesIO()
 
         with open("currentinput.txt", "w") as f:
             f.write(txt)
 
-        with tarfile.open(fileobj=tar_stream, mode='w') as tar:
+        with tarfile.open(fileobj=tar_stream, mode="w") as tar:
             tar.add("currentinput.txt") #we must transfer the input as a file -> this makes a tarfile out of it
 
         tar_stream.seek(0)
-        succ = container.put_archive(path='/app', data=tar_stream) #transfering the input file to docker
+        succ = container.put_archive(path="/app", data=tar_stream) #transfering the input file to docker
 
         if(succ): #transfer was successful
             #run emagyar in the docker
@@ -38,7 +38,7 @@ class Emagyar:
             result = container.exec_run(command)
 
             if(result.exit_code == 0):
-                with open('eredmeny5.tar', 'wb') as f:
+                with open("eredmeny.tar", "wb") as f:
                     strm, status = container.get_archive("/app/ana_emagyar_" + fname) #get the result from docker
         
                     #transfer its contents to a local tar file
@@ -47,8 +47,8 @@ class Emagyar:
                 
 
                 #get the real contents from the tar file and put it to the designated directory
-                with tarfile.open('eredmeny5.tar', 'r') as tar:
-                    tar.extractall('./eredmenyek/emagyar')
+                with tarfile.open("eredmeny.tar", "r") as tar:
+                    tar.extractall("eredmenyek/emagyar")
 
             else:
                 print("sikertelen elemzes, nem jott letre outputfile!")
@@ -64,12 +64,12 @@ class Emagyar:
 
 
     def print(self, fname):
-        with open('./eredmenyek/emagyar/ana_emagyar_' + fname, 'r') as f:
+        with open("eredmenyek/emagyar/ana_emagyar_" + fname, "r") as f:
             print(f.read())
 
     def __makelists(self, fname):
         #emagyar gave us the results in its own format -> we have to process and transform it to work with it like we would with huspacy
-        with open('./eredmenyek/emagyar/ana_emagyar_' + fname) as f2:
+        with open("eredmenyek/emagyar/ana_emagyar_" + fname) as f2:
             lines_raw = f2.read()
             lines = lines_raw.split('\n')
 

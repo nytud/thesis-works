@@ -1,4 +1,5 @@
 import glob
+import os
 
 from Huspacy import Huspacy
 from Emagyar import Emagyar
@@ -90,6 +91,27 @@ class Launcher:
                 txt = file.read()
 
             print("Elemzendo szoveg: \n", txt, '\n\n')
+
+            try:
+                os.mkdir("eredmenyek")
+            except FileExistsError:
+                pass
+            except Exception as e:
+                print("Hiba a mappa létrehozásakor: ", e)
+
+            try:
+                os.makedirs("eredmenyek/huspacy")
+            except FileExistsError:
+                pass
+            except Exception as e:
+                print("Hiba a mappa létrehozásakor: ", e)
+
+            try:
+                os.makedirs("eredmenyek/emagyar")
+            except FileExistsError:
+                pass
+            except Exception as e:
+                print("Hiba a mappa létrehozásakor: ", e)
 
             if(self.is_emagyar):
                 print("e-magyar indul")

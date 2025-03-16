@@ -28,7 +28,8 @@ class Huspacy:
         nlp.add_pipe("emmorph")
         doc = nlp(txt)
 
-        with open('./eredmenyek/huspacy/ana_huspacy_' + fname, 'w') as f:
+
+        with open('eredmenyek/huspacy/ana_huspacy_' + fname, 'w') as f:
             for token in doc:
                 if not token.is_space: #leave out analysis for whitespace tokens
                     #write into result file
@@ -62,6 +63,6 @@ class Huspacy:
                     self.only_ner.append(str(ent.text) + '\t' + str(ent.label_))
 
     def print(self, fname):
-        with open('./eredmenyek/huspacy/ana_huspacy_' + fname, 'r') as f:
+        with open('eredmenyek/huspacy/ana_huspacy_' + fname, 'r') as f:
             print(f.read())
         
