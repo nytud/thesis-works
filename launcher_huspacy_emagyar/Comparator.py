@@ -2,6 +2,7 @@ from Diffsolver import Diffsolver
 
 from abcmeta import ABC
 from abcmeta import abstractmethod
+import os
 
 class Comparator(ABC):
 
@@ -36,7 +37,11 @@ class Comparator(ABC):
             #normal case: synchronous tokenization
             if(huspacy.tok[j][0] == emagyar.tok[k][0]):
                 print(self.str_to_print(j, k))
-                print("_______________________________________________________")
+                (coldb, rowdb) = os.get_terminal_size()
+                for i in range(coldb):
+                    print("_", end="")
+                print("\n")
+                
                 j = j + 1
                 k = k + 1
                 #abnormal case: tokenization glitch - diffsolving required
@@ -62,7 +67,10 @@ class Comparator(ABC):
                 
             
                 print(self.str_to_print(j, k))
-                print("_______________________________________________________")
+                (coldb, rowdb) = os.get_terminal_size()
+                for i in range(coldb):
+                    print("_", end="")
+                print("\n")
                 j = j + 1
                 k = k + 1
         

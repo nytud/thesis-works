@@ -26,6 +26,7 @@ class Launcher:
         self.ner_comp = False
         self.pos_comp = False
         self.dep_comp = False
+    
 
         if("-emagyar" in list(args)):
             self.is_emagyar = True
@@ -56,6 +57,8 @@ class Launcher:
 
         if("-dep" in list(args)):
             self.dep_comp = True
+
+        
 
 
         self.files = list([])
@@ -116,6 +119,10 @@ class Launcher:
 
             if(self.is_emagyar):
                 print("e-magyar indul")
+                (coldb, rowdb) = os.get_terminal_size()
+                for i in range(coldb):
+                    print(".", end="")
+                print("\n")
                 self.emagyar.run(fname_to_be, txt)
 
                 if(self.oute):
@@ -123,6 +130,10 @@ class Launcher:
             
             if(self.is_huspacy):
                 print("huspacy indul")
+                (coldb, rowdb) = os.get_terminal_size()
+                for i in range(coldb):
+                    print(".", end="")
+                print("\n")
                 self.huspacy.run(fname_to_be, txt)
 
                 if(self.outh):
@@ -161,6 +172,10 @@ class Launcher:
         if(self.ner_comp):
             ner_comparator = Ner_comparator(self.huspacy, self.emagyar)
             ner_comparator.compare()
+
+
+
+
 
 
         
