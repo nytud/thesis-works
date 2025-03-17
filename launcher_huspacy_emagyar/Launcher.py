@@ -1,5 +1,6 @@
 import glob
 import os
+import sys
 
 from Huspacy import Huspacy
 from Emagyar import Emagyar
