@@ -5,7 +5,7 @@ from Launcher import Launcher
 
 def main():
     launcher = Launcher(sys.argv[1:])
-    print("launcher initialized")
+    print("Launcher indul")
 
     launcher.launch()
     
