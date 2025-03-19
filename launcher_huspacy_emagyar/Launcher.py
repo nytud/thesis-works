@@ -121,16 +121,6 @@ class Launcher:
             except Exception as e:
                 print(f"Hiba a mappa létrehozásakor: {e}")
 
-            try:
-                os.makedirs("eredmenyek/csv")
-            except FileExistsError:
-                pass
-            except Exception as e:
-                print(f"Hiba a mappa létrehozásakor: {e}")
-
-            with open(f"eredmenyek/csv/{fname_to_be}.csv", "w") as csvfile:
-                pass                                                        #creating empty file
-
             if(self.is_emagyar):
                 print("e-magyar indul")
                 (coldb, rowdb) = os.get_terminal_size()
@@ -153,6 +143,13 @@ class Launcher:
                 if(self.outh):
                     self.huspacy.print(fname_to_be)
 
+            self.compare_tokens()
+            self.compare_morph()
+            self.compare_lemma()
+            self.compare_pos()
+            self.compare_dep()
+            self.compare_ner()
+
 
 
             
@@ -161,6 +158,24 @@ class Launcher:
         if(self.tok_comp):
             token_comparator = Token_comparator(self.huspacy, self.emagyar)
             token_comparator.compare()
+            #printer = Printer()
+            #printer.print_normal()
+
+            #if(self.csv):
+            #    try:
+            #        os.makedirs("eredmenyek/csv")
+            #    except FileExistsError:
+            #        pass
+            #    except Exception as e:
+            #        print(f"Hiba a mappa létrehozásakor: {e}")
+            #
+            #    with open(f"eredmenyek/csv/{fname_to_be}_tok.csv", "w") as csvfile:
+            #        pass                                                        #creating empty file
+
+            #    printer.print_to_csv(fname_to_be)
+
+            
+
 
     def compare_morph(self):
         if(self.morph_comp):
