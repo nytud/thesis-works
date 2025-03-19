@@ -26,10 +26,10 @@ class Diffsolver:
                 ###for i in range(coldb):
                     ###print("_", end="")
                 ###print("\n")
-                self.comp_data[0].append(str_to_print)
-                self.comp_data[1].append(csv_to_print)
-                self.k = self.k + 1
-                self.j = self.j + 1
+                #####self.comp_data[0].append(str_to_print + "elso")
+                #####self.comp_data[1].append(csv_to_print)
+                #####self.k = self.k + 1
+                #####self.j = self.j + 1
                 if(self.kk > self.jj): #emagyar shift was greater -> huspacy is ahead -> emagyar remains are to be printed
                     for i in range (0, self.kk-self.jj):
                         dtp = diff_to_print_e.replace("_tok_", self.emagyar.tok[self.k])

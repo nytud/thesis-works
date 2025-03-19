@@ -105,7 +105,11 @@ class Comparator(ABC):
             print(emagyar.tok[k:])
 
 
-        print(comp_data[0], sep="\n")
+        #print(comp_data[0], sep="\n")
         #print(comp_data[1])
+
+        for s in comp_data[0]:
+            print(s)
+            print("____________________________________________________________________")
 
 
