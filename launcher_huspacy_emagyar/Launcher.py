@@ -26,6 +26,7 @@ class Launcher:
         self.ner_comp = False
         self.pos_comp = False
         self.dep_comp = False
+        self.csv = False
     
 
         if("-emagyar" in list(args)):
@@ -58,6 +59,8 @@ class Launcher:
         if("-dep" in list(args)):
             self.dep_comp = True
 
+        if("-csv" in list(args)):
+            self.csv = True
         
 
 
@@ -75,7 +78,8 @@ class Launcher:
                 or a == "-lem"
                 or a == "-ner"
                 or a == "-pos"
-                or a == "-dep"):
+                or a == "-dep"
+                or a == "-csv"):
                 pass
             else:
                 sys.exit("Hiba: ismeretlen argumentum: " + a[0:])
@@ -116,6 +120,16 @@ class Launcher:
                 pass
             except Exception as e:
                 print(f"Hiba a mappa létrehozásakor: {e}")
+
+            try:
+                os.makedirs("eredmenyek/csv")
+            except FileExistsError:
+                pass
+            except Exception as e:
+                print(f"Hiba a mappa létrehozásakor: {e}")
+
+            with open(f"eredmenyek/csv/{fname_to_be}.csv", "w") as csvfile:
+                pass                                                        #creating empty file
 
             if(self.is_emagyar):
                 print("e-magyar indul")

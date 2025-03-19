@@ -17,6 +17,15 @@ class Ner_comparator(Comparator):
     def diff_to_print_h(self, j):
         return f"|_ner_|\t\t\t(_tok_)"
 
+    def csv_to_print(self, j, k):
+        pass
+
+    def csv_diff_to_print_e(self, k):
+        pass
+
+    def csv_diff_to_print_h(self, j):
+        pass
+
     def compare(self):
         super().compare(self.huspacy, self.emagyar, "huspacy ner \t emagyar ner")
         only_ner = Only_Ner(self.huspacy, self.emagyar)
