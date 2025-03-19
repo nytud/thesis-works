@@ -42,10 +42,11 @@ class Comparator(ABC):
 
         j = 0
         k = 0
-        print(headline)
+        #print(headline)
 
         comp_data = [[],[]]
-
+        comp_data[0].append(headline)
+        comp_data[1].append(headline)
         
         while(j != len(huspacy.tok) and k != len(emagyar.tok)):
             #normal case: synchronous tokenization
@@ -108,8 +109,8 @@ class Comparator(ABC):
         #print(comp_data[0], sep="\n")
         #print(comp_data[1])
 
-        for s in comp_data[0]:
-            print(s)
-            print("____________________________________________________________________")
+        
+
+        return comp_data
 
 

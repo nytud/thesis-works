@@ -10,6 +10,7 @@ from Lemma_comparator import Lemma_comparator
 from Pos_comparator import Pos_comparator
 from Dep_comparator import Dep_comparator
 from Ner_comparator import Ner_comparator
+from Printer import Printer
 
 
 class Launcher:
@@ -157,9 +158,10 @@ class Launcher:
     def compare_tokens(self):
         if(self.tok_comp):
             token_comparator = Token_comparator(self.huspacy, self.emagyar)
-            token_comparator.compare()
-            #printer = Printer()
-            #printer.print_normal()
+            comp_data = token_comparator.compare()
+            #print(comp_data)
+            printer = Printer(comp_data)
+            printer.print_normal()
 
             #if(self.csv):
             #    try:
