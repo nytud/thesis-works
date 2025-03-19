@@ -70,13 +70,13 @@ class Comparator(ABC):
                         ###diffsolver = Diffsolver(self.huspacy, self.emagyar, z, v, j, k, self.str_to_print(j,k), self.diff_to_print_e(k), self.diff_to_print_h(j))
                         ###j, k, m = diffsolver.print()
                         diffsolver = Diffsolver(self.huspacy, self.emagyar, z, v, j, k, comp_data)
-                        j, k, m, comp_data = diffsolver.solve()
+                        j, k, m, comp_data = diffsolver.solve(self.str_to_print(j,k), self.diff_to_print_e(k), self.diff_to_print_h(j), self.csv_to_print(j,k), self.csv_diff_to_print_e(k), self.csv_diff_to_print_h(j))
                         if(m):
                             break
                         ###diffsolver = Diffsolver(self.huspacy, self.emagyar, v, z, j, k, self.str_to_print(j,k), self.diff_to_print_e(k), self.diff_to_print_h(j))
                         ###j, k, m = diffsolver.print()
                         diffsolver = Diffsolver(self.huspacy, self.emagyar, v, z, j, k, comp_data)
-                        j, k, m, comp_data = diffsolver.solve()
+                        j, k, m, comp_data = diffsolver.solve(self.str_to_print(j,k), self.diff_to_print_e(k), self.diff_to_print_h(j), self.csv_to_print(j,k), self.csv_diff_to_print_e(k), self.csv_diff_to_print_h(j))
                         if(m):
                             break
                 if(m):
