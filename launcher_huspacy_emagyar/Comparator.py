@@ -53,11 +53,7 @@ class Comparator(ABC):
             if(huspacy.tok[j][0] == emagyar.tok[k][0]):
                 comp_data[0].append(self.str_to_print(j,k))
                 comp_data[1].append(self.csv_to_print(j,k))
-                ###print(self.str_to_print(j, k))
-                ###(coldb, rowdb) = os.get_terminal_size()
-                ###for i in range(coldb):
-                    ###print("_", end="")
-                ###print("\n")
+                
                 
                 j = j + 1
                 k = k + 1
@@ -68,14 +64,12 @@ class Comparator(ABC):
                     if(m):
                         break
                     for v in range(1,6):
-                        ###diffsolver = Diffsolver(self.huspacy, self.emagyar, z, v, j, k, self.str_to_print(j,k), self.diff_to_print_e(k), self.diff_to_print_h(j))
-                        ###j, k, m = diffsolver.print()
+                        
                         diffsolver = Diffsolver(self.huspacy, self.emagyar, z, v, j, k, comp_data)
                         j, k, m, comp_data = diffsolver.solve(self.str_to_print(j,k), self.diff_to_print_e(k), self.diff_to_print_h(j), self.csv_to_print(j,k), self.csv_diff_to_print_e(k), self.csv_diff_to_print_h(j))
                         if(m):
                             break
-                        ###diffsolver = Diffsolver(self.huspacy, self.emagyar, v, z, j, k, self.str_to_print(j,k), self.diff_to_print_e(k), self.diff_to_print_h(j))
-                        ###j, k, m = diffsolver.print()
+                        
                         diffsolver = Diffsolver(self.huspacy, self.emagyar, v, z, j, k, comp_data)
                         j, k, m, comp_data = diffsolver.solve(self.str_to_print(j,k), self.diff_to_print_e(k), self.diff_to_print_h(j), self.csv_to_print(j,k), self.csv_diff_to_print_e(k), self.csv_diff_to_print_h(j))
                         if(m):
@@ -86,11 +80,7 @@ class Comparator(ABC):
 
                 comp_data[0].append(self.str_to_print(j,k))
                 comp_data[1].append(self.csv_to_print(j,k))
-                ###print(self.str_to_print(j, k))
-                ###(coldb, rowdb) = os.get_terminal_size()
-                ###for i in range(coldb):
-                    ###print("_", end="")
-                ###print("\n")
+                
                 j = j + 1
                 k = k + 1
         
@@ -105,11 +95,6 @@ class Comparator(ABC):
             print("emagyar maradek token: ")
             print(emagyar.tok[k:])
 
-
-        #print(comp_data[0], sep="\n")
-        #print(comp_data[1])
-
-        
 
         return comp_data
 
