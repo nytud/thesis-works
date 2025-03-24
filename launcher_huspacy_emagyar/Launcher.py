@@ -144,7 +144,7 @@ class Launcher:
                 if(self.outh):
                     self.huspacy.print(fname_to_be)
 
-            self.compare_tokens()
+            self.compare_tokens(fname_to_be)
             self.compare_morph()
             self.compare_lemma()
             self.compare_pos()
@@ -155,7 +155,7 @@ class Launcher:
 
             
 
-    def compare_tokens(self):
+    def compare_tokens(self, fname_to_be):
         if(self.tok_comp):
             token_comparator = Token_comparator(self.huspacy, self.emagyar)
             comp_data = token_comparator.compare()
@@ -163,18 +163,18 @@ class Launcher:
             printer = Printer(comp_data)
             printer.print_normal()
 
-            #if(self.csv):
-            #    try:
-            #        os.makedirs("eredmenyek/csv")
-            #    except FileExistsError:
-            #        pass
-            #    except Exception as e:
-            #        print(f"Hiba a mappa létrehozásakor: {e}")
-            #
-            #    with open(f"eredmenyek/csv/{fname_to_be}_tok.csv", "w") as csvfile:
-            #        pass                                                        #creating empty file
-
-            #    printer.print_to_csv(fname_to_be)
+            if(self.csv):
+                try:
+                    os.makedirs("eredmenyek/csv")
+                except FileExistsError:
+                    pass
+                except Exception as e:
+                    print(f"Hiba a mappa létrehozásakor: {e}")
+            
+                with open(f"eredmenyek/csv/{fname_to_be}_tok.csv", "w") as csvfile:
+                    pass                                                        #creating empty file
+            
+                printer.print_to_csv(comp_data, fname_to_be)
 
             
 

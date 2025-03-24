@@ -13,6 +13,12 @@ class Printer:
                 print("_", end="")
             print("\n")
             print(s)
+
+    def print_to_csv(self, comp_data, fname_to_be):
+        with open(f"eredmenyek/csv/{fname_to_be}_tok.csv", "a") as f:
+            for s in self.comp_data[1]:
+                f.write(s + "\n")
+            
             
 
 
