@@ -16,5 +16,14 @@ class Dep_comparator(Comparator):
     def diff_to_print_h(self, j):
         return f"\t|_dep_|\tconverted as: _depconv_\t|_head_|\t\t\t(_tok_)"
 
+    def csv_to_print(self, j, k):
+        pass
+
+    def csv_diff_to_print_e(self, k):
+        pass
+
+    def csv_diff_to_print_h(self, j):
+        pass
+
     def compare(self):
         super().compare(self.huspacy, self.emagyar, "huspacy dep (original) \t huspacy huspacy dep (converted) \t huspacy head \t emagyar dep \t emagyar head")

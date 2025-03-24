@@ -10,6 +10,7 @@ from Lemma_comparator import Lemma_comparator
 from Pos_comparator import Pos_comparator
 from Dep_comparator import Dep_comparator
 from Ner_comparator import Ner_comparator
+from Printer import Printer
 
 
 class Launcher:
@@ -26,6 +27,7 @@ class Launcher:
         self.ner_comp = False
         self.pos_comp = False
         self.dep_comp = False
+        self.csv = False
     
 
         if("-emagyar" in list(args)):
@@ -58,6 +60,8 @@ class Launcher:
         if("-dep" in list(args)):
             self.dep_comp = True
 
+        if("-csv" in list(args)):
+            self.csv = True
         
 
 
@@ -75,7 +79,8 @@ class Launcher:
                 or a == "-lem"
                 or a == "-ner"
                 or a == "-pos"
-                or a == "-dep"):
+                or a == "-dep"
+                or a == "-csv"):
                 pass
             else:
                 sys.exit("Hiba: ismeretlen argumentum: " + a[0:])
@@ -139,14 +144,40 @@ class Launcher:
                 if(self.outh):
                     self.huspacy.print(fname_to_be)
 
+            self.compare_tokens(fname_to_be)
+            self.compare_morph()
+            self.compare_lemma()
+            self.compare_pos()
+            self.compare_dep()
+            self.compare_ner()
+
 
 
             
 
-    def compare_tokens(self):
+    def compare_tokens(self, fname_to_be):
         if(self.tok_comp):
             token_comparator = Token_comparator(self.huspacy, self.emagyar)
-            token_comparator.compare()
+            comp_data = token_comparator.compare()
+            #print(comp_data)
+            printer = Printer(comp_data)
+            printer.print_normal()
+
+            if(self.csv):
+                try:
+                    os.makedirs("eredmenyek/csv")
+                except FileExistsError:
+                    pass
+                except Exception as e:
+                    print(f"Hiba a mappa létrehozásakor: {e}")
+            
+                with open(f"eredmenyek/csv/{fname_to_be}_tok.csv", "w") as csvfile:
+                    pass                                                        #creating empty file
+            
+                printer.print_to_csv(comp_data, fname_to_be)
+
+            
+
 
     def compare_morph(self):
         if(self.morph_comp):

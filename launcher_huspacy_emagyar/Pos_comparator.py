@@ -15,5 +15,14 @@ class Pos_comparator(Comparator):
     def diff_to_print_h(self, j):
         return f"|_pos_|\t|_tag_|\t|_posud_|\t\t(_tok_)"
 
+    def csv_to_print(self, j, k):
+        pass
+
+    def csv_diff_to_print_e(self, k):
+        pass
+
+    def csv_diff_to_print_h(self, j):
+        pass
+
     def compare(self):
         super().compare(self.huspacy, self.emagyar, "huspacy pos \t huspacy tag \t huspacy (emmorph) ud pos \t emagyar pos")
