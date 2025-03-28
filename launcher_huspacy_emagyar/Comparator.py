@@ -36,18 +36,21 @@ class Comparator(ABC):
 
 
     def compare(self, huspacy, emagyar, headline):
+        comp_data = [[],[]]
+
         l = min(len(huspacy.tok), len(emagyar.tok))
-        print("huspacy tokenszám: ", len(huspacy.tok))
-        print("e-magyar tokenszám: ", len(emagyar.tok))
+        comp_data[0].append(f"huspacy tokenszám: {len(huspacy.tok)}")
+        comp_data[0].append(f"e-magyar tokenszám: {len(emagyar.tok)}")
+        
+        comp_data[0].append(headline)
+        comp_data[1].append(headline)
+
+        
 
         j = 0
         k = 0
         #print(headline)
 
-        comp_data = [[],[]]
-        comp_data[0].append(headline)
-        comp_data[1].append(headline)
-        
         while(j != len(huspacy.tok) and k != len(emagyar.tok)):
             #normal case: synchronous tokenization
             if(huspacy.tok[j][0] == emagyar.tok[k][0]):
@@ -88,12 +91,12 @@ class Comparator(ABC):
 
         #print the remains
         if(j != len(huspacy.tok)):
-            print("huspacy maradek token: ")
-            print(huspacy.tok[j:])
+            comp_data.append("huspacy maradek token: ")
+            comp_data.append(huspacy.tok[j:])
             
         if(k != len(emagyar.tok)):
-            print("emagyar maradek token: ")
-            print(emagyar.tok[k:])
+            comp_data[0].append("emagyar maradek token: ")
+            comp_data[0].append(emagyar.tok[k:])
 
 
         return comp_data

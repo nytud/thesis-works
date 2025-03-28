@@ -8,11 +8,20 @@ class Printer:
     def print_normal(self):
         (coldb, rowdb) = os.get_terminal_size()
 
-        for s in self.comp_data[0]:
+        #metadata: fix indexes (0, 1, and 2)
+        print(self.comp_data[0][0])
+        print(self.comp_data[0][1])
+        for i in range(coldb):
+                print("-", end="")
+        #header
+        print(self.comp_data[0][2])
+
+        for s in self.comp_data[0][3:]:
             for i in range(coldb):
                 print("_", end="")
             print("\n")
             print(s)
+        
 
     def print_to_csv(self, comp_data, fname_to_be):
         with open(f"eredmenyek/csv/{fname_to_be}_tok.csv", "a") as f:

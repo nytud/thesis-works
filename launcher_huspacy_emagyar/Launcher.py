@@ -91,6 +91,7 @@ class Launcher:
 
     
     def launch(self):
+        print(self.files)
         for fname in self.files:
             txt = ""
             fname_to_be = ""
