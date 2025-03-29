@@ -126,34 +126,37 @@ class Launcher:
                 print(f"Hiba a mappa létrehozásakor: {e}\nSegítség: próbálja meg manuálisan létrehozni megfelelő jogosultsággal!")
                 sys.exit()
 
-            if(self.is_emagyar):
-                print("e-magyar indul")
-                (coldb, rowdb) = os.get_terminal_size()
-                for i in range(coldb):
-                    print(".", end="")
-                print("\n")
-                self.emagyar.run(fname_to_be, txt)
+            try:
+                if(self.is_emagyar):
+                    print("e-magyar indul")
+                    (coldb, rowdb) = os.get_terminal_size()
+                    for i in range(coldb):
+                        print(".", end="")
+                    print("\n")
+                    self.emagyar.run(fname_to_be, txt)
 
-                if(self.oute):
-                    self.emagyar.print(fname_to_be)
-            
-            if(self.is_huspacy):
-                print("huspacy indul")
-                (coldb, rowdb) = os.get_terminal_size()
-                for i in range(coldb):
-                    print(".", end="")
-                print("\n")
-                self.huspacy.run(fname_to_be, txt)
+                    if(self.oute):
+                        self.emagyar.print(fname_to_be)
+                
+                if(self.is_huspacy):
+                    print("huspacy indul")
+                    (coldb, rowdb) = os.get_terminal_size()
+                    for i in range(coldb):
+                        print(".", end="")
+                    print("\n")
+                    self.huspacy.run(fname_to_be, txt)
 
-                if(self.outh):
-                    self.huspacy.print(fname_to_be)
+                    if(self.outh):
+                        self.huspacy.print(fname_to_be)
 
-            self.compare_tokens(fname_to_be)
-            self.compare_morph()
-            self.compare_lemma()
-            self.compare_pos()
-            self.compare_dep()
-            self.compare_ner()
+                self.compare_tokens(fname_to_be)
+                self.compare_morph()
+                self.compare_lemma()
+                self.compare_pos()
+                self.compare_dep()
+                self.compare_ner()
+            except Exception as e:
+                print(e)
 
 
 

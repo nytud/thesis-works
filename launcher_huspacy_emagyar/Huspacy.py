@@ -29,39 +29,42 @@ class Huspacy:
         doc = nlp(txt)
 
 
-        with open(f"eredmenyek/huspacy/ana_huspacy_{fname}", 'w') as f:
-            f.write("token\tem_tag\tud_morph\tlemma\tem_lemma\tud_tag\tpos\ttag\tdep\thead\tent_iob\tent_type")
-            for token in doc:
-                if not token.is_space: #leave out analysis for whitespace tokens
-                    #write into result file
-                    f.write(f"{token.text}\t{token._.em_tag}\t{token._.ud_morph}\t{token.lemma_}\t{token._.em_lemma}\t{token._.ud_tag}\t{token.pos_}\t{token.tag_}\t{token.dep_}\t{token.head}\t{token.ent_iob_}\t{token.ent_type_}\n")
+        try:
+            with open(f"eredmenyek/huspacy/ana_huspacy_{fname}", 'w') as f:
+                f.write("token\tem_tag\tud_morph\tlemma\tem_lemma\tud_tag\tpos\ttag\tdep\thead\tent_iob\tent_type")
+                for token in doc:
+                    if not token.is_space: #leave out analysis for whitespace tokens
+                        #write into result file
+                        f.write(f"{token.text}\t{token._.em_tag}\t{token._.ud_morph}\t{token.lemma_}\t{token._.em_lemma}\t{token._.ud_tag}\t{token.pos_}\t{token.tag_}\t{token.dep_}\t{token.head}\t{token.ent_iob_}\t{token.ent_type_}\n")
 
-                    #fill uo the stateholder lists
-                    self.tok.append((token.text))
-                    self.lem.append((token.lemma_))
-                    self.lem_em.append((token._.em_lemma))
-                    self.morph_ud.append((str(token._.ud_morph)))
-                    self.morph_em.append((str(token._.em_tag)))
-                    self.pos.append((token.pos_))
-                    self.tag.append((token.tag_))
-                    self.pos_ud.append((str(token._.ud_tag)))
-                    self.dep.append((token.dep_))
-                    if("\n" in str(token.head)):
-                        self.head.append(("HEAD IS WHITESPACE!")) #correct \n heads
-                    else:
-                        self.head.append((token.head))
-                    if(token.ent_iob_ != "O"):
-                        self.ner.append((f"{token.ent_iob_}-{token.ent_type_}")) #prepare iob result for later processing in ner comparator
-                    else:
-                        self.ner.append((token.ent_iob_))
-            
-    
-                #collecting data for ner-centered printout
-                f.write("\n")
-                for ent in doc.ents:
-                    #not necessary: ner-centered printout can be in the result file optionally
-                    #f.write(str(ent.text) + '\t' + str(ent.start_char) + '\t' + str(ent.end_char) + '\t' + str(ent.label_) + '\n')
-                    self.only_ner.append(f"{ent.text}\t{ent.label_}")
+                        #fill uo the stateholder lists
+                        self.tok.append((token.text))
+                        self.lem.append((token.lemma_))
+                        self.lem_em.append((token._.em_lemma))
+                        self.morph_ud.append((str(token._.ud_morph)))
+                        self.morph_em.append((str(token._.em_tag)))
+                        self.pos.append((token.pos_))
+                        self.tag.append((token.tag_))
+                        self.pos_ud.append((str(token._.ud_tag)))
+                        self.dep.append((token.dep_))
+                        if("\n" in str(token.head)):
+                            self.head.append(("HEAD IS WHITESPACE!")) #correct \n heads
+                        else:
+                            self.head.append((token.head))
+                        if(token.ent_iob_ != "O"):
+                            self.ner.append((f"{token.ent_iob_}-{token.ent_type_}")) #prepare iob result for later processing in ner comparator
+                        else:
+                            self.ner.append((token.ent_iob_))
+                
+        
+                    #collecting data for ner-centered printout
+                    f.write("\n")
+                    for ent in doc.ents:
+                        #not necessary: ner-centered printout can be in the result file optionally
+                        #f.write(str(ent.text) + '\t' + str(ent.start_char) + '\t' + str(ent.end_char) + '\t' + str(ent.label_) + '\n')
+                        self.only_ner.append(f"{ent.text}\t{ent.label_}")
+        except Exception as e:
+            raise Exception(f"Hiba a HuSpaCy nyers elemzési fájljának összeállításakor: {e}")
 
     def print(self, fname):
         with open(f"eredmenyek/huspacy/ana_huspacy_{fname}", 'r') as f:

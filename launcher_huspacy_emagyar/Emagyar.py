@@ -34,7 +34,7 @@ class Emagyar:
 
             tar_stream.seek(0)
             succ = container.put_archive(path="/app", data=tar_stream) #transfering the input file to docker
-
+            
             if(succ): #transfer was successful
                 #run emagyar in the docker
                 command = f"python3 ./main.py tok,spell,morph,pos,conv-morph,dep,chunk,ner -i ./currentinput.txt -o ana_emagyar_{fname}"
@@ -54,8 +54,11 @@ class Emagyar:
                         tar.extractall("eredmenyek/emagyar")
 
                 else:
-                    print("e-magyar: Sikertelen elemzés, nem jött létre outputfile!")
-                    print(result)
+                    raise Exception("Sikertelen az elemzés lefuttatása")
+            else:
+                raise Exception("Sikertelen fájlátvitel, nem történt meg az elemzés")
+        except Exception as e:
+            raise Exception(f"e-magyar: Sikertelen elemzés, nem jött létre outputfile ({e})")           
         finally:
             #cleaning up the container
             container.stop()
@@ -129,7 +132,7 @@ class Emagyar:
                 #make dep head list
                 self.__make_head_list()
         except Exception as e:
-            print(f"Hiba az e-magyar nyers elemzési fájljának feldolgozásakor: {e}")
+            raise Exception(f"Hiba az e-magyar nyers elemzési fájljának feldolgozásakor: {e}")
 
             
 
