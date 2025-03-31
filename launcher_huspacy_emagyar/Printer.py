@@ -21,12 +21,23 @@ class Printer:
                 print("_", end="")
             print("\n")
             print(s)
+
+        if len(self.comp_data[2]) > 0:
+            for s in self.comp_data[2]:
+                for i in range(coldb):
+                    print("_", end="")
+                print("\n")
+                print(s)
         
 
     def print_to_csv(self, comp_data, fname_to_be, level):
         with open(f"eredmenyek/csv/{fname_to_be}_{level}.csv", "a") as f:
             for s in self.comp_data[1]:
                 f.write(f"{s}\n")
+        if level == "ner":
+            with open(f"eredmenyek/csv/{fname_to_be}_onlyner.csv", "a") as f:
+                for s in self.comp_data[3]:
+                    f.write(f"{s}\n")
             
             
 

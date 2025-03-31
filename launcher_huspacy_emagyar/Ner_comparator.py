@@ -18,15 +18,16 @@ class Ner_comparator(Comparator):
         return f"|_ner_|\t\t\t(_tok_)"
 
     def csv_to_print(self, j, k):
-        pass
+        return f'"{self.huspacy.ner[j] == self.emagyar.ner[k]}","|{self.huspacy.ner[j]}|""|{self.emagyar.ner[k]}|","|{self.huspacy.tok[j]}|","|{self.emagyar.tok[k]}|"'
 
     def csv_diff_to_print_e(self, k):
-        pass
+        return f'"","","|_ner_|","","|_tok_|"'
 
     def csv_diff_to_print_h(self, j):
-        pass
+        return f'"","|_ner_|","","","|_tok_|"'
 
     def compare(self):
-        super().compare(self.huspacy, self.emagyar, "huspacy ner \t emagyar ner")
+        comp_data = super().compare(self.huspacy, self.emagyar, "huspacy ner \t emagyar ner")
         only_ner = Only_Ner(self.huspacy, self.emagyar)
-        only_ner.print()
+        only_ner.to_print(comp_data)
+        return comp_data

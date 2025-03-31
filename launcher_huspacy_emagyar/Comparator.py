@@ -36,7 +36,7 @@ class Comparator(ABC):
 
 
     def compare(self, huspacy, emagyar, headline):
-        comp_data = [[],[]]
+        comp_data = [[],[],[],[]]
 
         l = min(len(huspacy.tok), len(emagyar.tok))
         comp_data[0].append(f"huspacy tokenszám: {len(huspacy.tok)}")

@@ -3,7 +3,7 @@ class Only_Ner:
         self.huspacy = huspacy
         self.emagyar = emagyar
 
-    def print(self):
+    def to_print(self, comp_data):
         h_dict = {}
         e_dict = {}
 
@@ -27,24 +27,34 @@ class Only_Ner:
 
         only_h = list([])                                                      #the named entity was only found by huspacy
         only_e = list([])                                                      #the named entity was only found by emagyar
+        only_h_csv = list([])                                                      #the named entity was only found by huspacy
+        only_e_csv = list([])  
+
         #matching the emagyar entities to huspacy entities
         for (kh, vh) in h_dict.items():
             if(kh in e_dict):                                                  #found corresponding entity
-                print(f"{vh == e_dict[kh]}\t{kh}\t{vh}\t{e_dict[kh]}")         #comparing
+                comp_data[2].append(f"{vh == e_dict[kh]}\t{kh}\t{vh}\t{e_dict[kh]}")         #comparing
+                comp_data[3].append(f'"{vh == e_dict[kh]}","{kh}","{vh}","{e_dict[kh]}"')
             else:
                 only_h.append(f"{kh}\t{vh}")                                   #not found corresponding entity
+                only_h_csv.append(f'"{kh}","",{vh}')
         
         #matching the huspacy entities to emagyar entities
         for (ke, ve) in e_dict.items():
             if(ke not in h_dict):
                 only_e.append(f"{ke}\t{ve}")                                   #only not found check is enough because the intersection had to be handled from the huspacy side already
+                only_e_csv.append(f'"","{ke}","{ve}"')
 
         #print the remains
-        print("huspacy maradek:")
+        comp_data[2].append("huspacy maradek:")
         for h in only_h:
-            print(h)
+            comp_data[2].append(h)
+        for h in only_h_csv:
+            comp_data[3].append(h)
 
-        print("emagyar maradek:")
+        comp_data[2].append("emagyar maradek:")
         for e in only_e:
-            print(e)
+            comp_data[2].append(e)
+        for e in only_e_csv:
+            comp_data[3].append(e)
         

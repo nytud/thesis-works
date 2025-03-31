@@ -156,7 +156,7 @@ class Launcher:
                 self.compare_lemma(fname_short)
                 self.compare_pos(fname_short)
                 self.compare_dep(fname_short)
-                self.compare_ner()
+                self.compare_ner(fname_short)
             except Exception as e:
                 print("ERROR:")
                 print(e)
@@ -288,10 +288,32 @@ class Launcher:
                 printer.print_to_csv(comp_data, fname_short, "dep")
 
 
-    def compare_ner(self):
+    def compare_ner(self, fname_short):
         if(self.ner_comp):
             ner_comparator = Ner_comparator(self.huspacy, self.emagyar)
-            ner_comparator.compare()
+            comp_data = ner_comparator.compare()
+
+            printer = Printer(comp_data)
+            printer.print_normal()
+
+
+            if(self.csv):
+                try:
+                    os.makedirs("eredmenyek/csv")
+                except FileExistsError:
+                    pass
+                except Exception as e:
+                    print(f"Hiba a mappa létrehozásakor: {e} \nSegítség: próbálja meg manuálisan létrehozni megfelelő jogosultsággal!")
+                    sys.exit()
+            
+                with open(f"eredmenyek/csv/{fname_short}_ner.csv", "w") as csvfile:
+                    pass                                                        #creating empty file
+
+                with open(f"eredmenyek/csv/{fname_short}_onlyner.csv", "w") as csvfile:
+                    pass                                                        #creating empty file
+            
+                printer.print_to_csv(comp_data, fname_short, "ner")
+
 
 
 
