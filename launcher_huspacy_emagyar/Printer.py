@@ -23,8 +23,8 @@ class Printer:
             print(s)
         
 
-    def print_to_csv(self, comp_data, fname_to_be):
-        with open(f"eredmenyek/csv/{fname_to_be}_tok.csv", "a") as f:
+    def print_to_csv(self, comp_data, fname_to_be, level):
+        with open(f"eredmenyek/csv/{fname_to_be}_{level}.csv", "a") as f:
             for s in self.comp_data[1]:
                 f.write(s + "\n")
             

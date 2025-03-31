@@ -91,7 +91,6 @@ class Launcher:
 
     
     def launch(self):
-        print(self.files)
         for fname in self.files:
             txt = ""
             fname_to_be = ""
@@ -153,19 +152,20 @@ class Launcher:
                 fname_short = fname_to_be[:-4]
 
                 self.compare_tokens(fname_short)
-                self.compare_morph()
+                self.compare_morph(fname_short)
                 self.compare_lemma()
                 self.compare_pos()
                 self.compare_dep()
                 self.compare_ner()
             except Exception as e:
+                print("ERROR:")
                 print(e)
 
 
 
             
 
-    def compare_tokens(self, fname_to_be):
+    def compare_tokens(self, fname_short):
         if(self.tok_comp):
             token_comparator = Token_comparator(self.huspacy, self.emagyar)
             comp_data = token_comparator.compare()
@@ -183,20 +183,38 @@ class Launcher:
                     print(f"Hiba a mappa létrehozásakor: {e} \nSegítség: próbálja meg manuálisan létrehozni megfelelő jogosultsággal!")
                     sys.exit()
             
-                with open(f"eredmenyek/csv/{fname_to_be}_tok.csv", "w") as csvfile:
+                with open(f"eredmenyek/csv/{fname_short}_tok.csv", "w") as csvfile:
                     pass                                                        #creating empty file
             
-                printer.print_to_csv(comp_data, fname_to_be)
+                printer.print_to_csv(comp_data, fname_short, "tok")
 
             
 
 
-    def compare_morph(self):
+    def compare_morph(self, fname_short):
         if(self.morph_comp):
             morph_comparator = Morph_comparator(self.huspacy, self.emagyar)
-            morph_comparator.compare()
+            comp_data = morph_comparator.compare()
 
+            printer = Printer(comp_data)
+            printer.print_normal()
+
+
+            if(self.csv):
+                try:
+                    os.makedirs("eredmenyek/csv")
+                except FileExistsError:
+                    pass
+                except Exception as e:
+                    print(f"Hiba a mappa létrehozásakor: {e} \nSegítség: próbálja meg manuálisan létrehozni megfelelő jogosultsággal!")
+                    sys.exit()
             
+                with open(f"eredmenyek/csv/{fname_short}_morph.csv", "w") as csvfile:
+                    pass                                                        #creating empty file
+            
+                printer.print_to_csv(comp_data, fname_short, "morph")
+
+
 
     def compare_lemma(self):
         if(self.lem_comp):
