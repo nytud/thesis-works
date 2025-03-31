@@ -153,7 +153,7 @@ class Launcher:
 
                 self.compare_tokens(fname_short)
                 self.compare_morph(fname_short)
-                self.compare_lemma()
+                self.compare_lemma(fname_short)
                 self.compare_pos()
                 self.compare_dep()
                 self.compare_ner()
@@ -216,10 +216,29 @@ class Launcher:
 
 
 
-    def compare_lemma(self):
+    def compare_lemma(self, fname_short):
         if(self.lem_comp):
             lemma_comparator = Lemma_comparator(self.huspacy, self.emagyar)
-            lemma_comparator.compare()
+            comp_data = lemma_comparator.compare()
+
+            printer = Printer(comp_data)
+            printer.print_normal()
+
+
+            if(self.csv):
+                try:
+                    os.makedirs("eredmenyek/csv")
+                except FileExistsError:
+                    pass
+                except Exception as e:
+                    print(f"Hiba a mappa létrehozásakor: {e} \nSegítség: próbálja meg manuálisan létrehozni megfelelő jogosultsággal!")
+                    sys.exit()
+            
+                with open(f"eredmenyek/csv/{fname_short}_lem.csv", "w") as csvfile:
+                    pass                                                        #creating empty file
+            
+                printer.print_to_csv(comp_data, fname_short, "lem")
+
 
     def compare_pos(self):
         if(self.pos_comp):
