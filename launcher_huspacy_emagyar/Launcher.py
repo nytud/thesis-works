@@ -149,7 +149,10 @@ class Launcher:
                     if(self.outh):
                         self.huspacy.print(fname_to_be)
 
-                self.compare_tokens(fname_to_be)
+
+                fname_short = fname_to_be[:-4]
+
+                self.compare_tokens(fname_short)
                 self.compare_morph()
                 self.compare_lemma()
                 self.compare_pos()
@@ -166,9 +169,10 @@ class Launcher:
         if(self.tok_comp):
             token_comparator = Token_comparator(self.huspacy, self.emagyar)
             comp_data = token_comparator.compare()
-            #print(comp_data)
+
             printer = Printer(comp_data)
             printer.print_normal()
+
 
             if(self.csv):
                 try:
@@ -191,6 +195,8 @@ class Launcher:
         if(self.morph_comp):
             morph_comparator = Morph_comparator(self.huspacy, self.emagyar)
             morph_comparator.compare()
+
+            
 
     def compare_lemma(self):
         if(self.lem_comp):
