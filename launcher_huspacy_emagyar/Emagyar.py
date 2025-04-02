@@ -17,7 +17,7 @@ class Emagyar:
         self.only_ner = list([])
 
     def run(self, fname, txt):
-        #run emagyar through docker
+        """#run emagyar through docker
         succ = False
         try:
             client = docker.from_env()
@@ -54,7 +54,7 @@ class Emagyar:
                         tar.extractall("eredmenyek/emagyar")
 
                 else:
-                    raise Exception("Sikertelen az elemzés lefuttatása")
+                    raise Exception(f"Sikertelen az elemzés lefuttatása {result.exit_code}")
             else:
                 raise Exception("Sikertelen fájlátvitel, nem történt meg az elemzés")
         except Exception as e:
@@ -62,17 +62,21 @@ class Emagyar:
         finally:
             #cleaning up the container
             container.stop()
-            print("konténer leállítva")
+            #print("konténer leállítva")
             container.remove()
-            print("konténer eltávolítva")
+            #print("konténer eltávolítva")
 
         if(succ):
-            self.__makelists(fname)
+            self.__makelists(fname)"""
+
+        
+        self.__makelists(fname)
 
 
     def print(self, fname):
         with open(f"eredmenyek/emagyar/ana_emagyar_{fname}", "r") as f:
-            print(f.read())
+            #print(f.read())
+            pass
 
     def __makelists(self, fname):
         #emagyar gave us the results in its own format -> we have to process and transform it to work with it like we would with huspacy

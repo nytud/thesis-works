@@ -68,5 +68,6 @@ class Huspacy:
 
     def print(self, fname):
         with open(f"eredmenyek/huspacy/ana_huspacy_{fname}", 'r') as f:
-            print(f.read())
+            #print(f.read())
+            pass
         

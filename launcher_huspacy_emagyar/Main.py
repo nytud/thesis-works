@@ -2,14 +2,15 @@ import sys
 
 from Launcher import Launcher
 
+class Main():
 
-def main():
-    launcher = Launcher(sys.argv[1:])
-    print("Launcher indul")
+    def __init__(self):
+        self.launcher = Launcher(sys.argv[1:])
+        #print("Launcher indul")
 
-    launcher.launch()
+    def launch(self):
+        self.launcher.launch()
     
 
-if __name__ == "__main__":
-    main()
- 
+#main = Main()
+#main.launch()
