@@ -1,4 +1,5 @@
 import customtkinter
+import tkinter
 
 from Main import Main
 
@@ -10,7 +11,7 @@ class App(customtkinter.CTk):
 
         self.title("Launcher_huspacy_emagyar")
 
-        self.args = ["./ezegyteszt.txt"]
+        self.args = []
 
         self.button = customtkinter.CTkButton(self, text="Elemzés indítása", command=self.button_launch)
         self.button.grid(row=0, column=0, padx=20, pady=20)
@@ -20,6 +21,9 @@ class App(customtkinter.CTk):
 
         self.frame_checkbox = customtkinter.CTkFrame(self)
         self.frame_checkbox.grid(row=0, rowspan=2, column=1, padx=20, pady=20)
+
+        self.button_filepicker = customtkinter.CTkButton(self.frame_checkbox, text="Fájl kiválasztása", command=self.file_open)
+        self.button_filepicker.grid(row=0, column=1, padx=20, pady=20)
 
         self.checkbox_huspacy = customtkinter.CTkCheckBox(self.frame_checkbox, text="HuSpaCy", command=self.huspacy)
         self.checkbox_huspacy.grid(row=1, column=0, padx=20, pady=20, sticky="w")
@@ -81,6 +85,11 @@ class App(customtkinter.CTk):
 
     def ner(self):
         self.args.append("-ner")
+
+    def file_open(self):
+        fnames = tkinter.filedialog.askopenfilenames(filetypes=[("Szövegfájl", "*.txt")])
+        for f in list(fnames):
+            self.args.append(f)
 
     def create_table(self):
         whole_frame = customtkinter.CTkScrollableFrame(self, width=1200, height=350)
