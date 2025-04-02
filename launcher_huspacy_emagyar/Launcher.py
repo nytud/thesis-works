@@ -229,7 +229,7 @@ class Launcher:
             comp_data = lemma_comparator.compare()
 
             printer = Printer(comp_data)
-            #printer.print_normal()
+            self.lem_res = printer.print_normal()
 
 
             if(self.csv):
@@ -253,7 +253,7 @@ class Launcher:
             comp_data = pos_comparator.compare()
 
             printer = Printer(comp_data)
-            #printer.print_normal()
+            self.pos_res = printer.print_normal()
 
 
             if(self.csv):
@@ -278,7 +278,7 @@ class Launcher:
             comp_data = dep_comparator.compare()
 
             printer = Printer(comp_data)
-            #printer.print_normal()
+            self.dep_res = printer.print_normal()
 
 
             if(self.csv):
@@ -302,7 +302,7 @@ class Launcher:
             comp_data = ner_comparator.compare()
 
             printer = Printer(comp_data)
-            #printer.print_normal()
+            self.ner_res = printer.print_normal()
 
 
             if(self.csv):
