@@ -17,12 +17,31 @@ class App(customtkinter.CTk):
         self.label_launcher_state.grid(row=1, column=0, padx=20, pady=20)
 
         self.frame_checkbox = customtkinter.CTkFrame(self)
-        self.frame_checkbox.grid(row=2, padx=20, pady=20)
+        self.frame_checkbox.grid(row=0, rowspan=2, column=1, padx=20, pady=20)
+
+        self.checkbox_huspacy = customtkinter.CTkCheckBox(self.frame_checkbox, text="HuSpaCy")
+        self.checkbox_huspacy.grid(row=1, column=0, padx=20, pady=20, sticky="w")
+
+        self.checkbox_emagyar = customtkinter.CTkCheckBox(self.frame_checkbox, text="e-magyar")
+        self.checkbox_emagyar.grid(row=1, column=1, padx=20, pady=20, sticky="w")
 
         self.checkbox_tok = customtkinter.CTkCheckBox(self.frame_checkbox, text="Tokenizálás")
-        self.checkbox_tok.grid(row=1, column=0, padx=20, pady=20)
+        self.checkbox_tok.grid(row=2, column=0, padx=20, pady=20, sticky="w")
 
+        self.checkbox_morph = customtkinter.CTkCheckBox(self.frame_checkbox, text="Morfológia")
+        self.checkbox_morph.grid(row=2, column=1, padx=20, pady=20, sticky="w")
 
+        self.checkbox_lem = customtkinter.CTkCheckBox(self.frame_checkbox, text="Lemmatizálás")
+        self.checkbox_lem.grid(row=2, column=2, padx=20, pady=20, sticky="w")
+
+        self.checkbox_pos = customtkinter.CTkCheckBox(self.frame_checkbox, text="Szófaji elemzés")
+        self.checkbox_pos.grid(row=3, column=0, padx=20, pady=20, sticky="w")
+
+        self.checkbox_dep = customtkinter.CTkCheckBox(self.frame_checkbox, text="Függőségi elemzés")
+        self.checkbox_dep.grid(row=3, column=1, padx=20, pady=20, sticky="w")
+
+        self.checkbox_ner = customtkinter.CTkCheckBox(self.frame_checkbox, text="Névelem-felismerés")
+        self.checkbox_ner.grid(row=3, column=2, padx=20, pady=20, sticky="w")
         
 
         self.table = []
@@ -37,8 +56,8 @@ class App(customtkinter.CTk):
         self.create_table()
 
     def create_table(self):
-        whole_frame = customtkinter.CTkScrollableFrame(self, width=1200, height=500)
-        whole_frame.grid(row=2, column=0, padx=10, pady=30, sticky="ew")
+        whole_frame = customtkinter.CTkScrollableFrame(self, width=1200, height=350)
+        whole_frame.grid(row=4, column=0, columnspan=2, padx=10, pady=30, sticky="ew")
 
         tok_frame = customtkinter.CTkScrollableFrame(whole_frame, width=100, orientation="horizontal")
         tok_frame.grid(row=0, column=0, padx=10, pady=10, sticky="ew")
@@ -48,6 +67,8 @@ class App(customtkinter.CTk):
         tok_title_label.grid(row=0, padx=10, pady=10, sticky="ew", columnspan=len(self.tok_table[4]))
         row = 1
         for t in self.tok_table:
+            h = tok_frame.cget("height")
+            tok_frame.configure(height=h + 10)
             col = 0
             for cell in t:
                 label = customtkinter.CTkLabel(tok_frame, text=cell)
@@ -62,6 +83,8 @@ class App(customtkinter.CTk):
         morph_title_label.grid(row=0, padx=10, pady=10, sticky="ew", columnspan=len(self.morph_table[4]))
         row = 1
         for t in self.morph_table:
+            h = morph_frame.cget("height")
+            morph_frame.configure(height=h + 10)
             col = 0
             for cell in t:
                 label = customtkinter.CTkLabel(morph_frame, text=cell)
@@ -76,6 +99,8 @@ class App(customtkinter.CTk):
         lem_title_label.grid(row=0, padx=10, pady=10, sticky="ew", columnspan=len(self.lem_table[4]))
         row = 1
         for t in self.lem_table:
+            h = lem_frame.cget("height")
+            lem_frame.configure(height=h + 10)
             col = 0
             for cell in t:
                 label = customtkinter.CTkLabel(lem_frame, text=cell)
@@ -90,6 +115,8 @@ class App(customtkinter.CTk):
         pos_title_label.grid(row=0, padx=10, pady=10, sticky="ew", columnspan=len(self.pos_table[4]))
         row = 1
         for t in self.pos_table:
+            h = pos_frame.cget("height")
+            pos_frame.configure(height=h + 10)
             col = 0
             for cell in t:
                 label = customtkinter.CTkLabel(pos_frame, text=cell)
@@ -104,6 +131,8 @@ class App(customtkinter.CTk):
         dep_title_label.grid(row=0, padx=10, pady=10, sticky="ew", columnspan=len(self.dep_table[4]))
         row = 1
         for t in self.dep_table:
+            h = dep_frame.cget("height")
+            dep_frame.configure(height=h + 10)
             col = 0
             for cell in t:
                 label = customtkinter.CTkLabel(dep_frame, text=cell)
@@ -118,6 +147,8 @@ class App(customtkinter.CTk):
         ner_title_label.grid(row=0, padx=10, pady=10, sticky="ew", columnspan=len(self.ner_table[4]))
         row = 1
         for t in self.ner_table:
+            h = ner_frame.cget("height")
+            ner_frame.configure(height=h + 10)
             col = 0
             for cell in t:
                 label = customtkinter.CTkLabel(ner_frame, text=cell)
