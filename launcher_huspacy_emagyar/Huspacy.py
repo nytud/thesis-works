@@ -31,7 +31,7 @@ class Huspacy:
 
         try:
             with open(f"eredmenyek/huspacy/ana_huspacy_{fname}", 'w') as f:
-                f.write("token\tem_tag\tud_morph\tlemma\tem_lemma\tud_tag\tpos\ttag\tdep\thead\tent_iob\tent_type")
+                f.write("token\tem_tag\tud_morph\tlemma\tem_lemma\tud_tag\tpos\ttag\tdep\thead\tent_iob\tent_type\n")
                 for token in doc:
                     if not token.is_space: #leave out analysis for whitespace tokens
                         #write into result file
@@ -67,7 +67,10 @@ class Huspacy:
             raise Exception(f"Hiba a HuSpaCy nyers elemzési fájljának összeállításakor: {e}")
 
     def print(self, fname):
+        ret = []
         with open(f"eredmenyek/huspacy/ana_huspacy_{fname}", 'r') as f:
-            #print(f.read())
-            pass
+            for line in f.readlines():
+                ret.append(line.split("\t"))
+        return ret
+            
         

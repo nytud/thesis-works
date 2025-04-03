@@ -36,6 +36,8 @@ class Launcher:
         self.pos_res = []
         self.dep_res = []
         self.ner_res = []
+        self.outh_print = []
+        self.oute_print = []
 
         if("-emagyar" in list(args)):
             self.is_emagyar = True
@@ -142,8 +144,7 @@ class Launcher:
                     self.emagyar.run(fname_to_be, txt)
 
                     if(self.oute):
-                        pass
-                        #self.emagyar.print(fname_to_be)
+                        self.oute_print = self.emagyar.print(fname_to_be)
                 
                 if(self.is_huspacy):
                     #print("huspacy indul")
@@ -154,8 +155,7 @@ class Launcher:
                     self.huspacy.run(fname_to_be, txt)
 
                     if(self.outh):
-                        pass
-                        #self.huspacy.print(fname_to_be)
+                        self.outh_print = self.huspacy.print(fname_to_be)
 
 
                 fname_short = fname_to_be[:-4]
