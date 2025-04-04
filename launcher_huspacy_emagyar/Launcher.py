@@ -28,6 +28,7 @@ class Launcher:
         self.pos_comp = False
         self.dep_comp = False
         self.csv = False
+        self.nongraphic = False
     
 
         self.tok_res = []
@@ -71,6 +72,9 @@ class Launcher:
 
         if("-csv" in list(args)):
             self.csv = True
+
+        if("-nongraphic" in list(args)):
+            self.nongraphic = True
         
 
 
@@ -89,7 +93,8 @@ class Launcher:
                 or a == "-ner"
                 or a == "-pos"
                 or a == "-dep"
-                or a == "-csv"):
+                or a == "-csv"
+                or a == "-nongraphic"):
                 pass
             else:
                 sys.exit("Hiba: ismeretlen argumentum: " + a[0:])
@@ -108,14 +113,18 @@ class Launcher:
                 fname_to_be = fname.split('/')[-1]
                 txt = file.read()
 
-            #print(f"Elemzendo szoveg: \n {txt}\n\n")
+            if(self.nongraphic):
+                print(f"Elemzendo szoveg: \n {txt}\n\n")
 
             try:
                 os.mkdir("eredmenyek")
             except FileExistsError:
                 pass
             except Exception as e:
-                #print(f"Hiba a mappa létrehozásakor: {e}\nSegítség: próbálja meg manuálisan létrehozni megfelelő jogosultsággal!")
+                if(self.nongraphic):
+                    print(f"Hiba a mappa létrehozásakor: {e}\nSegítség: próbálja meg manuálisan létrehozni megfelelő jogosultsággal!")
+                else:
+                    raise Exception(f"Hiba a mappa létrehozásakor: {e}\nSegítség: próbálja meg manuálisan létrehozni megfelelő jogosultsággal!")
                 sys.exit()
 
             try:
@@ -123,7 +132,10 @@ class Launcher:
             except FileExistsError:
                 pass
             except Exception as e:
-                #print(f"Hiba a mappa létrehozásakor: {e}\nSegítség: próbálja meg manuálisan létrehozni megfelelő jogosultsággal!")
+                if(self.nongraphic):
+                    print(f"Hiba a mappa létrehozásakor: {e}\nSegítség: próbálja meg manuálisan létrehozni megfelelő jogosultsággal!")
+                else:
+                    raise Exception(f"Hiba a mappa létrehozásakor: {e}\nSegítség: próbálja meg manuálisan létrehozni megfelelő jogosultsággal!")
                 sys.exit()
 
             try:
@@ -131,27 +143,34 @@ class Launcher:
             except FileExistsError:
                 pass
             except Exception as e:
-                #print(f"Hiba a mappa létrehozásakor: {e}\nSegítség: próbálja meg manuálisan létrehozni megfelelő jogosultsággal!")
+                if(self.nongraphic):
+                    print(f"Hiba a mappa létrehozásakor: {e}\nSegítség: próbálja meg manuálisan létrehozni megfelelő jogosultsággal!")
+                else:
+                    raise Exception(f"Hiba a mappa létrehozásakor: {e}\nSegítség: próbálja meg manuálisan létrehozni megfelelő jogosultsággal!")
                 sys.exit()
 
             try:
                 if(self.is_emagyar):
-                    #print("e-magyar indul")
-                    #(coldb, rowdb) = os.get_terminal_size()
-                    #for i in range(coldb):
-                        #print(".", end="")
-                    #print("\n")
+                    if(self.nongraphic):
+                        print("e-magyar indul")
+                        (coldb, rowdb) = os.get_terminal_size()
+                        for i in range(coldb):
+                            print(".", end="")
+                        print("\n")
+
                     self.emagyar.run(fname_to_be, txt)
 
                     if(self.oute):
                         self.oute_print = self.emagyar.print(fname_to_be)
                 
                 if(self.is_huspacy):
-                    #print("huspacy indul")
-                    #(coldb, rowdb) = os.get_terminal_size()
-                    #for i in range(coldb):
-                    #    print(".", end="")
-                    #print("\n")
+                    if(self.nongraphic):
+                        print("huspacy indul")
+                        (coldb, rowdb) = os.get_terminal_size()
+                        for i in range(coldb):
+                            print(".", end="")
+                        print("\n")
+
                     self.huspacy.run(fname_to_be, txt)
 
                     if(self.outh):
@@ -167,9 +186,11 @@ class Launcher:
                 self.compare_dep(fname_short)
                 self.compare_ner(fname_short)
             except Exception as e:
-                raise Exception(e)
-                #print("ERROR:")
-                #print(e)    
+                if(self.nongraphic):
+                    print("ERROR:")
+                    print(e)   
+                else:
+                    raise Exception(e)
             
 
     def compare_tokens(self, fname_short):
@@ -179,6 +200,8 @@ class Launcher:
 
             printer = Printer(comp_data)
             self.tok_res = printer.print_normal()
+            if(self.nongraphic):
+                printer.print_nongraphic()
 
 
             if(self.csv):
@@ -187,7 +210,10 @@ class Launcher:
                 except FileExistsError:
                     pass
                 except Exception as e:
-                    #print(f"Hiba a mappa létrehozásakor: {e} \nSegítség: próbálja meg manuálisan létrehozni megfelelő jogosultsággal!")
+                    if(self.nongraphic):
+                        print(f"Hiba a mappa létrehozásakor: {e} \nSegítség: próbálja meg manuálisan létrehozni megfelelő jogosultsággal!")
+                    else:
+                        raise Exception(f"Hiba a mappa létrehozásakor: {e} \nSegítség: próbálja meg manuálisan létrehozni megfelelő jogosultsággal!")
                     sys.exit()
             
                 with open(f"eredmenyek/csv/{fname_short}_tok.csv", "w") as csvfile:
@@ -213,7 +239,10 @@ class Launcher:
                 except FileExistsError:
                     pass
                 except Exception as e:
-                    #print(f"Hiba a mappa létrehozásakor: {e} \nSegítség: próbálja meg manuálisan létrehozni megfelelő jogosultsággal!")
+                    if(self.nongraphic):
+                        print(f"Hiba a mappa létrehozásakor: {e} \nSegítség: próbálja meg manuálisan létrehozni megfelelő jogosultsággal!")
+                    else:
+                        raise Exception(f"Hiba a mappa létrehozásakor: {e} \nSegítség: próbálja meg manuálisan létrehozni megfelelő jogosultsággal!")
                     sys.exit()
             
                 with open(f"eredmenyek/csv/{fname_short}_morph.csv", "w") as csvfile:
@@ -238,7 +267,10 @@ class Launcher:
                 except FileExistsError:
                     pass
                 except Exception as e:
-                    #print(f"Hiba a mappa létrehozásakor: {e} \nSegítség: próbálja meg manuálisan létrehozni megfelelő jogosultsággal!")
+                    if(self.nongraphic):
+                        print(f"Hiba a mappa létrehozásakor: {e} \nSegítség: próbálja meg manuálisan létrehozni megfelelő jogosultsággal!")
+                    else:
+                        raise Exception(f"Hiba a mappa létrehozásakor: {e} \nSegítség: próbálja meg manuálisan létrehozni megfelelő jogosultsággal!")
                     sys.exit()
             
                 with open(f"eredmenyek/csv/{fname_short}_lem.csv", "w") as csvfile:
@@ -262,7 +294,10 @@ class Launcher:
                 except FileExistsError:
                     pass
                 except Exception as e:
-                    #print(f"Hiba a mappa létrehozásakor: {e} \nSegítség: próbálja meg manuálisan létrehozni megfelelő jogosultsággal!")
+                    if(self.nongraphic):
+                        print(f"Hiba a mappa létrehozásakor: {e} \nSegítség: próbálja meg manuálisan létrehozni megfelelő jogosultsággal!")
+                    else:
+                        raise Exception(f"Hiba a mappa létrehozásakor: {e} \nSegítség: próbálja meg manuálisan létrehozni megfelelő jogosultsággal!")
                     sys.exit()
             
                 with open(f"eredmenyek/csv/{fname_short}_pos.csv", "w") as csvfile:
@@ -287,7 +322,10 @@ class Launcher:
                 except FileExistsError:
                     pass
                 except Exception as e:
-                    #print(f"Hiba a mappa létrehozásakor: {e} \nSegítség: próbálja meg manuálisan létrehozni megfelelő jogosultsággal!")
+                    if(self.nongraphic):
+                        print(f"Hiba a mappa létrehozásakor: {e} \nSegítség: próbálja meg manuálisan létrehozni megfelelő jogosultsággal!")
+                    else:
+                        raise Exception(f"Hiba a mappa létrehozásakor: {e} \nSegítség: próbálja meg manuálisan létrehozni megfelelő jogosultsággal!")
                     sys.exit()
             
                 with open(f"eredmenyek/csv/{fname_short}_dep.csv", "w") as csvfile:
@@ -311,7 +349,10 @@ class Launcher:
                 except FileExistsError:
                     pass
                 except Exception as e:
-                    #print(f"Hiba a mappa létrehozásakor: {e} \nSegítség: próbálja meg manuálisan létrehozni megfelelő jogosultsággal!")
+                    if(self.nongraphic):
+                        print(f"Hiba a mappa létrehozásakor: {e} \nSegítség: próbálja meg manuálisan létrehozni megfelelő jogosultsággal!")
+                    else:
+                        raise Exception(f"Hiba a mappa létrehozásakor: {e} \nSegítség: próbálja meg manuálisan létrehozni megfelelő jogosultsággal!")
                     sys.exit()
             
                 with open(f"eredmenyek/csv/{fname_short}_ner.csv", "w") as csvfile:

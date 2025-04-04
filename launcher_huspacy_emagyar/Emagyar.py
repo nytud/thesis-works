@@ -62,9 +62,7 @@ class Emagyar:
         finally:
             #cleaning up the container
             container.stop()
-            #print("konténer leállítva")
             container.remove()
-            #print("konténer eltávolítva")
 
         if(succ):
             self.__makelists(fname)"""
