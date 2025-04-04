@@ -74,9 +74,12 @@ class Emagyar:
 
 
     def print(self, fname):
+        ret = []
         with open(f"eredmenyek/emagyar/ana_emagyar_{fname}", "r") as f:
-            #print(f.read())
-            pass
+            for line in f.readlines():
+                ret.append(line.split("\t"))
+        return ret
+            
 
     def __makelists(self, fname):
         #emagyar gave us the results in its own format -> we have to process and transform it to work with it like we would with huspacy
