@@ -99,12 +99,13 @@ class Launcher:
             else:
                 sys.exit("Hiba: ismeretlen argumentum: " + a[0:])
 
-        self.huspacy = Huspacy()
-        self.emagyar = Emagyar()
+        self.huspacy = None
+        self.emagyar = None
 
 
     
     def launch(self):
+
         for fname in self.files:
             txt = ""
             fname_to_be = ""
@@ -151,6 +152,7 @@ class Launcher:
 
             try:
                 if(self.is_emagyar):
+                    self.emagyar = Emagyar()
                     if(self.nongraphic):
                         print("e-magyar indul")
                         (coldb, rowdb) = os.get_terminal_size()
@@ -164,6 +166,7 @@ class Launcher:
                         self.oute_print = self.emagyar.print(fname_to_be)
                 
                 if(self.is_huspacy):
+                    self.huspacy = Huspacy()
                     if(self.nongraphic):
                         print("huspacy indul")
                         (coldb, rowdb) = os.get_terminal_size()

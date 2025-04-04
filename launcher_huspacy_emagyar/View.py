@@ -50,11 +50,11 @@ class App(customtkinter.CTk):
         self.checkbox_ner = customtkinter.CTkCheckBox(self.frame_checkbox, text="Névelem-felismerés", command=self.ner)
         self.checkbox_ner.grid(row=3, column=2, padx=20, pady=20, sticky="w")
 
-        self.checkbox_huspacy = customtkinter.CTkCheckBox(self.frame_checkbox, text="HuSpaCy nyers kimenete", command=self.outh)
-        self.checkbox_huspacy.grid(row=4, column=0, padx=20, pady=20, sticky="w")
+        self.checkbox_outh = customtkinter.CTkCheckBox(self.frame_checkbox, text="HuSpaCy nyers kimenete", command=self.outh)
+        self.checkbox_outh.grid(row=4, column=0, padx=20, pady=20, sticky="w")
 
-        self.checkbox_emagyar = customtkinter.CTkCheckBox(self.frame_checkbox, text="e-magyar nyers kimenete", command=self.oute)
-        self.checkbox_emagyar.grid(row=4, column=1, padx=20, pady=20, sticky="w")
+        self.checkbox_oute = customtkinter.CTkCheckBox(self.frame_checkbox, text="e-magyar nyers kimenete", command=self.oute)
+        self.checkbox_oute.grid(row=4, column=1, padx=20, pady=20, sticky="w")
         
         self.checkbox_csv = customtkinter.CTkCheckBox(self.frame_checkbox, text="Exportálás csv-be", command=self.csv)
         self.checkbox_csv.grid(row=4, column=2, padx=20, pady=20, sticky="w")
@@ -71,10 +71,26 @@ class App(customtkinter.CTk):
             app.update_idletasks()
             self.model.launch()
             self.label_launcher_state.configure(text="Elemzés kész")
-            self.button.configure(state="disabled")
+            #self.button.configure(state="disabled")
             self.create_table()
+            self.restart()
         except Exception as e:
             CTkMessagebox.CTkMessagebox(title="Hiba", message=str(e), icon="cancel")
+
+    def restart(self):
+        self.args = []
+        self.checkbox_huspacy.deselect()
+        self.checkbox_emagyar.deselect()
+        self.checkbox_tok.deselect()
+        self.checkbox_morph.deselect()
+        self.checkbox_lem.deselect()
+        self.checkbox_pos.deselect()
+        self.checkbox_dep.deselect()
+        self.checkbox_ner.deselect()
+        self.checkbox_outh.deselect()
+        self.checkbox_oute.deselect()
+        self.checkbox_csv.deselect()
+        app.update_idletasks()
         
 
     def huspacy(self):
@@ -132,7 +148,7 @@ class App(customtkinter.CTk):
             row = 1
             for t in self.outh_table:
                 h = outh_frame.cget("height")
-                outh_frame.configure(height=h + 10)
+                outh_frame.configure(height=h + 35)
                 col = 0
                 for cell in t:
                     label = customtkinter.CTkLabel(outh_frame, text=cell)
@@ -152,7 +168,7 @@ class App(customtkinter.CTk):
             row = 1
             for t in self.oute_table:
                 h = oute_frame.cget("height")
-                oute_frame.configure(height=h + 10)
+                oute_frame.configure(height=h + 35)
                 col = 0
                 for cell in t:
                     label = customtkinter.CTkLabel(oute_frame, text=cell)
@@ -169,11 +185,14 @@ class App(customtkinter.CTk):
                 tok_title_label = customtkinter.CTkLabel(tok_frame, text="Tokenizálás:", fg_color="#ed574c", font=("Arial", 20, "bold"), text_color="black")
                 
                 self.tok_table = self.model.launcher.tok_res
+                #debuglabel = customtkinter.CTkLabel(tok_frame, text=str(self.tok_table))
+                #debuglabel.grid()
+                
                 tok_title_label.grid(row=0, padx=10, pady=10, sticky="ew", columnspan=len(self.tok_table[4]))
                 row = 1
                 for t in self.tok_table:
                     h = tok_frame.cget("height")
-                    tok_frame.configure(height=h + 10)
+                    tok_frame.configure(height=h + 30)
                     col = 0
                     for cell in t:
                         label = customtkinter.CTkLabel(tok_frame, text=cell)
@@ -192,7 +211,7 @@ class App(customtkinter.CTk):
                 row = 1
                 for t in self.morph_table:
                     h = morph_frame.cget("height")
-                    morph_frame.configure(height=h + 10)
+                    morph_frame.configure(height=h + 30)
                     col = 0
                     for cell in t:
                         label = customtkinter.CTkLabel(morph_frame, text=cell)
@@ -211,7 +230,7 @@ class App(customtkinter.CTk):
                 row = 1
                 for t in self.lem_table:
                     h = lem_frame.cget("height")
-                    lem_frame.configure(height=h + 10)
+                    lem_frame.configure(height=h + 30)
                     col = 0
                     for cell in t:
                         label = customtkinter.CTkLabel(lem_frame, text=cell)
@@ -230,7 +249,7 @@ class App(customtkinter.CTk):
                 row = 1
                 for t in self.pos_table:
                     h = pos_frame.cget("height")
-                    pos_frame.configure(height=h + 10)
+                    pos_frame.configure(height=h + 30)
                     col = 0
                     for cell in t:
                         label = customtkinter.CTkLabel(pos_frame, text=cell)
@@ -249,7 +268,7 @@ class App(customtkinter.CTk):
                 row = 1
                 for t in self.dep_table:
                     h = dep_frame.cget("height")
-                    dep_frame.configure(height=h + 10)
+                    dep_frame.configure(height=h + 30)
                     col = 0
                     for cell in t:
                         label = customtkinter.CTkLabel(dep_frame, text=cell)
@@ -268,7 +287,7 @@ class App(customtkinter.CTk):
                 row = 1
                 for t in self.ner_table:
                     h = ner_frame.cget("height")
-                    ner_frame.configure(height=h + 10)
+                    ner_frame.configure(height=h + 30)
                     col = 0
                     for cell in t:
                         label = customtkinter.CTkLabel(ner_frame, text=cell)

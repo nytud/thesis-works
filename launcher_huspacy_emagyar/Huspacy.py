@@ -35,7 +35,7 @@ class Huspacy:
                 for token in doc:
                     if not token.is_space: #leave out analysis for whitespace tokens
                         #write into result file
-                        f.write(f"{token.text}\t{token._.em_tag}\t{token._.ud_morph}\t{token.lemma_}\t{token._.em_lemma}\t{token._.ud_tag}\t{token.pos_}\t{token.tag_}\t{token.dep_}\t{token.head}\t{token.ent_iob_}\t{token.ent_type_}\n")
+                        f.write(f"{token.text}\t{token._.em_tag}\t{token._.ud_morph}\t{token.lemma_}\t{token._.em_lemma}\t{token._.ud_tag}\t{token.pos_}\t{token.tag_}\t{token.dep_}\t{token.head}\t{token.ent_iob_}\t{token.ent_type_}")
 
                         #fill uo the stateholder lists
                         self.tok.append((token.text))
