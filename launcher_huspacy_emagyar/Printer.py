@@ -6,6 +6,12 @@ class Printer:
 
 
     def print_normal(self):
+        normal_split = [i.split("\t") for i in self.comp_data[0]]
+        return normal_split
+        
+
+
+    def print_nongraphic(self):
         (coldb, rowdb) = os.get_terminal_size()
 
         #metadata: fix indexes (0, 1, and 2)
@@ -29,6 +35,7 @@ class Printer:
                 print("\n")
                 print(s)
         
+
 
     def print_to_csv(self, comp_data, fname_to_be, level):
         with open(f"eredmenyek/csv/{fname_to_be}_{level}.csv", "a") as f:

@@ -31,11 +31,11 @@ class Huspacy:
 
         try:
             with open(f"eredmenyek/huspacy/ana_huspacy_{fname}", 'w') as f:
-                f.write("token\tem_tag\tud_morph\tlemma\tem_lemma\tud_tag\tpos\ttag\tdep\thead\tent_iob\tent_type")
+                f.write("token\tem_tag\tud_morph\tlemma\tem_lemma\tud_tag\tpos\ttag\tdep\thead\tent_iob\tent_type\n")
                 for token in doc:
                     if not token.is_space: #leave out analysis for whitespace tokens
                         #write into result file
-                        f.write(f"{token.text}\t{token._.em_tag}\t{token._.ud_morph}\t{token.lemma_}\t{token._.em_lemma}\t{token._.ud_tag}\t{token.pos_}\t{token.tag_}\t{token.dep_}\t{token.head}\t{token.ent_iob_}\t{token.ent_type_}\n")
+                        f.write(f"{token.text}\t{token._.em_tag}\t{token._.ud_morph}\t{token.lemma_}\t{token._.em_lemma}\t{token._.ud_tag}\t{token.pos_}\t{token.tag_}\t{token.dep_}\t{token.head}\t{token.ent_iob_}\t{token.ent_type_}")
 
                         #fill uo the stateholder lists
                         self.tok.append((token.text))
@@ -67,6 +67,10 @@ class Huspacy:
             raise Exception(f"Hiba a HuSpaCy nyers elemzési fájljának összeállításakor: {e}")
 
     def print(self, fname):
+        ret = []
         with open(f"eredmenyek/huspacy/ana_huspacy_{fname}", 'r') as f:
-            print(f.read())
+            for line in f.readlines():
+                ret.append(line.split("\t"))
+        return ret
+            
         
