@@ -51,6 +51,8 @@ class Comparator(ABC):
         k = 0
         #print(headline)
 
+        diffsolver = Diffsolver(self.huspacy, self.emagyar)
+
         while(j != len(huspacy.tok) and k != len(emagyar.tok)):
             #normal case: synchronous tokenization
             if(huspacy.tok[j][0] == emagyar.tok[k][0]):
@@ -62,19 +64,17 @@ class Comparator(ABC):
                 k = k + 1
                 #abnormal case: tokenization glitch - diffsolving required
             else:
+                
                 m = False #modified
                 for z in range(1,6):
                     if(m):
                         break
                     for v in range(1,6):
-                        
-                        diffsolver = Diffsolver(self.huspacy, self.emagyar, z, v, j, k, comp_data)
-                        j, k, m, comp_data = diffsolver.solve(self.str_to_print(j,k), self.diff_to_print_e(k), self.diff_to_print_h(j), self.csv_to_print(j,k), self.csv_diff_to_print_e(k), self.csv_diff_to_print_h(j))
+                        j, k, m, comp_data = diffsolver.solve(self.diff_to_print_e(k), self.diff_to_print_h(j), self.csv_diff_to_print_e(k), self.csv_diff_to_print_h(j), z, v, j, k, comp_data)
                         if(m):
                             break
                         
-                        diffsolver = Diffsolver(self.huspacy, self.emagyar, v, z, j, k, comp_data)
-                        j, k, m, comp_data = diffsolver.solve(self.str_to_print(j,k), self.diff_to_print_e(k), self.diff_to_print_h(j), self.csv_to_print(j,k), self.csv_diff_to_print_e(k), self.csv_diff_to_print_h(j))
+                        j, k, m, comp_data = diffsolver.solve(self.diff_to_print_e(k), self.diff_to_print_h(j), self.csv_diff_to_print_e(k), self.csv_diff_to_print_h(j), v, z, j, k, comp_data)
                         if(m):
                             break
                 if(m):
