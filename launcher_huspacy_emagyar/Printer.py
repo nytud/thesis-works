@@ -1,7 +1,7 @@
 import os
 
 class Printer:
-    def __init__(self, comp_data):
+    def __init__(self, comp_data=None):
         self.comp_data = comp_data
 
 
@@ -45,6 +45,16 @@ class Printer:
             with open(f"eredmenyek/csv/{fname_to_be}_onlyner.csv", "a") as f:
                 for s in self.comp_data[3]:
                     f.write(f"{s}\n")
+
+
+    def print_outh_nongraphic(self, fname):
+        with open(f"eredmenyek/huspacy/ana_huspacy_{fname}", 'r') as f:
+            print(f.read())
+
+    def print_oute_nongraphic(self, fname):
+        with open(f"eredmenyek/emagyar/ana_emagyar_{fname}", 'r') as f:
+            print(f.read())
+
             
             
 

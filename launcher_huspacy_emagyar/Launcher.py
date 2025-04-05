@@ -164,6 +164,9 @@ class Launcher:
 
                     if(self.oute):
                         self.oute_print = self.emagyar.print(fname_to_be)
+                        if(self.nongraphic):
+                            printer = Printer()
+                            printer.print_oute_nongraphic(fname_to_be)
                 
                 if(self.is_huspacy):
                     self.huspacy = Huspacy()
@@ -178,6 +181,9 @@ class Launcher:
 
                     if(self.outh):
                         self.outh_print = self.huspacy.print(fname_to_be)
+                        if(self.nongraphic):
+                            printer = Printer()
+                            printer.print_outh_nongraphic(fname_to_be)
 
 
                 fname_short = fname_to_be[:-4]
@@ -234,6 +240,8 @@ class Launcher:
 
             printer = Printer(comp_data)
             self.morph_res = printer.print_normal()
+            if(self.nongraphic):
+                printer.print_nongraphic()
 
 
             if(self.csv):
@@ -262,6 +270,8 @@ class Launcher:
 
             printer = Printer(comp_data)
             self.lem_res = printer.print_normal()
+            if(self.nongraphic):
+                printer.print_nongraphic()
 
 
             if(self.csv):
@@ -289,6 +299,8 @@ class Launcher:
 
             printer = Printer(comp_data)
             self.pos_res = printer.print_normal()
+            if(self.nongraphic):
+                printer.print_nongraphic()
 
 
             if(self.csv):
@@ -317,6 +329,8 @@ class Launcher:
 
             printer = Printer(comp_data)
             self.dep_res = printer.print_normal()
+            if(self.nongraphic):
+                printer.print_nongraphic()
 
 
             if(self.csv):
@@ -344,6 +358,8 @@ class Launcher:
 
             printer = Printer(comp_data)
             self.ner_res = printer.print_normal()
+            if(self.nongraphic):
+                printer.print_nongraphic()
 
 
             if(self.csv):
