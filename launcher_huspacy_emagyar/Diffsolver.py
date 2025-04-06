@@ -13,9 +13,9 @@ class Diffsolver:
 
     def solve(self, diff_to_print_e, diff_to_print_h, csv_diff_to_print_e, csv_diff_to_print_h, jj, kk, j, k, comp_data):
         modified = False
+       
         if(k+kk < len(self.emagyar.tok) and j+jj < len(self.huspacy.tok)): #prevent index error
             if(k != len(self.emagyar.tok)-kk and j != len(self.huspacy.tok)-jj and  self.huspacy.tok[j+jj] == self.emagyar.tok[k+kk]): #found the next match
-                
                 if(kk > jj): #emagyar shift was greater -> huspacy is ahead -> emagyar remains are to be printed
                     for i in range (0, kk-jj):
                         dtp = diff_to_print_e.replace("_tok_", self.emagyar.tok[k])
@@ -55,7 +55,6 @@ class Diffsolver:
                         dtp = dtp.replace("_ner_", self.huspacy.ner[j])
                         comp_data[0].append("huspacy\t" + dtp)
                         
-                        
 
                         dtp_csv = csv_diff_to_print_e.replace("_tok_", self.emagyar.tok[k])
                         dtp_csv = dtp.replace("_morph_", self.emagyar.morph[k])
@@ -72,5 +71,5 @@ class Diffsolver:
                 
                 modified = True #means: the diffsolving is done, the original print has been modified accordingly
                 #False only when diffsolver was called with wrong shift combination
-
+                
         return j, k, modified, comp_data

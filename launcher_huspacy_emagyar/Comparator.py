@@ -45,39 +45,47 @@ class Comparator(ABC):
         comp_data[0].append(headline)
         comp_data[1].append(headline)
 
-        
-
         j = 0
         k = 0
         #print(headline)
 
         diffsolver = Diffsolver(self.huspacy, self.emagyar)
-
         while(j != len(huspacy.tok) and k != len(emagyar.tok)):
             #normal case: synchronous tokenization
-            if(huspacy.tok[j][0] == emagyar.tok[k][0]):
+            if(huspacy.tok[j] == emagyar.tok[k]):
                 comp_data[0].append(self.str_to_print(j,k))
                 comp_data[1].append(self.csv_to_print(j,k))
-                
                 
                 j = j + 1
                 k = k + 1
                 #abnormal case: tokenization glitch - diffsolving required
             else:
-                
+                #append the false, differing tokens
+                comp_data[0].append(self.str_to_print(j,k))
+                comp_data[1].append(self.csv_to_print(j,k))
+                #must step one because we want to handle the remains AFTER the differing ones
+                j = j + 1
+                k = k + 1
+
                 m = False #modified
-                for z in range(1,6):
+                for z in range(0,6):
                     if(m):
-                        break
-                    for v in range(1,6):
+                        break #from z-for; because right z and v just have been found in the previous z-iteration
+
+                    for v in range(0,6):
                         j, k, m, comp_data = diffsolver.solve(self.diff_to_print_e(k), self.diff_to_print_h(j), self.csv_diff_to_print_e(k), self.csv_diff_to_print_h(j), z, v, j, k, comp_data)
+                        
                         if(m):
-                            break
+                            break #from v-for; because rigth z and v just have been found in the previous v-iteration
                         
                         j, k, m, comp_data = diffsolver.solve(self.diff_to_print_e(k), self.diff_to_print_h(j), self.csv_diff_to_print_e(k), self.csv_diff_to_print_h(j), v, z, j, k, comp_data)
+                        
                         if(m):
-                            break
+                            break #from v-for; because rigth z and v just have been found in the previous v-iteration
+
+                        #NOTE: solve has to be called twice to ensure it finds the optimal shifts
                 if(m):
+                    #move on to the next j and k in while
                     continue
 
 
@@ -86,7 +94,7 @@ class Comparator(ABC):
                 
                 j = j + 1
                 k = k + 1
-        
+
                 break
 
         #print the remains
