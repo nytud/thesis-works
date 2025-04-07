@@ -17,7 +17,7 @@ class Emagyar:
         self.only_ner = list([])
 
     def run(self, fname, txt):
-        """#run emagyar through docker
+        #run emagyar through docker
         succ = False
         try:
             client = docker.from_env()
@@ -65,10 +65,10 @@ class Emagyar:
             container.remove()
 
         if(succ):
-            self.__makelists(fname)"""
+            self.__makelists(fname)
 
         
-        self.__makelists(fname)
+        #self.__makelists(fname)
 
 
     def print(self, fname):

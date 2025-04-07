@@ -89,9 +89,10 @@ class Comparator(ABC):
                     continue
 
 
-                comp_data[0].append(self.str_to_print(j,k))
-                comp_data[1].append(self.csv_to_print(j,k))
-                
+                if(j != len(huspacy.tok) and k != len(emagyar.tok)):
+                    comp_data[0].append(self.str_to_print(j,k))
+                    comp_data[1].append(self.csv_to_print(j,k))
+                    
                 j = j + 1
                 k = k + 1
 
@@ -99,12 +100,12 @@ class Comparator(ABC):
 
         #print the remains
         if(j != len(huspacy.tok)):
-            comp_data.append("huspacy maradek token: ")
-            comp_data.append(huspacy.tok[j:])
+            comp_data[0].append("huspacy maradek token: ")
+            comp_data[0] += huspacy.tok[j:]
             
         if(k != len(emagyar.tok)):
             comp_data[0].append("emagyar maradek token: ")
-            comp_data[0].append(emagyar.tok[k:])
+            comp_data[0] += emagyar.tok[k:]
 
 
         return comp_data

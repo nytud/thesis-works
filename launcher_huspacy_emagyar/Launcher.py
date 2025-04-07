@@ -200,6 +200,8 @@ class Launcher:
                     print(e)   
                 else:
                     raise Exception(e)
+                
+
             
 
     def compare_tokens(self, fname_short):
