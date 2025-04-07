@@ -26,4 +26,4 @@ class Dep_comparator(Comparator):
         return f'"","|_dep_|","converted as: |_depconv_|","|_head_|","","","|_tok_|"'
 
     def compare(self):
-        return super().compare(self.huspacy, self.emagyar, "huspacy dep (original) \t huspacy huspacy dep (converted) \t huspacy head \t emagyar dep \t emagyar head")
+        return super().compare(self.huspacy, self.emagyar, "összehasonlítás (dep) \t összehasonlítás (fej) \t huspacy dep (original) \t huspacy huspacy dep (converted) \t huspacy head \t emagyar dep \t emagyar head")

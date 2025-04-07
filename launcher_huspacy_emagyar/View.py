@@ -193,19 +193,28 @@ class App(customtkinter.CTk):
                     
                     tok_frame = customtkinter.CTkScrollableFrame(whole_frame, width=1200, orientation="horizontal")
                     tok_frame.grid(row=table_row, column=0, padx=10, pady=10, sticky="ew")
-                    tok_title_label = customtkinter.CTkLabel(tok_frame, text="Tokenizálás:", fg_color="#ed574c", font=("Arial", 20, "bold"), text_color="black")
-                    
-                    
-                    
+                    tok_title_label = customtkinter.CTkLabel(tok_frame, text="Tokenizálás:", fg_color="#ed574c", font=("Arial", 20, "bold"), text_color="black")                   
                     tok_title_label.grid(row=0, padx=10, pady=10, sticky="ew", columnspan=len(tok_table[4]))
                     row = 1
                     for t in tok_table:
                         h = tok_frame.cget("height")
                         tok_frame.configure(height=h + 30)
                         col = 0
-                        for cell in t:
-                            label = customtkinter.CTkLabel(tok_frame, text=cell)
+
+                        if t[0] == "True":
+                            label = customtkinter.CTkLabel(tok_frame, text=t[0], font=("Arial", 12, "bold"), text_color="green")
                             label.grid(row=row, column=col, padx=20, pady=1)
+                        elif t[0] == "False":
+                            label = customtkinter.CTkLabel(tok_frame, text=t[0], font=("Arial", 12, "bold"), text_color="red")
+                            label.grid(row=row, column=col, padx=20, pady=1)
+                        else:
+                            label = customtkinter.CTkLabel(tok_frame, text=t[0])
+                            label.grid(row=row, column=col, padx=20, pady=1)
+                        col += 1
+
+                        for cell in t[1:]:
+                            label = customtkinter.CTkLabel(tok_frame, text=cell)
+                            label.grid(row=row, column=col, padx=20, pady=1, sticky="w")
                             col += 1
                         row += 1
                     table_row += 1
@@ -225,9 +234,21 @@ class App(customtkinter.CTk):
                         h = morph_frame.cget("height")
                         morph_frame.configure(height=h + 30)
                         col = 0
-                        for cell in t:
-                            label = customtkinter.CTkLabel(morph_frame, text=cell)
+
+                        if t[0] == "True":
+                            label = customtkinter.CTkLabel(morph_frame, text=t[0], font=("Arial", 12, "bold"), text_color="green")
                             label.grid(row=row, column=col, padx=20, pady=1)
+                        elif t[0] == "False":
+                            label = customtkinter.CTkLabel(morph_frame, text=t[0], font=("Arial", 12, "bold"), text_color="red")
+                            label.grid(row=row, column=col, padx=20, pady=1)
+                        else:
+                            label = customtkinter.CTkLabel(morph_frame, text=t[0])
+                            label.grid(row=row, column=col, padx=20, pady=1)
+                        col += 1
+
+                        for cell in t[1:]:
+                            label = customtkinter.CTkLabel(morph_frame, text=cell)
+                            label.grid(row=row, column=col, padx=20, pady=1, sticky="w")
                             col += 1
                         row += 1
                     table_row += 1
@@ -247,9 +268,21 @@ class App(customtkinter.CTk):
                         h = lem_frame.cget("height")
                         lem_frame.configure(height=h + 30)
                         col = 0
-                        for cell in t:
-                            label = customtkinter.CTkLabel(lem_frame, text=cell)
+
+                        if t[0] == "True":
+                            label = customtkinter.CTkLabel(lem_frame, text=t[0], font=("Arial", 12, "bold"), text_color="green")
                             label.grid(row=row, column=col, padx=20, pady=1)
+                        elif t[0] == "False":
+                            label = customtkinter.CTkLabel(lem_frame, text=t[0], font=("Arial", 12, "bold"), text_color="red")
+                            label.grid(row=row, column=col, padx=20, pady=1)
+                        else:
+                            label = customtkinter.CTkLabel(lem_frame, text=t[0])
+                            label.grid(row=row, column=col, padx=20, pady=1)
+                        col += 1
+
+                        for cell in t[1:]:
+                            label = customtkinter.CTkLabel(lem_frame, text=cell)
+                            label.grid(row=row, column=col, padx=20, pady=1, sticky="w")
                             col += 1
                         row += 1
                     table_row += 1
@@ -269,7 +302,19 @@ class App(customtkinter.CTk):
                         h = pos_frame.cget("height")
                         pos_frame.configure(height=h + 30)
                         col = 0
-                        for cell in t:
+
+                        if t[0] == "True":
+                            label = customtkinter.CTkLabel(pos_frame, text=t[0], font=("Arial", 12, "bold"), text_color="green")
+                            label.grid(row=row, column=col, padx=20, pady=1)
+                        elif t[0] == "False":
+                            label = customtkinter.CTkLabel(pos_frame, text=t[0], font=("Arial", 12, "bold"), text_color="red")
+                            label.grid(row=row, column=col, padx=20, pady=1)
+                        else:
+                            label = customtkinter.CTkLabel(pos_frame, text=t[0])
+                            label.grid(row=row, column=col, padx=20, pady=1, sticky="w")
+                        col += 1
+
+                        for cell in t[1:]:
                             label = customtkinter.CTkLabel(pos_frame, text=cell)
                             label.grid(row=row, column=col, padx=20, pady=1)
                             col += 1
@@ -291,11 +336,38 @@ class App(customtkinter.CTk):
                         h = dep_frame.cget("height")
                         dep_frame.configure(height=h + 30)
                         col = 0
-                        for cell in t:
-                            label = customtkinter.CTkLabel(dep_frame, text=cell)
+
+                        if t[0] == "True":
+                            label = customtkinter.CTkLabel(dep_frame, text=t[0], font=("Arial", 12, "bold"), text_color="green")
                             label.grid(row=row, column=col, padx=20, pady=1)
+                        elif t[0] == "False":
+                            label = customtkinter.CTkLabel(dep_frame, text=t[0], font=("Arial", 12, "bold"), text_color="red")
+                            label.grid(row=row, column=col, padx=20, pady=1)
+                        else:
+                            label = customtkinter.CTkLabel(dep_frame, text=t[0])
+                            label.grid(row=row, column=col, padx=20, pady=1)
+                            if len(t) == 1:
+                                row += 1
+                        col += 1
+                        
+
+                        if len(t) > 1:
+                            if t[1] == "True":
+                                label = customtkinter.CTkLabel(dep_frame, text=t[1], font=("Arial", 12, "bold"), text_color="green")
+                                label.grid(row=row, column=col, padx=20, pady=1)
+                            elif t[1] == "False":
+                                label = customtkinter.CTkLabel(dep_frame, text=t[1], font=("Arial", 12, "bold"), text_color="red")
+                                label.grid(row=row, column=col, padx=20, pady=1)
+                            else:
+                                label = customtkinter.CTkLabel(dep_frame, text=t[1])
+                                label.grid(row=row, column=col, padx=20, pady=1)
                             col += 1
-                        row += 1
+
+                            for cell in t[2:]:
+                                label = customtkinter.CTkLabel(dep_frame, text=cell)
+                                label.grid(row=row, column=col, padx=20, pady=1, sticky="w")
+                                col += 1
+                            row += 1
                     table_row += 1
 
 
@@ -313,9 +385,21 @@ class App(customtkinter.CTk):
                         h = ner_frame.cget("height")
                         ner_frame.configure(height=h + 30)
                         col = 0
-                        for cell in t:
-                            label = customtkinter.CTkLabel(ner_frame, text=cell)
+
+                        if t[0] == "True":
+                            label = customtkinter.CTkLabel(ner_frame, text=t[0], font=("Arial", 12, "bold"), text_color="green")
                             label.grid(row=row, column=col, padx=20, pady=1)
+                        elif t[0] == "False":
+                            label = customtkinter.CTkLabel(ner_frame, text=t[0], font=("Arial", 12, "bold"), text_color="red")
+                            label.grid(row=row, column=col, padx=20, pady=1)
+                        else:
+                            label = customtkinter.CTkLabel(ner_frame, text=t[0])
+                            label.grid(row=row, column=col, padx=20, pady=1)
+                        col += 1
+
+                        for cell in t[1:]:
+                            label = customtkinter.CTkLabel(ner_frame, text=cell)
+                            label.grid(row=row, column=col, padx=20, pady=1, sticky="w")
                             col += 1
                         row += 1
                     table_row += 1
