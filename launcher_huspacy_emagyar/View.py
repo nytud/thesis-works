@@ -68,7 +68,7 @@ class App(customtkinter.CTk):
         try:
             self.model = Main(self.args)
             self.label_launcher_state.configure(text="Launcher indul, elemzés folyamatban")
-            app.update_idletasks()
+            #app.update_idletasks()
             self.model.launch()
             self.label_launcher_state.configure(text="Elemzés kész")
             #self.button.configure(state="disabled")
@@ -78,6 +78,7 @@ class App(customtkinter.CTk):
             CTkMessagebox.CTkMessagebox(title="Hiba", message=str(e), icon="cancel")
 
     def restart(self):
+        self.model = None
         self.args = []
         self.checkbox_huspacy.deselect()
         self.checkbox_emagyar.deselect()
@@ -139,162 +140,269 @@ class App(customtkinter.CTk):
         table_row = 0 #for placing the mini-frames in the big frame dynamically
 
         if(self.model.launcher.outh and self.model.launcher.is_huspacy):
-            outh_frame = customtkinter.CTkScrollableFrame(whole_frame, width=1200, orientation="horizontal")
-            outh_frame.grid(row=table_row, column=0, padx=10, pady=10, sticky="ew")
-            outh_title_label = customtkinter.CTkLabel(outh_frame, text="HuSpaCy nyers kimenete:", fg_color="blue1", font=("Arial", 20, "bold"), text_color="black")
-            
-            self.outh_table = self.model.launcher.outh_print
-            outh_title_label.grid(row=0, padx=10, pady=10, sticky="ew", columnspan=len(self.outh_table[0]))
-            row = 1
-            for t in self.outh_table:
-                h = outh_frame.cget("height")
-                outh_frame.configure(height=h + 35)
-                col = 0
-                for cell in t:
-                    label = customtkinter.CTkLabel(outh_frame, text=cell)
-                    label.grid(row=row, column=col, padx=20, pady=1, sticky="w")
-                    col += 1
-                row += 1
-            table_row += 1
+            outh_tables = self.model.launcher.outh_print
+
+            for outh_table in outh_tables:
+                outh_frame = customtkinter.CTkScrollableFrame(whole_frame, width=1200, orientation="horizontal")
+                outh_frame.grid(row=table_row, column=0, padx=10, pady=10, sticky="ew")
+                outh_title_label = customtkinter.CTkLabel(outh_frame, text="HuSpaCy nyers kimenete:", fg_color="blue1", font=("Arial", 20, "bold"), text_color="black")
+                
+                
+                outh_title_label.grid(row=0, padx=10, pady=10, sticky="ew", columnspan=len(outh_table[0]))
+                row = 1
+                for t in outh_table:
+                    h = outh_frame.cget("height")
+                    outh_frame.configure(height=h + 35)
+                    col = 0
+                    for cell in t:
+                        label = customtkinter.CTkLabel(outh_frame, text=cell)
+                        label.grid(row=row, column=col, padx=20, pady=1, sticky="w")
+                        col += 1
+                    row += 1
+                table_row += 1
 
         
         if(self.model.launcher.oute and self.model.launcher.is_emagyar):
-            oute_frame = customtkinter.CTkScrollableFrame(whole_frame, width=1200, orientation="horizontal")
-            oute_frame.grid(row=table_row, column=0, padx=10, pady=10, sticky="ew")
-            oute_title_label = customtkinter.CTkLabel(oute_frame, text="e-magyar nyers kimenete:", fg_color="orange", font=("Arial", 20, "bold"), text_color="black", anchor="w")
+            oute_tables = self.model.launcher.oute_print
             
-            self.oute_table = self.model.launcher.oute_print
-            oute_title_label.grid(row=0, padx=10, pady=10, sticky="ew", columnspan=len(self.oute_table[0]))
-            row = 1
-            for t in self.oute_table:
-                h = oute_frame.cget("height")
-                oute_frame.configure(height=h + 35)
-                col = 0
-                for cell in t:
-                    label = customtkinter.CTkLabel(oute_frame, text=cell)
-                    label.grid(row=row, column=col, padx=20, pady=1, sticky="w")
-                    col += 1
-                row += 1
-            table_row += 1
+            for oute_table in oute_tables:
+                oute_frame = customtkinter.CTkScrollableFrame(whole_frame, width=1200, orientation="horizontal")
+                oute_frame.grid(row=table_row, column=0, padx=10, pady=10, sticky="ew")
+                oute_title_label = customtkinter.CTkLabel(oute_frame, text="e-magyar nyers kimenete:", fg_color="orange", font=("Arial", 20, "bold"), text_color="black", anchor="w")
+                
+                
+                oute_title_label.grid(row=0, padx=10, pady=10, sticky="ew", columnspan=len(oute_table[0]))
+                row = 1
+                for t in oute_table:
+                    h = oute_frame.cget("height")
+                    oute_frame.configure(height=h + 35)
+                    col = 0
+                    for cell in t:
+                        label = customtkinter.CTkLabel(oute_frame, text=cell)
+                        label.grid(row=row, column=col, padx=20, pady=1, sticky="w")
+                        col += 1
+                    row += 1
+                table_row += 1
 
 
         if(self.model.launcher.is_emagyar and self.model.launcher.is_huspacy):
             if(self.model.launcher.tok_comp):
-                tok_frame = customtkinter.CTkScrollableFrame(whole_frame, width=1200, orientation="horizontal")
-                tok_frame.grid(row=table_row, column=0, padx=10, pady=10, sticky="ew")
-                tok_title_label = customtkinter.CTkLabel(tok_frame, text="Tokenizálás:", fg_color="#ed574c", font=("Arial", 20, "bold"), text_color="black")
-                
-                self.tok_table = self.model.launcher.tok_res
-                #debuglabel = customtkinter.CTkLabel(tok_frame, text=str(self.tok_table))
-                #debuglabel.grid()
-                
-                tok_title_label.grid(row=0, padx=10, pady=10, sticky="ew", columnspan=len(self.tok_table[4]))
-                row = 1
-                for t in self.tok_table:
-                    h = tok_frame.cget("height")
-                    tok_frame.configure(height=h + 30)
-                    col = 0
-                    for cell in t:
-                        label = customtkinter.CTkLabel(tok_frame, text=cell)
-                        label.grid(row=row, column=col, padx=20, pady=1)
+                tok_tables = self.model.launcher.tok_res
+
+                for tok_table in tok_tables:
+                    
+                    tok_frame = customtkinter.CTkScrollableFrame(whole_frame, width=1200, orientation="horizontal")
+                    tok_frame.grid(row=table_row, column=0, padx=10, pady=10, sticky="ew")
+                    tok_title_label = customtkinter.CTkLabel(tok_frame, text="Tokenizálás:", fg_color="#ed574c", font=("Arial", 20, "bold"), text_color="black")                   
+                    tok_title_label.grid(row=0, padx=10, pady=10, sticky="ew", columnspan=len(tok_table[4]))
+                    row = 1
+                    for t in tok_table:
+                        h = tok_frame.cget("height")
+                        tok_frame.configure(height=h + 30)
+                        col = 0
+
+                        if t[0] == "True":
+                            label = customtkinter.CTkLabel(tok_frame, text=t[0], font=("Arial", 12, "bold"), text_color="green")
+                            label.grid(row=row, column=col, padx=20, pady=1)
+                        elif t[0] == "False":
+                            label = customtkinter.CTkLabel(tok_frame, text=t[0], font=("Arial", 12, "bold"), text_color="red")
+                            label.grid(row=row, column=col, padx=20, pady=1)
+                        else:
+                            label = customtkinter.CTkLabel(tok_frame, text=t[0])
+                            label.grid(row=row, column=col, padx=20, pady=1)
                         col += 1
-                    row += 1
-                table_row += 1
+
+                        for cell in t[1:]:
+                            label = customtkinter.CTkLabel(tok_frame, text=cell)
+                            label.grid(row=row, column=col, padx=20, pady=1, sticky="w")
+                            col += 1
+                        row += 1
+                    table_row += 1
 
 
             if(self.model.launcher.morph_comp):
-                morph_frame = customtkinter.CTkScrollableFrame(whole_frame, width=1200, orientation="horizontal")
-                morph_frame.grid(row=table_row, column=0, padx=10, pady=10, sticky="nsw")
-                self.morph_table = self.model.launcher.morph_res
-                morph_title_label = customtkinter.CTkLabel(morph_frame, text="Morfológia:", fg_color="#eda54c", font=("Arial", 20, "bold"), text_color="black")
-                morph_title_label.grid(row=0, padx=10, pady=10, sticky="ew", columnspan=len(self.morph_table[4]))
-                row = 1
-                for t in self.morph_table:
-                    h = morph_frame.cget("height")
-                    morph_frame.configure(height=h + 30)
-                    col = 0
-                    for cell in t:
-                        label = customtkinter.CTkLabel(morph_frame, text=cell)
-                        label.grid(row=row, column=col, padx=20, pady=1)
+                morph_tables = self.model.launcher.morph_res
+
+                for morph_table in morph_tables:
+                    morph_frame = customtkinter.CTkScrollableFrame(whole_frame, width=1200, orientation="horizontal")
+                    morph_frame.grid(row=table_row, column=0, padx=10, pady=10, sticky="nsw")
+                    
+                    morph_title_label = customtkinter.CTkLabel(morph_frame, text="Morfológia:", fg_color="#eda54c", font=("Arial", 20, "bold"), text_color="black")
+                    morph_title_label.grid(row=0, padx=10, pady=10, sticky="ew", columnspan=len(morph_table[4]))
+                    row = 1
+                    for t in morph_table:
+                        h = morph_frame.cget("height")
+                        morph_frame.configure(height=h + 30)
+                        col = 0
+
+                        if t[0] == "True":
+                            label = customtkinter.CTkLabel(morph_frame, text=t[0], font=("Arial", 12, "bold"), text_color="green")
+                            label.grid(row=row, column=col, padx=20, pady=1)
+                        elif t[0] == "False":
+                            label = customtkinter.CTkLabel(morph_frame, text=t[0], font=("Arial", 12, "bold"), text_color="red")
+                            label.grid(row=row, column=col, padx=20, pady=1)
+                        else:
+                            label = customtkinter.CTkLabel(morph_frame, text=t[0])
+                            label.grid(row=row, column=col, padx=20, pady=1)
                         col += 1
-                    row += 1
-                table_row += 1
+
+                        for cell in t[1:]:
+                            label = customtkinter.CTkLabel(morph_frame, text=cell)
+                            label.grid(row=row, column=col, padx=20, pady=1, sticky="w")
+                            col += 1
+                        row += 1
+                    table_row += 1
 
 
             if(self.model.launcher.lem_comp):
-                lem_frame = customtkinter.CTkScrollableFrame(whole_frame, width=1200, orientation="horizontal")
-                lem_frame.grid(row=table_row, column=0, padx=10, pady=10, sticky="nsw")
-                self.lem_table = self.model.launcher.lem_res
-                lem_title_label = customtkinter.CTkLabel(lem_frame, text="Lemmatizálás:", fg_color="#e8ed4c", font=("Arial", 20, "bold"), text_color="black")
-                lem_title_label.grid(row=0, padx=10, pady=10, sticky="ew", columnspan=len(self.lem_table[4]))
-                row = 1
-                for t in self.lem_table:
-                    h = lem_frame.cget("height")
-                    lem_frame.configure(height=h + 30)
-                    col = 0
-                    for cell in t:
-                        label = customtkinter.CTkLabel(lem_frame, text=cell)
-                        label.grid(row=row, column=col, padx=20, pady=1)
+                lem_tables = self.model.launcher.lem_res
+
+                for lem_table in lem_tables:
+                    lem_frame = customtkinter.CTkScrollableFrame(whole_frame, width=1200, orientation="horizontal")
+                    lem_frame.grid(row=table_row, column=0, padx=10, pady=10, sticky="nsw")
+                    
+                    lem_title_label = customtkinter.CTkLabel(lem_frame, text="Lemmatizálás:", fg_color="#e8ed4c", font=("Arial", 20, "bold"), text_color="black")
+                    lem_title_label.grid(row=0, padx=10, pady=10, sticky="ew", columnspan=len(lem_table[4]))
+                    row = 1
+                    for t in lem_table:
+                        h = lem_frame.cget("height")
+                        lem_frame.configure(height=h + 30)
+                        col = 0
+
+                        if t[0] == "True":
+                            label = customtkinter.CTkLabel(lem_frame, text=t[0], font=("Arial", 12, "bold"), text_color="green")
+                            label.grid(row=row, column=col, padx=20, pady=1)
+                        elif t[0] == "False":
+                            label = customtkinter.CTkLabel(lem_frame, text=t[0], font=("Arial", 12, "bold"), text_color="red")
+                            label.grid(row=row, column=col, padx=20, pady=1)
+                        else:
+                            label = customtkinter.CTkLabel(lem_frame, text=t[0])
+                            label.grid(row=row, column=col, padx=20, pady=1)
                         col += 1
-                    row += 1
-                table_row += 1
+
+                        for cell in t[1:]:
+                            label = customtkinter.CTkLabel(lem_frame, text=cell)
+                            label.grid(row=row, column=col, padx=20, pady=1, sticky="w")
+                            col += 1
+                        row += 1
+                    table_row += 1
 
 
             if(self.model.launcher.pos_comp):
-                pos_frame = customtkinter.CTkScrollableFrame(whole_frame, width=1200, orientation="horizontal")
-                pos_frame.grid(row=table_row, column=0, padx=10, pady=10, sticky="nsw")
-                self.pos_table = self.model.launcher.pos_res
-                pos_title_label = customtkinter.CTkLabel(pos_frame, text="Szófajok:", fg_color="#6aed4c", font=("Arial", 20, "bold"), text_color="black")
-                pos_title_label.grid(row=0, padx=10, pady=10, sticky="ew", columnspan=len(self.pos_table[4]))
-                row = 1
-                for t in self.pos_table:
-                    h = pos_frame.cget("height")
-                    pos_frame.configure(height=h + 30)
-                    col = 0
-                    for cell in t:
-                        label = customtkinter.CTkLabel(pos_frame, text=cell)
-                        label.grid(row=row, column=col, padx=20, pady=1)
+                pos_tables = self.model.launcher.pos_res
+
+                for pos_table in pos_tables:
+                    pos_frame = customtkinter.CTkScrollableFrame(whole_frame, width=1200, orientation="horizontal")
+                    pos_frame.grid(row=table_row, column=0, padx=10, pady=10, sticky="nsw")
+                    
+                    pos_title_label = customtkinter.CTkLabel(pos_frame, text="Szófajok:", fg_color="#6aed4c", font=("Arial", 20, "bold"), text_color="black")
+                    pos_title_label.grid(row=0, padx=10, pady=10, sticky="ew", columnspan=len(pos_table[4]))
+                    row = 1
+                    for t in pos_table:
+                        h = pos_frame.cget("height")
+                        pos_frame.configure(height=h + 30)
+                        col = 0
+
+                        if t[0] == "True":
+                            label = customtkinter.CTkLabel(pos_frame, text=t[0], font=("Arial", 12, "bold"), text_color="green")
+                            label.grid(row=row, column=col, padx=20, pady=1)
+                        elif t[0] == "False":
+                            label = customtkinter.CTkLabel(pos_frame, text=t[0], font=("Arial", 12, "bold"), text_color="red")
+                            label.grid(row=row, column=col, padx=20, pady=1)
+                        else:
+                            label = customtkinter.CTkLabel(pos_frame, text=t[0])
+                            label.grid(row=row, column=col, padx=20, pady=1, sticky="w")
                         col += 1
-                    row += 1
-                table_row += 1
+
+                        for cell in t[1:]:
+                            label = customtkinter.CTkLabel(pos_frame, text=cell)
+                            label.grid(row=row, column=col, padx=20, pady=1)
+                            col += 1
+                        row += 1
+                    table_row += 1
 
             
             if(self.model.launcher.dep_comp):
-                dep_frame = customtkinter.CTkScrollableFrame(whole_frame, width=1200, orientation="horizontal")
-                dep_frame.grid(row=table_row, column=0, padx=10, pady=10, sticky="nsw")
-                self.dep_table = self.model.launcher.dep_res
-                dep_title_label = customtkinter.CTkLabel(dep_frame, text="Függőségi elemzés:", fg_color="#4cdded", font=("Arial", 20, "bold"), text_color="black")
-                dep_title_label.grid(row=0, padx=10, pady=10, sticky="ew", columnspan=len(self.dep_table[4]))
-                row = 1
-                for t in self.dep_table:
-                    h = dep_frame.cget("height")
-                    dep_frame.configure(height=h + 30)
-                    col = 0
-                    for cell in t:
-                        label = customtkinter.CTkLabel(dep_frame, text=cell)
-                        label.grid(row=row, column=col, padx=20, pady=1)
+                dep_tables = self.model.launcher.dep_res
+
+                for dep_table in dep_tables:
+                    dep_frame = customtkinter.CTkScrollableFrame(whole_frame, width=1200, orientation="horizontal")
+                    dep_frame.grid(row=table_row, column=0, padx=10, pady=10, sticky="nsw")
+                    
+                    dep_title_label = customtkinter.CTkLabel(dep_frame, text="Függőségi elemzés:", fg_color="#4cdded", font=("Arial", 20, "bold"), text_color="black")
+                    dep_title_label.grid(row=0, padx=10, pady=10, sticky="ew", columnspan=len(dep_table[4]))
+                    row = 1
+                    for t in dep_table:
+                        h = dep_frame.cget("height")
+                        dep_frame.configure(height=h + 30)
+                        col = 0
+
+                        if t[0] == "True":
+                            label = customtkinter.CTkLabel(dep_frame, text=t[0], font=("Arial", 12, "bold"), text_color="green")
+                            label.grid(row=row, column=col, padx=20, pady=1)
+                        elif t[0] == "False":
+                            label = customtkinter.CTkLabel(dep_frame, text=t[0], font=("Arial", 12, "bold"), text_color="red")
+                            label.grid(row=row, column=col, padx=20, pady=1)
+                        else:
+                            label = customtkinter.CTkLabel(dep_frame, text=t[0])
+                            label.grid(row=row, column=col, padx=20, pady=1)
+                            if len(t) == 1:
+                                row += 1
                         col += 1
-                    row += 1
-                table_row += 1
+                        
+
+                        if len(t) > 1:
+                            if t[1] == "True":
+                                label = customtkinter.CTkLabel(dep_frame, text=t[1], font=("Arial", 12, "bold"), text_color="green")
+                                label.grid(row=row, column=col, padx=20, pady=1)
+                            elif t[1] == "False":
+                                label = customtkinter.CTkLabel(dep_frame, text=t[1], font=("Arial", 12, "bold"), text_color="red")
+                                label.grid(row=row, column=col, padx=20, pady=1)
+                            else:
+                                label = customtkinter.CTkLabel(dep_frame, text=t[1])
+                                label.grid(row=row, column=col, padx=20, pady=1)
+                            col += 1
+
+                            for cell in t[2:]:
+                                label = customtkinter.CTkLabel(dep_frame, text=cell)
+                                label.grid(row=row, column=col, padx=20, pady=1, sticky="w")
+                                col += 1
+                            row += 1
+                    table_row += 1
 
 
             if(self.model.launcher.ner_comp):
-                ner_frame = customtkinter.CTkScrollableFrame(whole_frame, width=1200, orientation="horizontal")
-                ner_frame.grid(row=table_row, column=0, padx=10, pady=10, sticky="nsw")
-                self.ner_table = self.model.launcher.ner_res
-                ner_title_label = customtkinter.CTkLabel(ner_frame, text="Névelemek:", fg_color="#a24ced", font=("Arial", 20, "bold"), text_color="black")
-                ner_title_label.grid(row=0, padx=10, pady=10, sticky="ew", columnspan=len(self.ner_table[4]))
-                row = 1
-                for t in self.ner_table:
-                    h = ner_frame.cget("height")
-                    ner_frame.configure(height=h + 30)
-                    col = 0
-                    for cell in t:
-                        label = customtkinter.CTkLabel(ner_frame, text=cell)
-                        label.grid(row=row, column=col, padx=20, pady=1)
+                ner_tables = self.model.launcher.ner_res
+
+                for ner_table in ner_tables:
+                    ner_frame = customtkinter.CTkScrollableFrame(whole_frame, width=1200, orientation="horizontal")
+                    ner_frame.grid(row=table_row, column=0, padx=10, pady=10, sticky="nsw")
+                    
+                    ner_title_label = customtkinter.CTkLabel(ner_frame, text="Névelemek:", fg_color="#a24ced", font=("Arial", 20, "bold"), text_color="black")
+                    ner_title_label.grid(row=0, padx=10, pady=10, sticky="ew", columnspan=len(ner_table[4]))
+                    row = 1
+                    for t in ner_table:
+                        h = ner_frame.cget("height")
+                        ner_frame.configure(height=h + 30)
+                        col = 0
+
+                        if t[0] == "True":
+                            label = customtkinter.CTkLabel(ner_frame, text=t[0], font=("Arial", 12, "bold"), text_color="green")
+                            label.grid(row=row, column=col, padx=20, pady=1)
+                        elif t[0] == "False":
+                            label = customtkinter.CTkLabel(ner_frame, text=t[0], font=("Arial", 12, "bold"), text_color="red")
+                            label.grid(row=row, column=col, padx=20, pady=1)
+                        else:
+                            label = customtkinter.CTkLabel(ner_frame, text=t[0])
+                            label.grid(row=row, column=col, padx=20, pady=1)
                         col += 1
-                    row += 1
-                table_row += 1
+
+                        for cell in t[1:]:
+                            label = customtkinter.CTkLabel(ner_frame, text=cell)
+                            label.grid(row=row, column=col, padx=20, pady=1, sticky="w")
+                            col += 1
+                        row += 1
+                    table_row += 1
 
 
 

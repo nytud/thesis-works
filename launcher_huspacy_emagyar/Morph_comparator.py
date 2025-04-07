@@ -25,4 +25,4 @@ class Morph_comparator(Comparator):
         return f'"","|_morphud_|","|_morphem_|","|_tok_|"'
 
     def compare(self):
-        return super().compare(self.huspacy, self.emagyar, "huspacy ud \t huspacy emmorph \t emagyar morph")
+        return super().compare(self.huspacy, self.emagyar, "összehasonlítás \t huspacy ud \t huspacy emmorph \t emagyar morph")

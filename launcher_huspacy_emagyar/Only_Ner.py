@@ -30,6 +30,10 @@ class Only_Ner:
         only_h_csv = list([])                                                      #the named entity was only found by huspacy
         only_e_csv = list([])  
 
+
+        comp_data[2].append("összehasonlítás \t névelem \t huspacy típus \t emagyar típus")
+        comp_data[3].append('"összehasonlítás","névelem","huspacy típus","emagyar típus"')
+
         #matching the emagyar entities to huspacy entities
         for (kh, vh) in h_dict.items():
             if(kh in e_dict):                                                  #found corresponding entity

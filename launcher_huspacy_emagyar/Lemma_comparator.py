@@ -25,4 +25,4 @@ class Lemma_comparator(Comparator):
         return f'"","|_lem_|","|_lemem_|","|_tok_|"'
 
     def compare(self):
-        return super().compare(self.huspacy, self.emagyar, "huspacy lemma \t huspacy emmorph lemma \t emagyar lemma")
+        return super().compare(self.huspacy, self.emagyar, "összehasonlítás \t huspacy lemma \t huspacy emmorph lemma \t emagyar lemma")

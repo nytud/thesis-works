@@ -27,7 +27,7 @@ class Ner_comparator(Comparator):
         return f'"","|_ner_|","","","|_tok_|"'
 
     def compare(self):
-        comp_data = super().compare(self.huspacy, self.emagyar, "huspacy ner \t emagyar ner")
+        comp_data = super().compare(self.huspacy, self.emagyar, "összehasonlítás \t huspacy iob \t emagyar iob")
         only_ner = Only_Ner(self.huspacy, self.emagyar)
         only_ner.to_print(comp_data)
         return comp_data

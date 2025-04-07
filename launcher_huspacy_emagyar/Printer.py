@@ -7,6 +7,12 @@ class Printer:
 
     def print_normal(self):
         normal_split = [i.split("\t") for i in self.comp_data[0]]
+
+        if len(self.comp_data[2]) > 0:
+            normal_onlyner_split = [i.split("\t") for i in self.comp_data[2]]
+
+            normal_split += normal_onlyner_split
+
         return normal_split
         
 
