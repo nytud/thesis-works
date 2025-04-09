@@ -35,7 +35,7 @@ class Diffsolver:
                         dtp_csv = dtp.replace("_dep_", self.emagyar.dep[k])
                         dtp_csv = dtp.replace("_head_", self.emagyar.head[k])
                         dtp_csv = dtp.replace("_ner_", self.emagyar.ner[k])
-                        comp_data[1].append("emagyar\t" + dtp)
+                        comp_data[1].append("emagyar\t" + dtp_csv)
 
 
                         k = k+1
@@ -56,14 +56,14 @@ class Diffsolver:
                         comp_data[0].append("huspacy\t" + dtp)
                         
 
-                        dtp_csv = csv_diff_to_print_e.replace("_tok_", self.emagyar.tok[k])
+                        dtp_csv = csv_diff_to_print_h.replace("_tok_", self.emagyar.tok[k])
                         dtp_csv = dtp.replace("_morph_", self.emagyar.morph[k])
                         dtp_csv = dtp.replace("_lem_", self.emagyar.lem[k])
                         dtp_csv = dtp.replace("_pos_", self.emagyar.pos[k])
                         dtp_csv = dtp.replace("_dep_", self.emagyar.dep[k])
                         dtp_csv = dtp.replace("_head_", self.emagyar.head[k])
                         dtp_csv = dtp.replace("_ner_", self.emagyar.ner[k])
-                        comp_data[1].append("huspacy\t" + dtp)
+                        comp_data[1].append("huspacy\t" + dtp_csv)
 
                         
                         j = j+1

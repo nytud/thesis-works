@@ -43,7 +43,7 @@ class Printer:
         
 
 
-    def print_to_csv(self, comp_data, fname_to_be, level):
+    def print_to_csv(self, fname_to_be, level):
         with open(f"eredmenyek/csv/{fname_to_be}_{level}.csv", "a") as f:
             for s in self.comp_data[1]:
                 f.write(f"{s}\n")
