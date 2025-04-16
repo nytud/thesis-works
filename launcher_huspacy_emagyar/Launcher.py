@@ -230,7 +230,7 @@ class Launcher:
                 with open(f"eredmenyek/csv/{fname_short}_tok.csv", "w") as csvfile:
                     pass                                                        #creating empty file
             
-                printer.print_to_csv(comp_data, fname_short, "tok")
+                printer.print_to_csv(fname_short, "tok")
 
             
 
@@ -261,7 +261,7 @@ class Launcher:
                 with open(f"eredmenyek/csv/{fname_short}_morph.csv", "w") as csvfile:
                     pass                                                        #creating empty file
             
-                printer.print_to_csv(comp_data, fname_short, "morph")
+                printer.print_to_csv(fname_short, "morph")
 
 
 
@@ -291,7 +291,7 @@ class Launcher:
                 with open(f"eredmenyek/csv/{fname_short}_lem.csv", "w") as csvfile:
                     pass                                                        #creating empty file
             
-                printer.print_to_csv(comp_data, fname_short, "lem")
+                printer.print_to_csv(fname_short, "lem")
 
 
     def compare_pos(self, fname_short):
@@ -320,7 +320,7 @@ class Launcher:
                 with open(f"eredmenyek/csv/{fname_short}_pos.csv", "w") as csvfile:
                     pass                                                        #creating empty file
             
-                printer.print_to_csv(comp_data, fname_short, "pos")
+                printer.print_to_csv(fname_short, "pos")
 
 
 
@@ -382,7 +382,7 @@ class Launcher:
                 with open(f"eredmenyek/csv/{fname_short}_onlyner.csv", "w") as csvfile:
                     pass                                                        #creating empty file
             
-                printer.print_to_csv(comp_data, fname_short, "ner")
+                printer.print_to_csv(fname_short, "ner")
 
 
 

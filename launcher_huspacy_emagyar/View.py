@@ -76,6 +76,8 @@ class App(customtkinter.CTk):
             self.restart()
         except Exception as e:
             CTkMessagebox.CTkMessagebox(title="Hiba", message=str(e), icon="cancel")
+        finally:
+            self.restart()
 
     def restart(self):
         self.model = None
