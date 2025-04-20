@@ -19,7 +19,7 @@ class Emagyar:
     def run(self, fname, txt):
         #run emagyar through docker
         #for simulation, COMMENT FROM HERE
-        """succ = False
+        succ = False
         try:
             client = docker.from_env()
             container = client.containers.run("mtaril/emtsv", detach=True)
@@ -52,7 +52,7 @@ class Emagyar:
 
                     #get the real contents from the tar file and put it to the designated directory
                     with tarfile.open("eredmeny.tar", "r") as tar:
-                        tar.extractall("eredmenyek/emagyar")
+                        tar.extractall("eredmenyek/emagyar", filter="data")
 
                 else:
                     raise Exception(f"Sikertelen az elemzés lefuttatása {result.exit_code}")
@@ -66,12 +66,14 @@ class Emagyar:
             container.remove()
 
         if(succ):
-            self.__makelists(fname)"""
+            self.__makelists(fname)
+        """
         #for simulation, END COMMENT HERE
         #UNCOMMENT FROM HERE
 
         
         self.__makelists(fname)
+        """
 
 
     def print(self, fname):

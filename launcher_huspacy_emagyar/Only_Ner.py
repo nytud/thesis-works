@@ -31,8 +31,8 @@ class Only_Ner:
         only_e_csv = list([])  
 
 
-        comp_data[2].append("összehasonlítás \t névelem \t huspacy típus \t emagyar típus")
-        comp_data[3].append('"összehasonlítás","névelem","huspacy típus","emagyar típus"')
+        comp_data[2].append("összehasonlítás\tnévelem\tHuSpaCy típus\te-magyar típus")
+        comp_data[3].append('"összehasonlítás","névelem","HuSpaCy típus","e-magyar típus"')
 
         #matching the emagyar entities to huspacy entities
         for (kh, vh) in h_dict.items():
@@ -50,13 +50,13 @@ class Only_Ner:
                 only_e_csv.append(f'"","{ke}","{ve}"')
 
         #print the remains
-        comp_data[2].append("huspacy maradek:")
+        comp_data[2].append("HuSpaCy maradék:")
         for h in only_h:
             comp_data[2].append(h)
         for h in only_h_csv:
             comp_data[3].append(h)
 
-        comp_data[2].append("emagyar maradek:")
+        comp_data[2].append("e-magyar maradék:")
         for e in only_e:
             comp_data[2].append(e)
         for e in only_e_csv:

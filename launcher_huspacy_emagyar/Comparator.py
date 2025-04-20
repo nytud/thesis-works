@@ -39,7 +39,7 @@ class Comparator(ABC):
         comp_data = [[],[],[],[]]
 
         l = min(len(huspacy.tok), len(emagyar.tok))
-        comp_data[0].append(f"huspacy tokenszám: {len(huspacy.tok)}")
+        comp_data[0].append(f"HuSpaCy tokenszám: {len(huspacy.tok)}")
         comp_data[0].append(f"e-magyar tokenszám: {len(emagyar.tok)}")
         
         comp_data[0].append(headline)

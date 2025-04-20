@@ -25,5 +25,5 @@ class Token_comparator(Comparator):
         return f'"","|_tok_|",""'
 
     def compare(self):
-        return super().compare(self.huspacy, self.emagyar, "összehasonlítás\thuspacy tokenek \t emagyar tokenek")
+        return super().compare(self.huspacy, self.emagyar, "összehasonlítás\tHuSpaCy token\te-magyar token")
 

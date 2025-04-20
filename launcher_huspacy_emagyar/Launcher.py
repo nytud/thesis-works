@@ -115,7 +115,7 @@ class Launcher:
                 txt = file.read()
 
             if(self.nongraphic):
-                print(f"Elemzendo szoveg: \n {txt}\n\n")
+                print(f"Elemzendő szöveg:\n{txt}\n\n")
 
             try:
                 os.mkdir("eredmenyek")
@@ -171,7 +171,7 @@ class Launcher:
                 if(self.is_huspacy):
                     self.huspacy = Huspacy()
                     if(self.nongraphic):
-                        print("huspacy indul")
+                        print("HuSpaCy indul")
                         (coldb, rowdb) = os.get_terminal_size()
                         for i in range(coldb):
                             print(".", end="")
@@ -350,7 +350,7 @@ class Launcher:
                 with open(f"eredmenyek/csv/{fname_short}_dep.csv", "w") as csvfile:
                     pass                                                        #creating empty file
             
-                printer.print_to_csv(comp_data, fname_short, "dep")
+                printer.print_to_csv(fname_short, "dep")
 
 
     def compare_ner(self, fname_short):
