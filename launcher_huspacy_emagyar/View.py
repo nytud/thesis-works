@@ -313,12 +313,12 @@ class App(customtkinter.CTk):
                             label.grid(row=row, column=col, padx=20, pady=1)
                         else:
                             label = customtkinter.CTkLabel(pos_frame, text=t[0])
-                            label.grid(row=row, column=col, padx=20, pady=1, sticky="w")
+                            label.grid(row=row, column=col, padx=20, pady=1)
                         col += 1
 
                         for cell in t[1:]:
                             label = customtkinter.CTkLabel(pos_frame, text=cell)
-                            label.grid(row=row, column=col, padx=20, pady=1)
+                            label.grid(row=row, column=col, padx=20, pady=1, sticky="w")
                             col += 1
                         row += 1
                     table_row += 1

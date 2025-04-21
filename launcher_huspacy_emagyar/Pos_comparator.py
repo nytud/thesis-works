@@ -25,4 +25,4 @@ class Pos_comparator(Comparator):
         return f'"","|_pos_|","|_tag_|","|_posud_|","","|_tok_|"'
 
     def compare(self):
-        return super().compare(self.huspacy, self.emagyar, "HuSpaCy pos\tHuSpaCy tag\tHuSpaCy EmMorph UD POS\te-magyar POS")
+        return super().compare(self.huspacy, self.emagyar, "összehasonlítás\tHuSpaCy pos\tHuSpaCy tag\tHuSpaCy EmMorph UD POS\te-magyar POS")

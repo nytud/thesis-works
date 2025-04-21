@@ -314,7 +314,7 @@ class Tests(unittest.TestCase):
         launcher.launch()  
         expected = [[
             ["HuSpaCy tokenszám: 4"], ["e-magyar tokenszám: 4"], 
-            ["HuSpaCy pos", "HuSpaCy tag", "HuSpaCy EmMorph UD POS", "e-magyar POS"],
+            ["összehasonlítás", "HuSpaCy pos", "HuSpaCy tag", "HuSpaCy EmMorph UD POS", "e-magyar POS"],
             ["True", "|VERB|", "|VERB|", "|VERB|", "|VERB|", "(Szeretek Szeretek)"],
             ["True", "|NOUN|", "|NOUN|", "|NOUN|", "|NOUN|", "(almát almát)"],
             ["True", "|VERB|", "|VERB|", "|VERB|", "|VERB|", "(enni enni)"], 
