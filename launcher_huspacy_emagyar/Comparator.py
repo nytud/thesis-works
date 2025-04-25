@@ -55,6 +55,7 @@ class Comparator(ABC):
             if(huspacy.tok[j] == emagyar.tok[k]):
                 comp_data[0].append(self.str_to_print(j,k))
                 comp_data[1].append(self.csv_to_print(j,k))
+            
                 
                 j = j + 1
                 k = k + 1

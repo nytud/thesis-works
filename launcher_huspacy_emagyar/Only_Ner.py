@@ -51,12 +51,14 @@ class Only_Ner:
 
         #print the remains
         comp_data[2].append("HuSpaCy maradék:")
+        comp_data[3].append("HuSpaCy maradék:")
         for h in only_h:
             comp_data[2].append(h)
         for h in only_h_csv:
             comp_data[3].append(h)
 
         comp_data[2].append("e-magyar maradék:")
+        comp_data[3].append("e-magyar maradék:")
         for e in only_e:
             comp_data[2].append(e)
         for e in only_e_csv:

@@ -18,7 +18,7 @@ class Ner_comparator(Comparator):
         return f"|_ner_|\t\t\t(_tok_)"
 
     def csv_to_print(self, j, k):
-        return f'"{self.huspacy.ner[j] == self.emagyar.ner[k]}","|{self.huspacy.ner[j]}|""|{self.emagyar.ner[k]}|","|{self.huspacy.tok[j]}|","|{self.emagyar.tok[k]}|"'
+        return f'"{self.huspacy.ner[j] == self.emagyar.ner[k]}","|{self.huspacy.ner[j]}|","|{self.emagyar.ner[k]}|","|{self.huspacy.tok[j]}|","|{self.emagyar.tok[k]}|"'
 
     def csv_diff_to_print_e(self, k):
         return f'"","","|_ner_|","","|_tok_|"'

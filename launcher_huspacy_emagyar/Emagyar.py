@@ -70,10 +70,10 @@ class Emagyar:
         """
         #for simulation, END COMMENT HERE
         #UNCOMMENT FROM HERE
-
+        """
         
         self.__makelists(fname)
-        """
+        
 
 
     def print(self, fname):

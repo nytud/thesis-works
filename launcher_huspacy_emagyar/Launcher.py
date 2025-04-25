@@ -229,10 +229,7 @@ class Launcher:
                         raise Exception(f"Hiba a mappa létrehozásakor: {e} \nSegítség: próbálja meg manuálisan létrehozni megfelelő jogosultsággal!")
                     sys.exit()
             
-                with open(f"eredmenyek/csv/{fname_short}_tok.csv", "w") as csvfile:
-                    pass                                                        #creating empty file
-            
-                printer.print_to_csv(fname_short, "tok")
+                self.data_holder.print_to_csv(comp_data, fname_short, "tok")
 
             
 
@@ -260,10 +257,7 @@ class Launcher:
                         raise Exception(f"Hiba a mappa létrehozásakor: {e} \nSegítség: próbálja meg manuálisan létrehozni megfelelő jogosultsággal!")
                     sys.exit()
             
-                with open(f"eredmenyek/csv/{fname_short}_morph.csv", "w") as csvfile:
-                    pass                                                        #creating empty file
-            
-                printer.print_to_csv(fname_short, "morph")
+                self.data_holder.print_to_csv(comp_data, fname_short, "morph")
 
 
 
@@ -290,10 +284,7 @@ class Launcher:
                         raise Exception(f"Hiba a mappa létrehozásakor: {e} \nSegítség: próbálja meg manuálisan létrehozni megfelelő jogosultsággal!")
                     sys.exit()
             
-                with open(f"eredmenyek/csv/{fname_short}_lem.csv", "w") as csvfile:
-                    pass                                                        #creating empty file
-            
-                printer.print_to_csv(fname_short, "lem")
+                self.data_holder.print_to_csv(comp_data, fname_short, "lem")
 
 
     def compare_pos(self, fname_short):
@@ -319,10 +310,7 @@ class Launcher:
                         raise Exception(f"Hiba a mappa létrehozásakor: {e} \nSegítség: próbálja meg manuálisan létrehozni megfelelő jogosultsággal!")
                     sys.exit()
             
-                with open(f"eredmenyek/csv/{fname_short}_pos.csv", "w") as csvfile:
-                    pass                                                        #creating empty file
-            
-                printer.print_to_csv(fname_short, "pos")
+                self.data_holder.print_to_csv(comp_data, fname_short, "pos")
 
 
 
@@ -349,10 +337,7 @@ class Launcher:
                         raise Exception(f"Hiba a mappa létrehozásakor: {e} \nSegítség: próbálja meg manuálisan létrehozni megfelelő jogosultsággal!")
                     sys.exit()
             
-                with open(f"eredmenyek/csv/{fname_short}_dep.csv", "w") as csvfile:
-                    pass                                                        #creating empty file
-            
-                printer.print_to_csv(fname_short, "dep")
+                self.data_holder.print_to_csv(comp_data, fname_short, "dep")
 
 
     def compare_ner(self, fname_short):
@@ -378,13 +363,7 @@ class Launcher:
                         raise Exception(f"Hiba a mappa létrehozásakor: {e} \nSegítség: próbálja meg manuálisan létrehozni megfelelő jogosultsággal!")
                     sys.exit()
             
-                with open(f"eredmenyek/csv/{fname_short}_ner.csv", "w") as csvfile:
-                    pass                                                        #creating empty file
-
-                with open(f"eredmenyek/csv/{fname_short}_onlyner.csv", "w") as csvfile:
-                    pass                                                        #creating empty file
-            
-                printer.print_to_csv(fname_short, "ner")
+                self.data_holder.print_to_csv(comp_data, fname_short, "ner")
 
 
 

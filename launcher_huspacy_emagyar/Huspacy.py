@@ -36,7 +36,7 @@ class Huspacy:
                 for token in doc:
                     if not token.is_space: #leave out analysis for whitespace tokens
                         #write into result file
-                        f.write(f"{token.text}\t{token._.em_tag}\t{token._.ud_morph}\t{token.lemma_}\t{token._.em_lemma}\t{token._.ud_tag}\t{token.pos_}\t{token.tag_}\t{token.dep_}\t{token.head}\t{token.ent_iob_}\t{token.ent_type_}\n")
+                        f.write(f"{token.text}\t{token._.em_tag}\t{token._.ud_morph}\t{token.lemma_}\t{token._.em_lemma}\t{token._.ud_tag}\t{token.pos_}\t{token.tag_}\t{token.dep_}\t{token.head}\t{token.ent_iob_}\t{token.ent_type_}\t\n")
 
                         #fill uo the stateholder lists
                         self.tok.append((token.text))
@@ -76,7 +76,7 @@ class Huspacy:
                 for line in lines[1:]:
                     line_split = line.split('\t')
                     toname = ""
-                    if len(line_split) == 12: #cut off trailing lines
+                    if len(line_split) == 13: #cut off trailing lines
                         self.tok.append(line_split[0])
                         self.lem.append(line_split[3])
                         self.lem_em.append(line_split[4])
@@ -87,7 +87,10 @@ class Huspacy:
                         self.pos_ud.append(line_split[5])
                         self.dep.append(line_split[8])
                         self.head.append(line_split[9])
-                        self.ner.append(line_split[10])
+                        if line_split[10] == "O":
+                            self.ner.append(line_split[10])
+                        else:
+                            self.ner.append(f"{line_split[10]}-{line_split[11]}")
                     if len(line_split) == 4:
                         self.only_ner.append(f"{line_split[0]}\t{line_split[3][:-1]}")
             
@@ -95,7 +98,7 @@ class Huspacy:
                     
         except Exception as e:
             raise Exception(f"Hiba a HuSpaCy nyers elemzési fájljának összeállításakor: {e}")
-        """  
+        """ 
                     
 
     def print(self, fname):

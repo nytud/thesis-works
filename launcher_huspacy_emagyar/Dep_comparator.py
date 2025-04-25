@@ -17,7 +17,7 @@ class Dep_comparator(Comparator):
         return f"\t|_dep_|\tconverted as: _depconv_\t|_head_|\t\t\t(_tok_)"
 
     def csv_to_print(self, j, k):
-        f'"{convert(self.huspacy.dep[j]) == self.emagyar.dep[k]}","{str(self.huspacy.head[j]) == str(self.emagyar.head[k])}","|({self.huspacy.dep[j]})|","|{convert(self.huspacy.dep[j])}|","|{self.huspacy.head[j]}|","|{self.emagyar.dep[k]}|","|{self.emagyar.head[k]}|""|{self.huspacy.tok[j]}|","|{self.emagyar.tok[k]}|","'
+        return f'"{convert(self.huspacy.dep[j]) == self.emagyar.dep[k]}","{str(self.huspacy.head[j]) == str(self.emagyar.head[k])}","|({self.huspacy.dep[j]})|","|{convert(self.huspacy.dep[j])}|","|{self.huspacy.head[j]}|","|{self.emagyar.dep[k]}|","|{self.emagyar.head[k]}|","|{self.huspacy.tok[j]}|","|{self.emagyar.tok[k]}|"'
 
     def csv_diff_to_print_e(self, k):
         return f'""","","|_dep_|","","|_head_|","","|_tok_|"'

@@ -32,12 +32,18 @@ class DataHolder:
         
 
 
-    def print_to_csv(self, fname_to_be, level):
-        with open(f"eredmenyek/csv/{fname_to_be}_{level}.csv", "a") as f:
-            for s in self.model.comp_data[1]:
+    def print_to_csv(self, comp_data, fname_to_be, level):
+        with open(f"eredmenyek/csv/{fname_to_be}_{level}.csv", "w") as f:
+            headline = comp_data[1][0]
+            headline = headline.replace("\t", ",")
+            f.write(headline)
+            if level != "tok":
+                f.write(',"HuSpaCy token","e-magyar token"')
+            f.write("\n")
+            for s in comp_data[1][1:]:
                 f.write(f"{s}\n")
         if level == "ner":
-            with open(f"eredmenyek/csv/{fname_to_be}_onlyner.csv", "a") as f:
+            with open(f"eredmenyek/csv/{fname_to_be}_onlyner.csv", "w") as f:
                 for s in comp_data[3]:
                     f.write(f"{s}\n")
 
