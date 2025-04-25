@@ -270,7 +270,7 @@ class Tests(unittest.TestCase):
             ["True", "|tesztfájl|", "|tesztfájl|"], 
             ["True", "|.|", "|.|"]
         ]]
-        self.assertEqual(launcher.tok_res, expected) 
+        self.assertEqual(launcher.data_holder.tok_res, expected) 
 
     def test_morph(self):
         txt = "Szeretek almát enni."
@@ -286,7 +286,7 @@ class Tests(unittest.TestCase):
             ["True", "|VerbForm=Inf|Voice=Act|", "|[/V][Inf]|", "|[/V][Inf]|", "(enni enni)"], 
             ["False", "|None|", "|None|", "|[Punct]|", "(. .)"]
         ]]
-        self.assertEqual(launcher.morph_res, expected)   
+        self.assertEqual(launcher.data_holder.morph_res, expected)   
 
     
     def test_lem(self):
@@ -303,7 +303,7 @@ class Tests(unittest.TestCase):
             ["True", "|eszik|", "|eszik|", "|eszik|", "(enni enni)"], 
             ["False", "|.|", "|None|", "|.|", "(. .)"]
         ]]
-        self.assertEqual(launcher.lem_res, expected)   
+        self.assertEqual(launcher.data_holder.lem_res, expected)   
 
     
     def test_pos(self):
@@ -320,7 +320,7 @@ class Tests(unittest.TestCase):
             ["True", "|VERB|", "|VERB|", "|VERB|", "|VERB|", "(enni enni)"], 
             ["False", "|PUNCT|", "|PUNCT|", "|[]|", "|PUNCT|", "(. .)"]
         ]]
-        self.assertEqual(launcher.pos_res, expected)    
+        self.assertEqual(launcher.data_holder.pos_res, expected)    
 
     
     def test_dep(self):
@@ -337,7 +337,7 @@ class Tests(unittest.TestCase):
             ["True", "True", "|(ROOT)|", "|ROOT|", "|tesztfájl|", "|ROOT|", "|tesztfájl|", "(tesztfájl tesztfájl)"], 
             ["True", "False", "|(punct)|", "|PUNCT|", "|tesztfájl|", "|PUNCT|", "|.|", "(. .)"]
         ]]
-        self.assertEqual(launcher.dep_res, expected)   
+        self.assertEqual(launcher.data_holder.dep_res, expected)   
 
     
     def test_ner(self):
@@ -359,7 +359,7 @@ class Tests(unittest.TestCase):
             ["Brazíliában", "{'LOC'}"],
             ["e-magyar maradék:"]
         ]]
-        self.assertEqual(launcher.ner_res, expected)   
+        self.assertEqual(launcher.data_holder.ner_res, expected)   
 
   
 

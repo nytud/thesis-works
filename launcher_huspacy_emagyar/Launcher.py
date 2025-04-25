@@ -11,6 +11,7 @@ from Pos_comparator import Pos_comparator
 from Dep_comparator import Dep_comparator
 from Ner_comparator import Ner_comparator
 from Printer import Printer
+from DataHolder import DataHolder
 
 
 class Launcher:
@@ -31,14 +32,15 @@ class Launcher:
         self.nongraphic = False
     
 
-        self.tok_res = []
-        self.morph_res = []
-        self.lem_res = []
-        self.pos_res = []
-        self.dep_res = []
-        self.ner_res = []
+        #self.tok_res = []
+        #self.morph_res = []
+        #self.lem_res = []
+        #self.pos_res = []
+        #self.dep_res = []
+        #self.ner_res = []
         self.outh_print = []
         self.oute_print = []
+        self.data_holder = DataHolder()
 
         if("-emagyar" in list(args)):
             self.is_emagyar = True
@@ -210,7 +212,7 @@ class Launcher:
             comp_data = token_comparator.compare()
 
             printer = Printer(comp_data)
-            self.tok_res.append(printer.print_normal())
+            self.data_holder.print_normal(comp_data, "tok")
             if(self.nongraphic):
                 printer.print_nongraphic()
 
@@ -241,7 +243,7 @@ class Launcher:
             comp_data = morph_comparator.compare()
 
             printer = Printer(comp_data)
-            self.morph_res.append(printer.print_normal())
+            self.data_holder.print_normal(comp_data, "morph")
             if(self.nongraphic):
                 printer.print_nongraphic()
 
@@ -271,7 +273,7 @@ class Launcher:
             comp_data = lemma_comparator.compare()
 
             printer = Printer(comp_data)
-            self.lem_res.append(printer.print_normal())
+            self.data_holder.print_normal(comp_data, "lem")
             if(self.nongraphic):
                 printer.print_nongraphic()
 
@@ -300,7 +302,7 @@ class Launcher:
             comp_data = pos_comparator.compare()
 
             printer = Printer(comp_data)
-            self.pos_res.append(printer.print_normal())
+            self.data_holder.print_normal(comp_data, "pos")
             if(self.nongraphic):
                 printer.print_nongraphic()
 
@@ -330,7 +332,7 @@ class Launcher:
             comp_data = dep_comparator.compare()
 
             printer = Printer(comp_data)
-            self.dep_res.append(printer.print_normal())
+            self.data_holder.print_normal(comp_data, "dep")
             if(self.nongraphic):
                 printer.print_nongraphic()
 
@@ -359,7 +361,7 @@ class Launcher:
             comp_data = ner_comparator.compare()
 
             printer = Printer(comp_data)
-            self.ner_res.append(printer.print_normal())
+            self.data_holder.print_normal(comp_data, "ner")
             if(self.nongraphic):
                 printer.print_nongraphic()
 

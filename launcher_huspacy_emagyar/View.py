@@ -69,9 +69,10 @@ class App(customtkinter.CTk):
             self.model = Main(self.args)
             self.label_launcher_state.configure(text="Launcher indul, elemzés folyamatban")
             #app.update_idletasks()
+            self.button.configure(state="disabled")
+            self.button_filepicker.configure(state="disabled")
             self.model.launch()
             self.label_launcher_state.configure(text="Elemzés kész")
-            #self.button.configure(state="disabled")
             self.create_table()
             self.restart()
         except Exception as e:
@@ -93,6 +94,8 @@ class App(customtkinter.CTk):
         self.checkbox_outh.deselect()
         self.checkbox_oute.deselect()
         self.checkbox_csv.deselect()
+        self.button.configure(state="enabled")
+        self.button_filepicker.configure(state="enabled")
         app.update_idletasks()
         
 
@@ -189,7 +192,7 @@ class App(customtkinter.CTk):
 
         if(self.model.launcher.is_emagyar and self.model.launcher.is_huspacy):
             if(self.model.launcher.tok_comp):
-                tok_tables = self.model.launcher.tok_res
+                tok_tables = self.model.launcher.data_holder.tok_res
 
                 for tok_table in tok_tables:
                     
@@ -223,7 +226,7 @@ class App(customtkinter.CTk):
 
 
             if(self.model.launcher.morph_comp):
-                morph_tables = self.model.launcher.morph_res
+                morph_tables = self.model.launcher.data_holder.morph_res
 
                 for morph_table in morph_tables:
                     morph_frame = customtkinter.CTkScrollableFrame(whole_frame, width=1200, orientation="horizontal")
@@ -257,7 +260,7 @@ class App(customtkinter.CTk):
 
 
             if(self.model.launcher.lem_comp):
-                lem_tables = self.model.launcher.lem_res
+                lem_tables = self.model.launcher.data_holder.lem_res
 
                 for lem_table in lem_tables:
                     lem_frame = customtkinter.CTkScrollableFrame(whole_frame, width=1200, orientation="horizontal")
@@ -291,7 +294,7 @@ class App(customtkinter.CTk):
 
 
             if(self.model.launcher.pos_comp):
-                pos_tables = self.model.launcher.pos_res
+                pos_tables = self.model.launcher.data_holder.pos_res
 
                 for pos_table in pos_tables:
                     pos_frame = customtkinter.CTkScrollableFrame(whole_frame, width=1200, orientation="horizontal")
@@ -325,7 +328,7 @@ class App(customtkinter.CTk):
 
             
             if(self.model.launcher.dep_comp):
-                dep_tables = self.model.launcher.dep_res
+                dep_tables = self.model.launcher.data_holder.dep_res
 
                 for dep_table in dep_tables:
                     dep_frame = customtkinter.CTkScrollableFrame(whole_frame, width=1200, orientation="horizontal")
@@ -374,7 +377,7 @@ class App(customtkinter.CTk):
 
 
             if(self.model.launcher.ner_comp):
-                ner_tables = self.model.launcher.ner_res
+                ner_tables = self.model.launcher.data_holder.ner_res
 
                 for ner_table in ner_tables:
                     ner_frame = customtkinter.CTkScrollableFrame(whole_frame, width=1200, orientation="horizontal")
