@@ -5,7 +5,7 @@ import CTkMessagebox
 from Main import Main
 
 
-class App(customtkinter.CTk):
+class View(customtkinter.CTk):
     def __init__(self):
         super().__init__()
         self.model = None
@@ -68,7 +68,6 @@ class App(customtkinter.CTk):
         try:
             self.model = Main(self.args)
             self.label_launcher_state.configure(text="Launcher indul, elemzés folyamatban")
-            #app.update_idletasks()
             self.button.configure(state="disabled")
             self.button_filepicker.configure(state="disabled")
             self.model.launch()
@@ -144,7 +143,7 @@ class App(customtkinter.CTk):
 
         table_row = 0 #for placing the mini-frames in the big frame dynamically
 
-        if(self.model.launcher.outh and self.model.launcher.is_huspacy):
+        if self.model.launcher.outh and self.model.launcher.is_huspacy:
             outh_tables = self.model.launcher.outh_print
 
             for outh_table in outh_tables:
@@ -167,7 +166,7 @@ class App(customtkinter.CTk):
                 table_row += 1
 
         
-        if(self.model.launcher.oute and self.model.launcher.is_emagyar):
+        if self.model.launcher.oute and self.model.launcher.is_emagyar:
             oute_tables = self.model.launcher.oute_print
             
             for oute_table in oute_tables:
@@ -190,8 +189,8 @@ class App(customtkinter.CTk):
                 table_row += 1
 
 
-        if(self.model.launcher.is_emagyar and self.model.launcher.is_huspacy):
-            if(self.model.launcher.tok_comp):
+        if self.model.launcher.is_emagyar and self.model.launcher.is_huspacy:
+            if self.model.launcher.tok_comp:
                 tok_tables = self.model.launcher.data_holder.tok_res
 
                 for tok_table in tok_tables:
@@ -225,7 +224,7 @@ class App(customtkinter.CTk):
                     table_row += 1
 
 
-            if(self.model.launcher.morph_comp):
+            if self.model.launcher.morph_comp:
                 morph_tables = self.model.launcher.data_holder.morph_res
 
                 for morph_table in morph_tables:
@@ -259,7 +258,7 @@ class App(customtkinter.CTk):
                     table_row += 1
 
 
-            if(self.model.launcher.lem_comp):
+            if self.model.launcher.lem_comp:
                 lem_tables = self.model.launcher.data_holder.lem_res
 
                 for lem_table in lem_tables:
@@ -293,7 +292,7 @@ class App(customtkinter.CTk):
                     table_row += 1
 
 
-            if(self.model.launcher.pos_comp):
+            if self.model.launcher.pos_comp:
                 pos_tables = self.model.launcher.data_holder.pos_res
 
                 for pos_table in pos_tables:
@@ -327,7 +326,7 @@ class App(customtkinter.CTk):
                     table_row += 1
 
             
-            if(self.model.launcher.dep_comp):
+            if self.model.launcher.dep_comp:
                 dep_tables = self.model.launcher.data_holder.dep_res
 
                 for dep_table in dep_tables:
@@ -376,7 +375,7 @@ class App(customtkinter.CTk):
                     table_row += 1
 
 
-            if(self.model.launcher.ner_comp):
+            if self.model.launcher.ner_comp:
                 ner_tables = self.model.launcher.data_holder.ner_res
 
                 for ner_table in ner_tables:
@@ -410,12 +409,5 @@ class App(customtkinter.CTk):
                     table_row += 1
 
 
-
-
-
-
-
-
-
-app = App()
+app = View()
 app.mainloop()

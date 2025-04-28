@@ -31,61 +31,54 @@ class Launcher:
         self.csv = False
         self.nongraphic = False
     
-
-        #self.tok_res = []
-        #self.morph_res = []
-        #self.lem_res = []
-        #self.pos_res = []
-        #self.dep_res = []
-        #self.ner_res = []
         self.outh_print = []
         self.oute_print = []
         self.data_holder = DataHolder()
 
-        if("-emagyar" in list(args)):
+        if "-emagyar" in args:
             self.is_emagyar = True
 
-        if("-huspacy" in list(args)):
+        if "-huspacy" in args:
             self.is_huspacy = True
 
-        if("-oute" in list(args)):
+        if "-oute" in args:
             self.oute = True
 
-        if("-outh" in list(args)):
+        if "-outh" in args:
             self.outh = True
 
-        if("-tok" in list(args)):
+        if "-tok" in args:
             self.tok_comp = True
 
-        if("-morph" in list(args)):
+        if "-morph" in args:
             self.morph_comp = True
 
-        if("-lem" in list(args)):
+        if "-lem" in args:
             self.lem_comp = True
 
-        if("-ner" in list(args)):
+        if "-ner" in args:
             self.ner_comp = True
 
-        if("-pos" in list(args)):
+        if "-pos" in args:
             self.pos_comp = True
 
-        if("-dep" in list(args)):
+        if "-dep" in args:
             self.dep_comp = True
 
-        if("-csv" in list(args)):
+        if "-csv" in args:
             self.csv = True
 
-        if("-nongraphic" in list(args)):
+        if "-nongraphic" in args:
             self.nongraphic = True
         
 
 
-        self.files = list([])
+        self.files = []
 
         for a in args:
-            if(a[-4:] == ".txt"):
+            if a[-4:] == ".txt":
                 self.files = self.files + glob.glob(a)
-            elif(a == "-emagyar" 
+            elif (a == "-emagyar" 
                 or a == "-huspacy" 
                 or a == "-oute" 
                 or a == "-outh"
@@ -116,7 +109,7 @@ class Launcher:
                 fname_to_be = fname.split('/')[-1]
                 txt = file.read()
 
-            if(self.nongraphic):
+            if self.nongraphic:
                 print(f"Elemzendő szöveg:\n{txt}\n\n")
 
             try:
@@ -124,7 +117,7 @@ class Launcher:
             except FileExistsError:
                 pass
             except Exception as e:
-                if(self.nongraphic):
+                if self.nongraphic:
                     print(f"Hiba a mappa létrehozásakor: {e}\nSegítség: próbálja meg manuálisan létrehozni megfelelő jogosultsággal!")
                 else:
                     raise Exception(f"Hiba a mappa létrehozásakor: {e}\nSegítség: próbálja meg manuálisan létrehozni megfelelő jogosultsággal!")
@@ -135,7 +128,7 @@ class Launcher:
             except FileExistsError:
                 pass
             except Exception as e:
-                if(self.nongraphic):
+                if self.nongraphic:
                     print(f"Hiba a mappa létrehozásakor: {e}\nSegítség: próbálja meg manuálisan létrehozni megfelelő jogosultsággal!")
                 else:
                     raise Exception(f"Hiba a mappa létrehozásakor: {e}\nSegítség: próbálja meg manuálisan létrehozni megfelelő jogosultsággal!")
@@ -146,16 +139,16 @@ class Launcher:
             except FileExistsError:
                 pass
             except Exception as e:
-                if(self.nongraphic):
+                if self.nongraphic:
                     print(f"Hiba a mappa létrehozásakor: {e}\nSegítség: próbálja meg manuálisan létrehozni megfelelő jogosultsággal!")
                 else:
                     raise Exception(f"Hiba a mappa létrehozásakor: {e}\nSegítség: próbálja meg manuálisan létrehozni megfelelő jogosultsággal!")
                 sys.exit()
 
             try:
-                if(self.is_emagyar):
+                if self.is_emagyar:
                     self.emagyar = Emagyar()
-                    if(self.nongraphic):
+                    if self.nongraphic:
                         print("e-magyar indul")
                         (coldb, rowdb) = os.get_terminal_size()
                         for i in range(coldb):
@@ -164,15 +157,15 @@ class Launcher:
 
                     self.emagyar.run(fname_to_be, txt)
 
-                    if(self.oute):
+                    if self.oute:
                         self.oute_print.append(self.emagyar.print(fname_to_be))
-                        if(self.nongraphic):
+                        if self.nongraphic:
                             printer = Printer()
                             printer.print_oute_nongraphic(fname_to_be)
                 
-                if(self.is_huspacy):
+                if self.is_huspacy:
                     self.huspacy = Huspacy()
-                    if(self.nongraphic):
+                    if self.nongraphic:
                         print("HuSpaCy indul")
                         (coldb, rowdb) = os.get_terminal_size()
                         for i in range(coldb):
@@ -181,9 +174,9 @@ class Launcher:
 
                     self.huspacy.run(fname_to_be, txt)
 
-                    if(self.outh):
+                    if self.outh:
                         self.outh_print.append(self.huspacy.print(fname_to_be))
-                        if(self.nongraphic):
+                        if self.nongraphic:
                             printer = Printer()
                             printer.print_outh_nongraphic(fname_to_be)
 
@@ -197,7 +190,7 @@ class Launcher:
                 self.compare_dep(fname_short)
                 self.compare_ner(fname_short)
             except Exception as e:
-                if(self.nongraphic):
+                if self.nongraphic:
                     print("ERROR:")
                     print(e)   
                 else:
@@ -207,23 +200,23 @@ class Launcher:
             
 
     def compare_tokens(self, fname_short):
-        if(self.tok_comp):
+        if self.tok_comp:
             token_comparator = Token_comparator(self.huspacy, self.emagyar)
             comp_data = token_comparator.compare()
 
             printer = Printer(comp_data)
             self.data_holder.print_normal(comp_data, "tok")
-            if(self.nongraphic):
+            if self.nongraphic:
                 printer.print_nongraphic()
 
 
-            if(self.csv):
+            if self.csv:
                 try:
                     os.makedirs("eredmenyek/csv")
                 except FileExistsError:
                     pass
                 except Exception as e:
-                    if(self.nongraphic):
+                    if self.nongraphic:
                         print(f"Hiba a mappa létrehozásakor: {e} \nSegítség: próbálja meg manuálisan létrehozni megfelelő jogosultsággal!")
                     else:
                         raise Exception(f"Hiba a mappa létrehozásakor: {e} \nSegítség: próbálja meg manuálisan létrehozni megfelelő jogosultsággal!")
@@ -235,23 +228,23 @@ class Launcher:
 
 
     def compare_morph(self, fname_short):
-        if(self.morph_comp):
+        if self.morph_comp:
             morph_comparator = Morph_comparator(self.huspacy, self.emagyar)
             comp_data = morph_comparator.compare()
 
             printer = Printer(comp_data)
             self.data_holder.print_normal(comp_data, "morph")
-            if(self.nongraphic):
+            if self.nongraphic:
                 printer.print_nongraphic()
 
 
-            if(self.csv):
+            if self.csv:
                 try:
                     os.makedirs("eredmenyek/csv")
                 except FileExistsError:
                     pass
                 except Exception as e:
-                    if(self.nongraphic):
+                    if self.nongraphic:
                         print(f"Hiba a mappa létrehozásakor: {e} \nSegítség: próbálja meg manuálisan létrehozni megfelelő jogosultsággal!")
                     else:
                         raise Exception(f"Hiba a mappa létrehozásakor: {e} \nSegítség: próbálja meg manuálisan létrehozni megfelelő jogosultsággal!")
@@ -262,23 +255,23 @@ class Launcher:
 
 
     def compare_lemma(self, fname_short):
-        if(self.lem_comp):
+        if self.lem_comp:
             lemma_comparator = Lemma_comparator(self.huspacy, self.emagyar)
             comp_data = lemma_comparator.compare()
 
             printer = Printer(comp_data)
             self.data_holder.print_normal(comp_data, "lem")
-            if(self.nongraphic):
+            if self.nongraphic:
                 printer.print_nongraphic()
 
 
-            if(self.csv):
+            if self.csv:
                 try:
                     os.makedirs("eredmenyek/csv")
                 except FileExistsError:
                     pass
                 except Exception as e:
-                    if(self.nongraphic):
+                    if self.nongraphic:
                         print(f"Hiba a mappa létrehozásakor: {e} \nSegítség: próbálja meg manuálisan létrehozni megfelelő jogosultsággal!")
                     else:
                         raise Exception(f"Hiba a mappa létrehozásakor: {e} \nSegítség: próbálja meg manuálisan létrehozni megfelelő jogosultsággal!")
@@ -288,23 +281,23 @@ class Launcher:
 
 
     def compare_pos(self, fname_short):
-        if(self.pos_comp):
+        if self.pos_comp:
             pos_comparator = Pos_comparator(self.huspacy, self.emagyar)
             comp_data = pos_comparator.compare()
 
             printer = Printer(comp_data)
             self.data_holder.print_normal(comp_data, "pos")
-            if(self.nongraphic):
+            if self.nongraphic:
                 printer.print_nongraphic()
 
 
-            if(self.csv):
+            if self.csv:
                 try:
                     os.makedirs("eredmenyek/csv")
                 except FileExistsError:
                     pass
                 except Exception as e:
-                    if(self.nongraphic):
+                    if self.nongraphic:
                         print(f"Hiba a mappa létrehozásakor: {e} \nSegítség: próbálja meg manuálisan létrehozni megfelelő jogosultsággal!")
                     else:
                         raise Exception(f"Hiba a mappa létrehozásakor: {e} \nSegítség: próbálja meg manuálisan létrehozni megfelelő jogosultsággal!")
@@ -315,23 +308,23 @@ class Launcher:
 
 
     def compare_dep(self, fname_short):
-        if(self.dep_comp):
+        if self.dep_comp:
             dep_comparator = Dep_comparator(self.huspacy, self.emagyar)
             comp_data = dep_comparator.compare()
 
             printer = Printer(comp_data)
             self.data_holder.print_normal(comp_data, "dep")
-            if(self.nongraphic):
+            if self.nongraphic:
                 printer.print_nongraphic()
 
 
-            if(self.csv):
+            if self.csv:
                 try:
                     os.makedirs("eredmenyek/csv")
                 except FileExistsError:
                     pass
                 except Exception as e:
-                    if(self.nongraphic):
+                    if self.nongraphic:
                         print(f"Hiba a mappa létrehozásakor: {e} \nSegítség: próbálja meg manuálisan létrehozni megfelelő jogosultsággal!")
                     else:
                         raise Exception(f"Hiba a mappa létrehozásakor: {e} \nSegítség: próbálja meg manuálisan létrehozni megfelelő jogosultsággal!")
@@ -341,23 +334,23 @@ class Launcher:
 
 
     def compare_ner(self, fname_short):
-        if(self.ner_comp):
+        if self.ner_comp:
             ner_comparator = Ner_comparator(self.huspacy, self.emagyar)
             comp_data = ner_comparator.compare()
 
             printer = Printer(comp_data)
             self.data_holder.print_normal(comp_data, "ner")
-            if(self.nongraphic):
+            if self.nongraphic:
                 printer.print_nongraphic()
 
 
-            if(self.csv):
+            if self.csv:
                 try:
                     os.makedirs("eredmenyek/csv")
                 except FileExistsError:
                     pass
                 except Exception as e:
-                    if(self.nongraphic):
+                    if self.nongraphic:
                         print(f"Hiba a mappa létrehozásakor: {e} \nSegítség: próbálja meg manuálisan létrehozni megfelelő jogosultsággal!")
                     else:
                         raise Exception(f"Hiba a mappa létrehozásakor: {e} \nSegítség: próbálja meg manuálisan létrehozni megfelelő jogosultsággal!")

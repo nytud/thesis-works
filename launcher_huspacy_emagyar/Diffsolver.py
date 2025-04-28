@@ -14,9 +14,9 @@ class Diffsolver:
     def solve(self, diff_to_print_e, diff_to_print_h, csv_diff_to_print_e, csv_diff_to_print_h, jj, kk, j, k, comp_data):
         modified = False
        
-        if(k+kk < len(self.emagyar.tok) and j+jj < len(self.huspacy.tok)): #prevent index error
-            if(k != len(self.emagyar.tok)-kk and j != len(self.huspacy.tok)-jj and  self.huspacy.tok[j+jj] == self.emagyar.tok[k+kk]): #found the next match
-                if(kk > jj): #emagyar shift was greater -> huspacy is ahead -> emagyar remains are to be printed
+        if k+kk < len(self.emagyar.tok) and j+jj < len(self.huspacy.tok): #prevent index error
+            if k != len(self.emagyar.tok)-kk and j != len(self.huspacy.tok)-jj and  self.huspacy.tok[j+jj] == self.emagyar.tok[k+kk]: #found the next match
+                if kk > jj: #emagyar shift was greater -> huspacy is ahead -> emagyar remains are to be printed
                     for i in range (0, kk-jj):
                         dtp = diff_to_print_e.replace("_tok_", self.emagyar.tok[k])
                         dtp = dtp.replace("_morph_", self.emagyar.morph[k])

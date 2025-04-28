@@ -9,19 +9,19 @@ import hu_core_news_lg
 
 class Huspacy:
     def __init__(self):
-        self.tok = list([])
-        self.morph = list([])
-        self.morph_ud = list([])
-        self.morph_em = list([])
-        self.lem = list([])
-        self.lem_em = list([])
-        self.pos = list([])
-        self.tag = list([])
-        self.pos_ud = list([])
-        self.dep = list([])
-        self.head = list([])
-        self.ner = list([])
-        self.only_ner = list([])
+        self.tok = []
+        self.morph = []
+        self.morph_ud = []
+        self.morph_em = []
+        self.lem = []
+        self.lem_em = []
+        self.pos = []
+        self.tag = []
+        self.pos_ud = []
+        self.dep = []
+        self.head = []
+        self.ner = []
+        self.only_ner = []
 
     def run(self, fname, txt):
         #for simulation COMMENT FROM HERE
@@ -38,7 +38,7 @@ class Huspacy:
                         #write into result file
                         f.write(f"{token.text}\t{token._.em_tag}\t{token._.ud_morph}\t{token.lemma_}\t{token._.em_lemma}\t{token._.ud_tag}\t{token.pos_}\t{token.tag_}\t{token.dep_}\t{token.head}\t{token.ent_iob_}\t{token.ent_type_}\t\n")
 
-                        #fill uo the stateholder lists
+                        #fill the feature lists
                         self.tok.append((token.text))
                         self.lem.append((token.lemma_))
                         self.lem_em.append((token._.em_lemma))
@@ -61,7 +61,6 @@ class Huspacy:
                 #collecting data for ner-centered printout
                 f.write("\n")
                 for ent in doc.ents:
-                    #not necessary (when simulation is on, recommended): ner-centered printout can be in the result file optionally
                     f.write(str(ent.text) + '\t' + str(ent.start_char) + '\t' + str(ent.end_char) + '\t' + str(ent.label_) + '\n')
                     self.only_ner.append(f"{ent.text}\t{ent.label_}")
 
@@ -99,6 +98,7 @@ class Huspacy:
         except Exception as e:
             raise Exception(f"Hiba a HuSpaCy nyers elemzési fájljának összeállításakor: {e}")
         """ 
+        #uncommentable simulation section ends here
                     
 
     def print(self, fname):

@@ -25,10 +25,10 @@ class Only_Ner:
         
 
 
-        only_h = list([])                                                      #the named entity was only found by huspacy
-        only_e = list([])                                                      #the named entity was only found by emagyar
-        only_h_csv = list([])                                                      #the named entity was only found by huspacy
-        only_e_csv = list([])  
+        only_h = []                                                      #the named entity was only found by huspacy
+        only_e = []                                                      #the named entity was only found by emagyar
+        only_h_csv = []                                                      #the named entity was only found by huspacy
+        only_e_csv = []  
 
 
         comp_data[2].append("összehasonlítás\tnévelem\tHuSpaCy típus\te-magyar típus")

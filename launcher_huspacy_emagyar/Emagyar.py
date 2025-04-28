@@ -5,16 +5,16 @@ import re
 
 class Emagyar:
     def __init__(self):
-        self.tok = list([])
-        self.morph = list([])
-        self.lem = list([])
-        self.pos = list([])
-        self.dep = list([])
-        self.head = list([])
-        self._head_num = list([])
-        self._ids = list([])
-        self.ner = list([])
-        self.only_ner = list([])
+        self.tok = []
+        self.morph = []
+        self.lem = []
+        self.pos = []
+        self.dep = []
+        self.head = []
+        self._head_num = [] #this links the dep head by id
+        self._ids = [] #every token has an id in the sentence it is in for dependency
+        self.ner = []
+        self.only_ner = []
 
     def run(self, fname, txt):
         #run emagyar through docker
@@ -36,12 +36,12 @@ class Emagyar:
             tar_stream.seek(0)
             succ = container.put_archive(path="/app", data=tar_stream) #transfering the input file to docker
             
-            if(succ): #transfer was successful
+            if succ: #transfer was successful
                 #run emagyar in the docker
                 command = f"python3 ./main.py tok,spell,morph,pos,conv-morph,dep,chunk,ner -i ./currentinput.txt -o ana_emagyar_{fname}"
                 result = container.exec_run(command)
 
-                if(result.exit_code == 0):
+                if result.exit_code == 0:
                     with open("eredmeny.tar", "wb") as f:
                         strm, status = container.get_archive(f"/app/ana_emagyar_{fname}") #get the result from docker
             
@@ -65,15 +65,16 @@ class Emagyar:
             container.stop()
             container.remove()
 
-        if(succ):
+        if succ:
             self.__makelists(fname)
         """
         #for simulation, END COMMENT HERE
         #UNCOMMENT FROM HERE
-        """
+        
         
         self.__makelists(fname)
-        
+        """
+        #uncommentable simulation section ends here
 
 
     def print(self, fname):
@@ -92,31 +93,29 @@ class Emagyar:
                 lines = lines_raw.split('\n')
 
                 #remove empty lines
-                to_rem = list([])
+                to_rem = []
 
                 for i in range(0, len(lines)):
-                    if(len(lines[i]) == 0):
+                    if len(lines[i]) == 0:
                         to_rem.append(i)
 
                 for i in range(0, len(to_rem)):
                     lines.pop(to_rem[i]-i)
 
-                toname = ""                                         #variable for getting named entities
-                ids = list([])                                      #every token has an id in the sentence it is in for dependency
-                e_head_num = list([])                               #this links the dep head by id
+                toname = ""                                         #variable for getting named entities                               
 
                 for i in range(1, len(lines)):
                     splitline = re.split(r'\t|\n', lines[i])        #split by either tab or newline -> features list
             
-                    if(len(splitline) >0):                          #warning: somehow there are many-many different whitespaces in the outcome of the analysis
+                    if len(splitline) >0:                          #warning: somehow there are many-many different whitespaces in the outcome of the analysis
                                                                     #this len makes sure that there's no indexing error with empty lists
                                                                     #note: the analysis probably makes some trailig whitespaces / tokenizes them anyway
                         self.tok.append((splitline[0]))
 
-                        if(len(splitline) >= 6):
+                        if len(splitline) >= 6:
                             self.lem.append((splitline[5]))
                             self.morph.append((str(splitline[6])))
-                            if(str(splitline[7]) == "CONJ"):        #quick conversion: emagyar works with a different label
+                            if str(splitline[7]) == "CONJ":        #quick conversion: emagyar works with a different label
                                 self.pos.append(("CCONJ"))
                             else:
                                 self.pos.append((str(splitline[7])))
@@ -124,11 +123,11 @@ class Emagyar:
                             self._head_num.append((str(splitline[11])))
                             self._ids.append((splitline[9], splitline[0]))
                                     
-                            if(splitline[13] != "O"):                                               #ner conversion: emagyar works with a different iob label set
-                                if(splitline[13][0] == "1"):                                        #eliminating standalone label
+                            if splitline[13] != "O":                                               #ner conversion: emagyar works with a different iob label set
+                                if splitline[13][0] == "1":                                        #eliminating standalone label
                                     self.only_ner.append(f"{splitline[0]}\t{splitline[13][2:]}")
                                     self.ner.append((f"B-{splitline[13][2:]}"))
-                                elif(splitline[13][0] == "E"):                                      #eliminating end of NE label
+                                elif splitline[13][0] == "E":                                      #eliminating end of NE label
                                     toname = toname + splitline[0]                                  #build up the NE -> put the last part
                                     self.only_ner.append(f"{toname}\t{splitline[13][2:]}")          #NE is ready -> put it in the list
                                     toname = ""                                                     #clear builder variable, new NE will start
@@ -151,13 +150,13 @@ class Emagyar:
 
     def __make_head_list(self):
         #sorts the ids into separate lists per sentences
-        ids_per_sentences = list([])
+        ids_per_sentences = []
         i = -1 #always append to the end
 
         for (head_id, tok) in self._ids:
             #new sentence begins
-            if(head_id == '1'):
-                l = list([])
+            if head_id == '1':
+                l = []
                 ids_per_sentences.append(l)
                 i += 1
             ids_per_sentences[i].append((int(head_id), tok))
@@ -165,7 +164,7 @@ class Emagyar:
         
 
         raw_head_tok = self._head_num
-        split_rht = list([])
+        split_rht = []
         prev_len = 0
 
         for sent in ids_per_sentences:
@@ -181,12 +180,12 @@ class Emagyar:
             i = -1
             for (raw_head) in raw_head_list:
                 i += 1
-                if(raw_head == str(0)):
+                if raw_head == str(0):
                     self.head.append((id_list[i][1])) # as root, itself
                     continue
                 for (head_id, tok2) in id_list:
-                    if(str(raw_head) == str(head_id)):
-                        self.head.append((tok2))
+                    if str(raw_head) == str(head_id):
+                        self.head.append(tok2)
                         continue
                 
 
