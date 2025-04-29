@@ -1,3 +1,8 @@
+#Source of the original integration: https://huspacy.github.io/recipes/emmorph/
+#The original integration is used here with some modifications; for details, please see the thesis paper
+
+
+
 from spacy.tokens import Doc, Token, MorphAnalysis
 from spacy.language import Language
 from spacy.lang.hu import Hungarian
