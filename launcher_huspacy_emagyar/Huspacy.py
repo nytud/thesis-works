@@ -75,7 +75,7 @@ class Huspacy:
                 for line in lines[1:]:
                     line_split = line.split('\t')
                     toname = ""
-                    if len(line_split) == 13: #cut off trailing lines
+                    if len(line_split) >= 12: #cut off trailing lines
                         self.tok.append(line_split[0])
                         self.lem.append(line_split[3])
                         self.lem_em.append(line_split[4])
