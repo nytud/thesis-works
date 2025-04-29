@@ -183,19 +183,22 @@ class Launcher:
 
                 fname_short = fname_to_be[:-4]
 
-                self.compare_tokens(fname_short)
-                self.compare_morph(fname_short)
-                self.compare_lemma(fname_short)
-                self.compare_pos(fname_short)
-                self.compare_dep(fname_short)
-                self.compare_ner(fname_short)
+                if self.is_emagyar and self.is_huspacy:
+                    self.compare_tokens(fname_short)
+                    self.compare_morph(fname_short)
+                    self.compare_lemma(fname_short)
+                    self.compare_pos(fname_short)
+                    self.compare_dep(fname_short)
+                    self.compare_ner(fname_short)
             except Exception as e:
                 if self.nongraphic:
                     print("ERROR:")
                     print(e)   
                 else:
                     raise Exception(e)
-                
+               
+
+            
 
             
 
